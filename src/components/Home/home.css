@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+}
+
+.homeBody {
+  height: 100vmin;
+  width: 100vw;
+}
+
+.homeSection1 {
+  width: 100vw;
+  height: auto;
+  display: flex;
+}
+
+.leftHalf {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 60vmin;
+}
+
+.header-text {
+  width: 28vmin;
+  font-size: 5vmin;
+  padding: 1.5vmin;
+}
+
+.currWord {
+  text-align: end;
+  background-color: black;
+  opacity: 40%;
+  text-align: left;
+  display: flex;
+  color: white;
+  font-size: 5vmin;
+  padding: 1.5vmin;
+  width: 26vmin;
+}
+
+.rightHalf {
+  border-radius: 100px 0px 0px 0px;
+  width: auto;
+  height: 60vmin;
+  background-color: rgb(250, 249, 249);
+}
+
+.interviewPic1 {
+  height: 35vmin;
+  width: auto;
+  border-radius: 5vmin;
+  margin: 5vmin;
+}
+
+.interviewPic2 {
+  height: 25vmin;
+  width: auto;
+  border-radius: 5vmin;
+  margin-left: 29vmin;
+}
+
+.homeSection2 {
+  background-color: black;
+  width: 100vw;
+  height: 100vmin;
+}

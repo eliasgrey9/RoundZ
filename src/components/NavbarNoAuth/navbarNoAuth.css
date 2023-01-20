@@ -1,0 +1,51 @@
+.navSection1 {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  height: 7.75vmin;
+  width: 100vw;
+  background-color: black;
+}
+
+.navLinks {
+  display: flex;
+  justify-content: space-evenly;
+  color: white;
+  width: 45vmin;
+  margin-right: 12vmin;
+  font-size: 3vmin;
+}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  margin-right: 1vmin;
+}
+
+.sign-up-btn {
+  background-color: rgb(36, 36, 36);
+  color: white;
+  border: solid black 2.5px;
+  border-radius: 5vmin;
+  font-size: 2.5vmin;
+  font-weight: bold;
+  height: 7vmin;
+  width: 25vmin;
+  margin-right: 12vmin;
+  padding: 1.5vmin;
+}
+.sign-up-btn:hover {
+  cursor: pointer;
+  background-color: black;
+}
+.navSection2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+}
+.logo {
+  margin-left: 8vmin;
+  height: 15vmin;
+  width: auto;
+}
