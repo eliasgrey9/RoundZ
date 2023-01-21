@@ -8,20 +8,18 @@ const wordArray = ["connect", "analyze", "streamline"];
 
 const Homepage = () => {
   const [currWord, setCurrWord] = useState(wordArray[0]);
-  const [isActive, setIsActive] = useState(true);
 
   const index = useRef(0);
   useEffect(() => {
     let interval = null;
-    if (isActive) {
-      interval = setInterval(() => {
+    interval = setInterval(() => {
+      setCurrWord(wordArray[index.current]);
+      if (index.current === wordArray.length - 1) {
+        index.current = 0;
+      } else {
         index.current++;
-        setCurrWord(wordArray[index.current]);
-        if (index.current === wordArray.length - 1) {
-          setIsActive(false);
-        }
-      }, 2000);
-    }
+      }
+    }, 2000);
     return () => clearInterval(interval);
   });
 
@@ -33,15 +31,40 @@ const Homepage = () => {
           <div className="leftHalf">
             <div className="header-text">One platform</div>
             <div className="currWord">to {currWord}</div>
-          </div>
-          <div className="rightHalf">
             <div>
-              <img className="interviewPic1" src={interviewPic1}></img>
-              <img className="interviewPic2" src={interviewPic2}></img>
+              <h3 className="sub-header-text">An app for interviewers.</h3>
             </div>
           </div>
+          <div className="rightHalf">
+            <div class="right-text">interviews.</div>
+            <div class="right-text">made.</div>
+            <div class="right-text">easy.</div>
+          </div>
         </div>
-        <div className="homeSection2"></div>
+
+        <div className="homeSection2">
+          <div className="how-it-works-header">How it works</div>
+
+          <div className="oneAndTwoText">
+            <div className="textRow">CREATE INTERVIEW</div>
+            <div className="textRow">INVITE RECIPIENTS</div>
+          </div>
+
+          <div className="oneAndTwoNumber">
+            <div className="numbersRowOne">1</div>
+            <div className="numbersRowOne">2</div>
+          </div>
+
+          <div className="threeAndFourText">
+            <div className="textRow">RECIPIENTS RECORD THEMSELVES</div>
+            <div className="textRow">REVIEW SUBMISSIONS</div>
+          </div>
+
+          <div className="threeAndFourNumbers">
+            <div className="numbersRowTwo">3</div>
+            <div className="numbersRowTwo">4</div>
+          </div>
+        </div>
       </div>
     </>
   );
