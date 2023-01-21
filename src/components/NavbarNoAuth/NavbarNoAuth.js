@@ -5,15 +5,15 @@ import roundzLogo from "../../assets/roundzLogo.png";
 const NavbarNoAuth = () => {
   return (
     <>
-      <div className="navSection1">
+      <div id="home" className="navSection1">
         <div className="navLinks">
           <div>
-            <a className="navLink" href="#">
+            <a className="navLink" href="#about">
               About
             </a>
           </div>
           <div>
-            <a className="navLink" href="#">
+            <a className="navLink" href="#contact">
               Contact
             </a>
           </div>

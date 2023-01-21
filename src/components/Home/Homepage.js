@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./home.css";
 import NavbarNoAuth from "../NavbarNoAuth/NavbarNoAuth";
+import roundzLogoNoBg from "../../assets/roundzLogoNoBg.png";
+import Contact from "../Contact/Contact";
+import Footer from "../Footer/Footer";
 import interviewPic1 from "../../assets/interviewPic1.jpeg";
 import interviewPic2 from "../../assets/interviewPic2.jpeg";
+import interviewPic3 from "../../assets/interviewPic3.jpeg";
 
-const wordArray = ["connect", "analyze", "streamline"];
+const wordArray = ["connect", "review", "streamline"];
 
 const Homepage = () => {
   const [currWord, setCurrWord] = useState(wordArray[0]);
@@ -43,28 +47,69 @@ const Homepage = () => {
         </div>
 
         <div className="homeSection2">
-          <div className="how-it-works-header">How it works</div>
+          <div className="noMoreSchedulingHeader">no more scheduling.</div>
 
-          <div className="oneAndTwoText">
-            <div className="textRow">CREATE INTERVIEW</div>
-            <div className="textRow">INVITE RECIPIENTS</div>
+          <div className="allTextInrow">
+            <div className="eachTextInRow">CREATE INTERVIEW</div>
+            <div className="eachTextInRow">INVITE RECIPIENTS</div>
           </div>
 
-          <div className="oneAndTwoNumber">
-            <div className="numbersRowOne">1</div>
-            <div className="numbersRowOne">2</div>
+          <div className="allNumbersInRow">
+            <div className="eachNumberInRow">1</div>
+            <div className="eachNumberInRow">2</div>
           </div>
 
-          <div className="threeAndFourText">
-            <div className="textRow">RECIPIENTS RECORD THEMSELVES</div>
-            <div className="textRow">REVIEW SUBMISSIONS</div>
+          <div className="allTextInrow">
+            <div className="eachTextInRow">RECIPIENTS RECORD</div>
+            <div className="eachTextInRow">REVIEW SUBMISSIONS</div>
           </div>
 
-          <div className="threeAndFourNumbers">
-            <div className="numbersRowTwo">3</div>
-            <div className="numbersRowTwo">4</div>
+          <div className="allNumbersInRow">
+            <div className="eachNumberInRow">3</div>
+            <div className="eachNumberInRow">4</div>
           </div>
         </div>
+
+        <div id="about" className="homeSection3">
+          <div className="logoDiv">
+            <div className="logoBorder"></div>
+            <img
+              className="roundzLogoNoBg"
+              alt="roundz logo"
+              src={roundzLogoNoBg}
+            ></img>
+          </div>
+
+          <div className="textColumn">
+            <div className="makeLessWorkHeader">Make less work.</div>
+            <div className="lessWorkParagraph">
+              RoundZ is a tool that streamlines the initial interview process,
+              allowing interviewers to create their own questions for applicants
+              to answer in a video recording, eliminating the need for initial
+              in-person or phone interviews. The interviewer can access the
+              video submissions and gain a more comprehensive understanding of
+              the applicant while saving at least 50% of their time.
+            </div>
+          </div>
+        </div>
+
+        <div className="homeSection4">
+          <Contact />
+          <div className="contactImagesColumn">
+            <img className="contactImg1" src={interviewPic1}></img>
+            <img className="contactImg2" src={interviewPic2}></img>
+            <img className="contactImg3" src={interviewPic3}></img>
+          </div>
+        </div>
+
+        <div className="homeSection5">
+          <div className="readyToStartHeader">Ready to get started?</div>
+          <div>
+            <button className="sign-up-btn">Sign up free</button>
+          </div>
+        </div>
+
+        <Footer />
       </div>
     </>
   );
