@@ -48,8 +48,7 @@ body {
   font-size: 4vmin;
   padding: 1.5vmin;
   width: 34.5vmin;
-  border: solid rgb(190, 190, 190) 0.025vmin;
-  box-shadow: 0.35vmin 0.35vmin 0.35vmin gray;
+  border: none;
   border-radius: 0.5vmin;
 }
 
@@ -61,7 +60,7 @@ body {
   justify-content: center;
   width: 30%;
   height: auto;
-  background-color: rgb(250, 249, 249);
+  background-color: wheat;
 }
 
 /*Styles right half header text - homeSection1*/
@@ -135,7 +134,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: rgb(250, 249, 249);
+  background-color: wheat;
   position: relative;
 }
 
@@ -146,7 +145,7 @@ body {
 }
 
 .logoBorder {
-  background: linear-gradient(to right, rgb(36, 36, 36), rgb(250, 249, 249));
+  background: linear-gradient(to right, rgb(36, 36, 36), wheat);
   border-radius: 50%;
   height: 24vmin;
   width: 27vmin;
@@ -156,7 +155,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgb(250, 249, 249);
+  background-color: wheat;
   border-radius: 50%;
   height: 20vmin;
   width: 20vmin;
@@ -221,7 +220,7 @@ body {
   align-items: center;
   width: 100vw;
   height: 15vmin;
-  background-color: rgb(250, 249, 249);
+  background-color: wheat;
 }
 
 .readyToStartHeader {
