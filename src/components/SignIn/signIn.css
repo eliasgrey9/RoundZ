@@ -24,8 +24,10 @@
 }
 
 .signInLeftSubHeader {
+  text-align: center;
   margin-top: 2.5vmin;
   font-size: 2.5vmin;
+  padding: 1vmin;
 }
 
 .signInRightSide {
@@ -48,12 +50,13 @@
 .signInInput {
   padding: 0.5vmin;
   height: 2.5vmin;
-  width: 70%;
+  width: 80%;
   border-radius: 0.5vmin;
 }
 .signInLabel {
-  width: 70%;
+  width: 80%;
   color: white;
+  font-size: 2vmin;
 }
 
 .signInBtn {
@@ -94,9 +97,14 @@
   color: wheat;
 }
 .signInContentBelowForm {
+  font-size: 3vmin;
   margin-top: 2vmin;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 35%;
+  width: 40%;
+}
+
+.signInNotAMember {
+  font-size: 2vmin;
 }

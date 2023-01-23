@@ -48,7 +48,7 @@ const SignUp = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className="SignUpBelowPasswordInput">
+            <div className="signUpPasswordCharacters">
               Must be 8 characters at least
             </div>
             <br />
@@ -56,17 +56,16 @@ const SignUp = () => {
               Sign Up
             </button>
           </form>
-          <div>Already a member?</div>
+          <div className="signUpNotAMember">Already a member?</div>
           <div className="signUpContentBelowForm">
             <div>
               <NavLink to="/signIn" className="signUpOrSignInLink">
                 Sign in
               </NavLink>
             </div>
-            <div>or</div>
             <div>
               <NavLink to="/home" className="signUpOrSignInLink">
-                Go to homepage
+                Home
               </NavLink>
             </div>
           </div>

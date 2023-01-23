@@ -26,6 +26,8 @@
 .signUpLeftSubHeader {
   margin-top: 2.5vmin;
   font-size: 2.5vmin;
+  text-align: center;
+  padding: 1vmin;
 }
 
 .signUpRightSide {
@@ -48,16 +50,13 @@
 .signUpInput {
   padding: 0.5vmin;
   height: 2.5vmin;
-  width: 70%;
+  width: 80%;
   border-radius: 0.5vmin;
 }
 .signUpLabel {
-  width: 70%;
+  width: 80%;
   color: white;
-}
-
-.SignUpBelowPasswordInput {
-  width: 70%;
+  font-size: 2vmin;
 }
 
 .signUpBtn {
@@ -97,11 +96,20 @@
   cursor: pointer;
   color: wheat;
 }
-
 .signUpContentBelowForm {
+  font-size: 3vmin;
   margin-top: 2vmin;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  width: 35%;
+  width: 40%;
+}
+
+.signUpNotAMember {
+  font-size: 2vmin;
+}
+
+.signUpPasswordCharacters {
+  font-size: 2vmin;
+  width: 80%;
 }

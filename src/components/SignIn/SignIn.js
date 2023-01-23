@@ -54,17 +54,16 @@ const SignUp = () => {
               Sign In
             </button>
           </form>
-          <div>Not a member?</div>
-          <div className="signUpContentBelowForm">
+          <div className="signInNotAMember">Not a member?</div>
+          <div className="signInContentBelowForm">
             <div>
-              <NavLink to="/signUp" className="signUpOrSignInLink">
+              <NavLink to="/signUp" className="signInOrSignUpLink">
                 Sign up
               </NavLink>
             </div>
-            <div>or</div>
             <div>
-              <NavLink to="/home" className="signUpOrSignInLink">
-                Go to homepage
+              <NavLink to="/home" className="signInOrSignUpLink">
+                Home
               </NavLink>
             </div>
           </div>
