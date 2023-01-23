@@ -21,17 +21,29 @@ const Contact = () => {
   };
   return (
     <section id="contact">
-      <form ref={form} onSubmit={sendEmail}>
+      <form className="contactForm" ref={form} onSubmit={sendEmail}>
         <div className="contactHeader">Contact us</div>
-        <input type="text" name="name" placeholder="Your Full Name" required />
-        <input type="email" name="email" placeholder="Your Email" />
+        <input
+          className="contactInput"
+          type="text"
+          name="name"
+          placeholder="Your Full Name"
+          required
+        />
+        <input
+          className="contactInput"
+          type="email"
+          name="email"
+          placeholder="Your Email"
+        />
         <textarea
+          className="contactTextArea"
           name="message"
           rows="7"
           placeholder="Your Message"
           required
         ></textarea>
-        <button className="sendMsgBtn" type="submit">
+        <button className="contactSendMsgBtn" type="submit">
           Send Message
         </button>
       </form>

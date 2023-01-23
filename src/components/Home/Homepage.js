@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import interviewPic1 from "../../assets/interviewPic1.jpeg";
 import interviewPic2 from "../../assets/interviewPic2.jpeg";
 import interviewPic3 from "../../assets/interviewPic3.jpeg";
+import { NavLink } from "react-router-dom";
 
 const wordArray = ["connect", "review", "streamline"];
 
@@ -105,7 +106,9 @@ const Homepage = () => {
         <div className="homeSection5">
           <div className="readyToStartHeader">Ready to get started?</div>
           <div>
-            <button className="sign-up-btn">Sign up free</button>
+            <NavLink to="/signUp" className="navLink">
+              <button className="sign-up-btn">Sign Up Free</button>
+            </NavLink>
           </div>
         </div>
 

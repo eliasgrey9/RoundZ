@@ -5,7 +5,7 @@
   height: auto;
 }
 
-form {
+.contactForm {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -17,14 +17,14 @@ form {
   height: 60vmin;
 }
 
-input {
+.contactInput {
   padding: 0.5vmin;
   height: 5%;
   width: 85%;
   border-radius: 0.5vmin;
 }
 
-textarea {
+.contactTextArea {
   padding: 0.5vmin;
   border-radius: 0.5vmin;
   background: rgb(250, 249, 249);
@@ -34,7 +34,7 @@ textarea {
   height: 15vmin;
 }
 
-.sendMsgBtn {
+.contactSendMsgBtn {
   background-color: rgb(250, 249, 249);
   border-radius: 0.5vmin;
   border: none;
@@ -44,7 +44,7 @@ textarea {
   padding: 1vmin;
 }
 
-.sendMsgBtn:hover {
+.contactSendMsgBtn:hover {
   cursor: pointer;
   background-color: rgb(226, 226, 226);
 }

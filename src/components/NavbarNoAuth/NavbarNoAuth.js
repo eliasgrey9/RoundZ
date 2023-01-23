@@ -1,6 +1,7 @@
 import React from "react";
 import "./navbarNoAuth.css";
 import roundzLogo from "../../assets/roundzLogo.png";
+import { Navigate, NavLink } from "react-router-dom";
 
 const NavbarNoAuth = () => {
   return (
@@ -18,9 +19,9 @@ const NavbarNoAuth = () => {
             </a>
           </div>
           <div>
-            <a className="navLink" href="#">
+            <NavLink to="/signIn" className="navLink">
               Sign In
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
@@ -30,9 +31,9 @@ const NavbarNoAuth = () => {
         </div>
 
         <div>
-          <a className="navLink" href="#">
+          <NavLink to="/signUp" className="navLink">
             <button className="sign-up-btn">Sign Up Free</button>
-          </a>
+          </NavLink>
         </div>
       </div>
     </>

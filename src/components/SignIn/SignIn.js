@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./signUp.css";
+import "./signIn.css";
 import roundzLogoNoBg from "../../assets/roundzLogoNoBg.png";
 import { NavLink } from "react-router-dom";
 
@@ -14,53 +14,51 @@ const SignUp = () => {
     console.log(`Password: ${password}`);
   }
   return (
-    <div className="signUpBody">
-      <div className="signUpLeftSide">
+    <div className="signInBody">
+      <div className="signInLeftSide">
         <div>
-          <img className="signUpLogo" src={roundzLogoNoBg}></img>
+          <img className="signInLogo" src={roundzLogoNoBg}></img>
         </div>
 
-        <div className="signUpLeftHeader">Effortlessly Interview</div>
-        <div className="signUpLeftSubHeader">
+        <div className="signInLeftHeader">Effortlessly Interview</div>
+        <div className="signInLeftSubHeader">
           "RoundZ simplifies and modernizes the interview process."
         </div>
       </div>
 
-      <div className="signUpRightSide">
-        <div className="signUpRightHeader">Sign up for RoundZ</div>
-        <div className="signUpForm">
-          <form className="signUpForm" onSubmit={handleSubmit}>
-            <div className="signUpLabel">Email:</div>
+      <div className="signInRightSide">
+        <div className="signInRightHeader">Sign in to RoundZ</div>
+        <div className="signInForm">
+          <form className="signInForm" onSubmit={handleSubmit}>
+            <div className="signInLabel">Email:</div>
 
             <input
-              className="signUpInput"
+              className="signInInput"
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
 
             <br />
-            <div className="signUpLabel">Password:</div>
+            <div className="signInLabel">Password:</div>
 
             <input
-              className="signUpInput"
+              className="signInInput"
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <div className="SignUpBelowPasswordInput">
-              Must be 8 characters at least
-            </div>
+
             <br />
-            <button className="signUpBtn" type="submit">
-              Sign Up
+            <button className="signInBtn" type="submit">
+              Sign In
             </button>
           </form>
-          <div>Already a member?</div>
+          <div>Not a member?</div>
           <div className="signUpContentBelowForm">
             <div>
-              <NavLink to="/signIn" className="signUpOrSignInLink">
-                Sign in
+              <NavLink to="/signUp" className="signUpOrSignInLink">
+                Sign up
               </NavLink>
             </div>
             <div>or</div>

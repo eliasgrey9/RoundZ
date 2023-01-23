@@ -1,11 +1,11 @@
-.signUpBody {
+.signInBody {
   display: flex;
   width: 100vw;
   height: auto;
   margin: 0;
 }
 
-.signUpLeftSide {
+.signInLeftSide {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,20 +15,20 @@
   background-color: wheat;
 }
 
-.signUpLogo {
+.signInLogo {
   width: 20vmin;
 }
 
-.signUpLeftHeader {
+.signInLeftHeader {
   font-size: 5vmin;
 }
 
-.signUpLeftSubHeader {
+.signInLeftSubHeader {
   margin-top: 2.5vmin;
   font-size: 2.5vmin;
 }
 
-.signUpRightSide {
+.signInRightSide {
   color: white;
   display: flex;
   justify-content: center;
@@ -39,28 +39,24 @@
   background-color: rgb(36, 36, 36);
 }
 
-.signUpRightHeader {
+.signInRightHeader {
   color: white;
   font-size: 5vmin;
   margin-bottom: 5vmin;
 }
 
-.signUpInput {
+.signInInput {
   padding: 0.5vmin;
   height: 2.5vmin;
   width: 70%;
   border-radius: 0.5vmin;
 }
-.signUpLabel {
+.signInLabel {
   width: 70%;
   color: white;
 }
 
-.SignUpBelowPasswordInput {
-  width: 70%;
-}
-
-.signUpBtn {
+.signInBtn {
   margin-top: 2vmin;
   background-color: rgb(250, 249, 249);
   border-radius: 0.5vmin;
@@ -71,12 +67,12 @@
   padding: 1vmin;
 }
 
-.signUpBtn:hover {
+.signInBtn:hover {
   cursor: pointer;
   background-color: rgb(226, 226, 226);
 }
 
-.signUpForm {
+.signInForm {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,19 +82,18 @@
   width: 85%;
 }
 
-.signUpOrSignInLink {
+.signInOrSignUpLink {
   margin-top: 1vmin;
   font-size: 2vmin;
   text-decoration: underline;
   color: white;
 }
 
-.signUpOrSignInLink:hover {
+.signInOrSignUpLink:hover {
   cursor: pointer;
   color: wheat;
 }
-
-.signUpContentBelowForm {
+.signInContentBelowForm {
   margin-top: 2vmin;
   display: flex;
   align-items: center;
