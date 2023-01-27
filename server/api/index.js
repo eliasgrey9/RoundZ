@@ -7,6 +7,7 @@ router.get("/", (req, res) => {
 });
 
 router.use("/users", require("./users"));
+router.use("/jobs", require("./jobs"));
 
 router.use((req, res, next) => {
   const err = new Error("API route not found!");

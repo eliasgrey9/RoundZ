@@ -23,6 +23,7 @@ const NavbarNoAuth = () => {
               Sign In
             </NavLink>
           </div>
+          
         </div>
       </div>
       <div className="navSection2">

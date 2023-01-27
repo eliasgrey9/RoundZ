@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./home.css";
 import NavbarNoAuth from "../NavbarNoAuth/NavbarNoAuth";
+import NavbarAuth from "../NavbarAuth/NavbarAuth";
 import roundzLogoNoBg from "../../assets/roundzLogoNoBg.png";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
@@ -9,11 +10,12 @@ import interviewPic2 from "../../assets/interviewPic2.jpeg";
 import interviewPic3 from "../../assets/interviewPic3.jpeg";
 import { NavLink } from "react-router-dom";
 
-const wordArray = ["connect", "review", "streamline"];
-
 const Homepage = () => {
+  const wordArray = ["connect", "review", "streamline"];
   const [currWord, setCurrWord] = useState(wordArray[0]);
+  const [authenticated, setAuthenticated] = useState(true);
 
+  //This changes the wordArray on a timed interval
   const index = useRef(0);
   useEffect(() => {
     let interval = null;
@@ -27,11 +29,19 @@ const Homepage = () => {
     }, 2000);
     return () => clearInterval(interval);
   });
+  //END
+
+  const toggleNav = () => {
+    setAuthenticated(!authenticated);
+  };
 
   return (
     <>
-      <NavbarNoAuth />
+      {authenticated ? <NavbarAuth /> : <NavbarNoAuth />}
+
       <div className="homeBody">
+        <button onClick={toggleNav}>+</button>
+
         <div className="homeSection1">
           <div className="leftHalf">
             <div className="header-text">One platform</div>
@@ -102,15 +112,17 @@ const Homepage = () => {
             <img className="contactImg3" src={interviewPic3}></img>
           </div>
         </div>
+        {!authenticated ? (
+          <div className="homeSection5">
+            <div className="readyToStartHeader">Ready to get started?</div>
 
-        <div className="homeSection5">
-          <div className="readyToStartHeader">Ready to get started?</div>
-          <div>
-            <NavLink to="/signUp" className="navLink">
-              <button className="sign-up-btn">Sign Up Free</button>
-            </NavLink>
+            <div>
+              <NavLink to="/signUp" className="navLink">
+                <button className="sign-up-btn">Sign Up Free</button>
+              </NavLink>
+            </div>
           </div>
-        </div>
+        ) : null}
 
         <Footer />
       </div>
