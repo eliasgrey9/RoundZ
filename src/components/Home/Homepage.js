@@ -51,9 +51,9 @@ const Homepage = () => {
             </div>
           </div>
           <div className="rightHalf">
-            <div class="right-text">interviews.</div>
-            <div class="right-text">made.</div>
-            <div class="right-text">easy.</div>
+            <div className="right-text">interviews.</div>
+            <div className="right-text">made.</div>
+            <div className="right-text">easy.</div>
           </div>
         </div>
 

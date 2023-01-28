@@ -5,6 +5,7 @@ const Dashboard = () => {
   const [openPositionCreator, setOpenPositionCreator] = useState(true);
   const [currentQuestionInputValue, setCurrentQuestionInputValue] =
     useState("");
+  const [displayQuestions, setDisplayQuestions] = useState([]);
   const [questionArray, setQuestionArray] = useState([]);
   const [title, setTitle] = useState("");
 
@@ -19,7 +20,6 @@ const Dashboard = () => {
 
   const currentQuestionVal = (e) => {
     e.preventDefault();
-
     setCurrentQuestionInputValue(e.target.value);
   };
 
@@ -27,19 +27,36 @@ const Dashboard = () => {
     e.preventDefault();
     questionArray.push({ question: currentQuestionInputValue });
     setCurrentQuestionInputValue("");
+    displayQuestions.push(currentQuestionInputValue);
   };
 
   const submitForm = (e) => {
     e.preventDefault();
-    const result = { questions: [...questionArray], title, status: true };
-    console.log(result);
-    setTitle("");
-  };
 
+    if (questionArray.length > 0 && !(title === "")) {
+      const result = { questions: [...questionArray], title, status: true };
+      //API REQUEST///
+      const requestOptions = {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(result),
+      };
+
+      fetch("http://localhost:8080/api/jobs/create", requestOptions)
+        .then((response) => response.json())
+        // .then((data) => console.log(data, "data"))
+        .then(() => setTitle(""))
+        .then(() => setQuestionArray([]))
+        .then(() => setDisplayQuestions([]));
+      ///END API REQUEST
+    } else {
+      return;
+    }
+  };
   return (
     <div className="dashboardBody">
       {openPositionCreator ? (
-        <>
+        <div>
           <div className="section1">
             <div>Status</div>
             <div>
@@ -50,7 +67,7 @@ const Dashboard = () => {
           <div className="section2">
             New<button onClick={openPositionCreatorBtn}>+</button>
           </div>
-        </>
+        </div>
       ) : (
         <form onSubmit={submitForm}>
           <input
@@ -63,14 +80,12 @@ const Dashboard = () => {
               onChange={currentQuestionVal}
               placeholder="Ask a question!"
               value={currentQuestionInputValue}
-            ></input>
+            />
             <button onClick={updateQuestionArray}>+</button>
           </div>
-
-          {questionArray.map((q) => {
-            <p>{q}</p>;
+          {displayQuestions.map((q) => {
+            return <li key={Math.random() * -50}>{q}</li>;
           })}
-
           <input type="submit"></input>
         </form>
       )}
