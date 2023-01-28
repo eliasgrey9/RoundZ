@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./dashboard.css";
+import ClosedPositions from "./PositionsByStatus/ClosedPositions";
+import ActivePositions from "./PositionsByStatus/ActivePositions";
 
 const Dashboard = () => {
   const [openPositionCreator, setOpenPositionCreator] = useState(true);
@@ -8,6 +10,7 @@ const Dashboard = () => {
   const [displayQuestions, setDisplayQuestions] = useState([]);
   const [questionArray, setQuestionArray] = useState([]);
   const [title, setTitle] = useState("");
+  const [status, setStatus] = useState(true);
 
   const openPositionCreatorBtn = () => {
     setOpenPositionCreator(false);
@@ -47,7 +50,8 @@ const Dashboard = () => {
         // .then((data) => console.log(data, "data"))
         .then(() => setTitle(""))
         .then(() => setQuestionArray([]))
-        .then(() => setDisplayQuestions([]));
+        .then(() => setDisplayQuestions([]))
+        .then(() => setOpenPositionCreator(true));
       ///END API REQUEST
     } else {
       return;
@@ -57,6 +61,9 @@ const Dashboard = () => {
     <div className="dashboardBody">
       {openPositionCreator ? (
         <div>
+          <div className="section2">
+            New<button onClick={openPositionCreatorBtn}>+</button>
+          </div>
           <div className="section1">
             <div>Status</div>
             <div>
@@ -64,9 +71,7 @@ const Dashboard = () => {
               <button>Closed</button>
             </div>
           </div>
-          <div className="section2">
-            New<button onClick={openPositionCreatorBtn}>+</button>
-          </div>
+          {status ? <ActivePositions /> : <ClosedPositions />}
         </div>
       ) : (
         <form onSubmit={submitForm}>

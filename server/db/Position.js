@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("./database");
 
-module.exports = db.define("Position", {
+module.exports = db.define("position", {
   title: {
     type: Sequelize.STRING,
   },

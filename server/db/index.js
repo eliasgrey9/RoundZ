@@ -5,6 +5,9 @@ const User = require("./User");
 const Position = require("./Position");
 const Question = require("./Question");
 
+Question.belongsTo(Position);
+Position.hasMany(Question);
+
 module.exports = {
   db,
   User,

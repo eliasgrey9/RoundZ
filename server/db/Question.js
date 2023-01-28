@@ -1,12 +1,8 @@
 const Sequelize = require("sequelize");
 const db = require("./database");
 
-module.exports = db.define("Question", {
+module.exports = db.define("question", {
   question: {
     type: Sequelize.STRING,
-  },
-
-  position_id: {
-    type: Sequelize.INTEGER,
   },
 });

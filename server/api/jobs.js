@@ -19,7 +19,7 @@ router.post("/create", async function (req, res) {
       const qs = await Promise.all(
         payload.questions.map(async (q) => {
           return await Question.create(
-            { question: q.question, position_id: p.id },
+            { question: q.question, positionId: p.id },
             {
               transaction: t,
             }
@@ -45,23 +45,41 @@ router.post("/create", async function (req, res) {
 
 router.delete("/delete/:id", async function (req, res, next) {
   try {
-    const position = await Position.findByPk(req.params.id);
-
-    const questions = await Question.findAll({
-      where: { position_id: req.params.id },
+    const position = await Position.findByPk(req.params.id, {
+      include: Question,
     });
-
-    await Promise.all(
-      questions.map((q) => {
-        return q.destroy();
-      })
-    );
 
     position.destroy();
 
     res.send(true);
   } catch (error) {
     console.log("delete REQ ERROR", error);
+    next(error);
+  }
+});
+
+router.get("/findAllActiveJobs", async (req, res, next) => {
+  try {
+    const result = await Position.findAll({
+      where: { status: true },
+      include: Question,
+    });
+    res.send(result);
+  } catch (error) {
+    console.log("get REQ ERROR", error);
+    next(error);
+  }
+});
+
+router.get("/findAllInActiveJobs", async (req, res, next) => {
+  try {
+    const result = await Position.findAll({
+      where: { status: false },
+      include: Question,
+    });
+    res.send(result);
+  } catch (error) {
+    console.log("get REQ ERROR", error);
     next(error);
   }
 });
