@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./dashboard.css";
-import ClosedPositions from "./PositionsByStatus/ClosedPositions";
-import ActivePositions from "./PositionsByStatus/ActivePositions";
+import "./dashboardHome.css";
+import ClosedPositions from "./ClosedPositions/ClosedPositions";
+import ActivePositions from "./ActivePositions/ActivePositions";
 
-const Dashboard = () => {
+const DashboardHome = () => {
   const [openPositionCreator, setOpenPositionCreator] = useState(true);
   const [currentQuestionInputValue, setCurrentQuestionInputValue] =
     useState("");
@@ -61,14 +61,14 @@ const Dashboard = () => {
     <div className="dashboardBody">
       {openPositionCreator ? (
         <div>
-          <div className="section2">
+          <div className="section1">
             New<button onClick={openPositionCreatorBtn}>+</button>
           </div>
           <div className="section1">
             <div>Status</div>
             <div>
-              <button>Active</button>
-              <button>Closed</button>
+              <button onClick={() => setStatus(true)}>Active</button>
+              <button onClick={() => setStatus(false)}>Closed</button>
             </div>
           </div>
           {status ? <ActivePositions /> : <ClosedPositions />}
@@ -97,4 +97,4 @@ const Dashboard = () => {
     </div>
   );
 };
-export default Dashboard;
+export default DashboardHome;

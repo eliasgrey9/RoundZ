@@ -1,7 +1,7 @@
 import React from "react";
 import "./navbarNoAuth.css";
 import roundzLogo from "../../assets/roundzLogo.png";
-import { Navigate, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const NavbarNoAuth = () => {
   return (
@@ -23,7 +23,6 @@ const NavbarNoAuth = () => {
               Sign In
             </NavLink>
           </div>
-          
         </div>
       </div>
       <div className="navSection2">

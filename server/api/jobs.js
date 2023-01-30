@@ -49,7 +49,8 @@ router.delete("/delete/:id", async function (req, res, next) {
       include: Question,
     });
 
-    position.destroy();
+    await Promise.all(position.questions.map((q) => q.destroy()));
+    await position.destroy();
 
     res.send(true);
   } catch (error) {
@@ -71,7 +72,7 @@ router.get("/findAllActiveJobs", async (req, res, next) => {
   }
 });
 
-router.get("/findAllInActiveJobs", async (req, res, next) => {
+router.get("/findAllClosedJobs", async (req, res, next) => {
   try {
     const result = await Position.findAll({
       where: { status: false },
@@ -84,4 +85,21 @@ router.get("/findAllInActiveJobs", async (req, res, next) => {
   }
 });
 
+router.put("/changeJobStatusToClosed/:id", async (req, res, next) => {
+  const position = await Position.findByPk(req.params.id);
+  if (!position) {
+    return res.status(404).send("Position not found");
+  }
+  position.status = false;
+  await position.save();
+});
+
+router.put("/changeJobStatusToOpen/:id", async (req, res, next) => {
+  const position = await Position.findByPk(req.params.id);
+  if (!position) {
+    return res.status(404).send("Position not found");
+  }
+  position.status = true;
+  await position.save();
+});
 module.exports = router;
