@@ -1,0 +1,15 @@
+.singlePositionBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: auto;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: auto;
+}

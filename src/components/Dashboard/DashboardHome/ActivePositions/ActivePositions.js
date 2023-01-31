@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 
 const ActivePositions = () => {
   const [dataFromApi, setDataFromApi] = useState([]);
+
   useEffect(() => {
     const renderActiveJobs = async () => {
       const response = await axios.get(

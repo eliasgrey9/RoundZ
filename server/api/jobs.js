@@ -102,4 +102,41 @@ router.put("/changeJobStatusToOpen/:id", async (req, res, next) => {
   position.status = true;
   await position.save();
 });
+
+router.get("/singlePosition/:id", async (req, res) => {
+  try {
+    const result = await Position.findByPk(req.params.id, {
+      where: { status: true },
+      include: Question,
+    });
+    res.send(result);
+  } catch (error) {
+    console.log("get REQ ERROR", error);
+    next(error);
+  }
+});
+
+router.delete("/deleteSingleQuestion/:id", async (req, res) => {
+  const result = await Question.findByPk(req.params.id);
+  await result.destroy();
+
+  res.send(true);
+});
+
+router.put("/addSingleQuestion", async (req, res, next) => {
+  const position = await Position.findByPk(req.body.positionId);
+
+  if (!position) {
+    return res.status(404).send({ error: "Position not found" });
+  }
+
+  await Question.create({
+    question: req.body.question,
+    positionId: req.body.positionId,
+  });
+
+  await position.save();
+  res.send(true);
+});
+
 module.exports = router;

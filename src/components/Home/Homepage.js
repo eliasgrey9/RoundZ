@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./home.css";
+import "./Homepage.css";
 import NavbarNoAuth from "../NavbarNoAuth/NavbarNoAuth";
 import NavbarAuth from "../NavbarAuth/NavbarAuth";
 import roundzLogoNoBg from "../../assets/roundzLogoNoBg.png";

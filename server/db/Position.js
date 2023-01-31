@@ -12,5 +12,6 @@ module.exports = db.define("position", {
 
   invitations: {
     type: Sequelize.INTEGER,
+    defaultValue: 0,
   },
 });
