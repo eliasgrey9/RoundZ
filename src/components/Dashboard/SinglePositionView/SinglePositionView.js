@@ -40,7 +40,7 @@ const SinglePositionView = () => {
             </h3>
           </div>
 
-          <EmailInviteForm position={params.id} />
+          <EmailInviteForm position_id={params.id} />
         </>
       ) : null}
     </div>

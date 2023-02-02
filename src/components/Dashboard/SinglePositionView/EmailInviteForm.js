@@ -1,19 +1,41 @@
 import React, { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
+import axios from "axios";
 
 const emailjsKey = process.env.REACT_APP_EMAILJS_KEY;
 
-const EmailInviteForm = ({ position }) => {
+const EmailInviteForm = ({ position_id }) => {
   const [formData, setFormData] = useState({ email: "", name: "" });
   const [linkSent, setLinkSent] = useState(false);
+  const [randomString, setRandomString] = useState("");
 
   const myForm = useRef();
-  const handleSubmit = (event) => {
-    event.preventDefault();
 
-    // You can add code here to generate the dynamic link based on the form data and send it to the end user
-    // For example, you can concatenate the form data to create the link:
-    const dynamicLink = `https://www.roundz.com/${formData.name}/${formData.email}/${position}`;
+  const characters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+  const generateString = (length) => {
+    let result = " ";
+    const charactersLength = characters.length;
+    for (let i = 0; i < length; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return setRandomString(result.toLowerCase());
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const dynamicLink = `https://www.roundz.com/${randomString}`;
+
+    axios.post(
+      `http://localhost:8080/api/jobs/addInviteeToPosition/${position_id}`,
+      {
+        name: formData.name,
+        email: formData.email,
+        code: randomString,
+      }
+    );
 
     emailjs.init(emailjsKey);
 
@@ -33,10 +55,12 @@ const EmailInviteForm = ({ position }) => {
       });
 
     setLinkSent(true);
+    generateString(15);
   };
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
+    generateString(15);
   };
   return (
     <form ref={myForm} onSubmit={handleSubmit}>
@@ -44,18 +68,18 @@ const EmailInviteForm = ({ position }) => {
       <input
         type="text"
         name="name"
-        placeholder="Enter your name"
+        placeholder="Recipients name"
         value={formData.name}
         onChange={handleChange}
       />
       <input
         type="email"
         name="email"
-        placeholder="Enter your email"
+        placeholder="Recipients email"
         value={formData.email}
         onChange={handleChange}
       />
-      <button type="submit">Submit</button>
+      <button type="submit">Send Invite</button>
     </form>
   );
 };

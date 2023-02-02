@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Position, Question, db } = require("../db");
+const Invitee = require("../db/Invitee");
 
 router.post("/create", async function (req, res) {
   const payload = req.body;
@@ -114,6 +115,23 @@ router.get("/singlePosition/:id", async (req, res) => {
     console.log("get REQ ERROR", error);
     next(error);
   }
+});
+
+router.post("/addInviteeToPosition/:id", async (req, res) => {
+  const position = await Position.findByPk(req.params.id);
+
+  if (!position) {
+    return res.status(400).send({ error: "Position not found" });
+  }
+
+  const createInvitee = await Invitee.create({
+    name: req.body.name,
+    email: req.body.email,
+    code: req.body.code,
+    positionId: position.id,
+  });
+
+  res.send({ invitee: createInvitee, position });
 });
 
 module.exports = router;
