@@ -4,16 +4,22 @@ import "./singlePositionView.css";
 import { useParams } from "react-router-dom";
 
 const SinglePositionView = () => {
-  const [dataFromApi, setDataFromApi] = useState([]);
+  const [dataFromApi, setDataFromApi] = useState({});
   const [showInvites, setShowInvites] = useState(true);
   const [showEditPositionDetails, setShowEditPositionDetails] = useState(false);
+  const [newQuestionInput, setNewQuestionInput] = useState("");
+  const [newQuestionsArray, setNewQuestionsArray] = useState([]);
 
   const params = useParams();
 
   const deleteQuestion = async (id) => {
-    const response = await axios.delete(
-      `http://localhost:8080/api/jobs/deleteSingleQuestion/${id}`
-    );
+    if (!id) {
+      return;
+    } else {
+      await axios.delete(
+        `http://localhost:8080/api/jobs/deleteSingleQuestion/${id}`
+      );
+    }
 
     setDataFromApi({
       ...dataFromApi,
@@ -40,8 +46,42 @@ const SinglePositionView = () => {
     setShowEditPositionDetails(false);
   };
 
-  const editQuestion = (id) => {
-    console.log(id);
+  const renderNewQuestionBeforeSubmit = async (e) => {
+    e.preventDefault();
+    const payload = {
+      question: newQuestionInput,
+    };
+
+    setDataFromApi({
+      ...dataFromApi,
+      questions: [...dataFromApi.questions, payload],
+    });
+
+    newQuestionsArray.push(newQuestionInput);
+
+    setNewQuestionInput("");
+  };
+
+  const updateDetails = async (e) => {
+    e.preventDefault();
+
+    if (newQuestionsArray.length) {
+      const payload = {
+        positionId: dataFromApi.id,
+        questions: newQuestionsArray,
+      };
+      const response = await axios.put(
+        "http://localhost:8080/api/jobs/updateDetails/",
+        payload
+      );
+
+      const result = { ...dataFromApi, ...response.data };
+      setDataFromApi(result);
+      setNewQuestionsArray([]);
+      setNewQuestionInput("");
+    } else {
+      return;
+    }
   };
 
   return (
@@ -57,7 +97,7 @@ const SinglePositionView = () => {
           <div>
             <h3>
               You have invited {dataFromApi.invitations} candidates for this
-              positon
+              position
             </h3>
           </div>
 
@@ -75,16 +115,44 @@ const SinglePositionView = () => {
           <div>
             <h1>{dataFromApi.title}</h1>
           </div>
+
+          <form onSubmit={updateDetails}>
+            <input
+              onChange={(e) => {
+                setNewQuestionInput(e.target.value);
+              }}
+              placeholder="Add another question"
+              value={newQuestionInput}
+            ></input>
+            <button onClick={renderNewQuestionBeforeSubmit}>
+              Add Question
+            </button>
+            <input type="submit" value="Update Details"></input>
+          </form>
+          <button
+            onClick={() => {
+              window.location.reload();
+            }}
+          >
+            Discard changes
+          </button>
+
           {dataFromApi.questions.map((question) => (
             <div key={question.id}>
-              <div>{question.question}</div>
-              <button
-                onClick={() => {
-                  deleteQuestion(question.id);
-                }}
-              >
-                x
-              </button>
+              {question.id ? (
+                <div>
+                  <div>{question.question}</div>
+                  <button
+                    onClick={() => {
+                      deleteQuestion(question.id);
+                    }}
+                  >
+                    x
+                  </button>
+                </div>
+              ) : (
+                <div>{question.question}</div>
+              )}
             </div>
           ))}
         </div>

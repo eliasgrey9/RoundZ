@@ -123,20 +123,27 @@ router.delete("/deleteSingleQuestion/:id", async (req, res) => {
   res.send(true);
 });
 
-router.put("/addSingleQuestion", async (req, res, next) => {
-  const position = await Position.findByPk(req.body.positionId);
-
-  if (!position) {
-    return res.status(404).send({ error: "Position not found" });
-  }
-
-  await Question.create({
-    question: req.body.question,
-    positionId: req.body.positionId,
+router.put("/updateDetails/", async (req, res, next) => {
+  const position = await Position.findByPk(req.body.positionId, {
+    include: Question,
   });
 
+  await Promise.all(
+    req.body.questions.map((q) => {
+      Question.create({
+        question: q,
+        positionId: req.body.positionId,
+      });
+    })
+  );
+
   await position.save();
-  res.send(true);
+
+  const result = await Position.findByPk(req.body.positionId, {
+    include: Question,
+  });
+
+  res.send(result);
 });
 
 module.exports = router;
