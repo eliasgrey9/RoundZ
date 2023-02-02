@@ -116,34 +116,4 @@ router.get("/singlePosition/:id", async (req, res) => {
   }
 });
 
-router.delete("/deleteSingleQuestion/:id", async (req, res) => {
-  const result = await Question.findByPk(req.params.id);
-  await result.destroy();
-
-  res.send(true);
-});
-
-router.put("/updateDetails/", async (req, res, next) => {
-  const position = await Position.findByPk(req.body.positionId, {
-    include: Question,
-  });
-
-  await Promise.all(
-    req.body.questions.map((q) => {
-      Question.create({
-        question: q,
-        positionId: req.body.positionId,
-      });
-    })
-  );
-
-  await position.save();
-
-  const result = await Position.findByPk(req.body.positionId, {
-    include: Question,
-  });
-
-  res.send(result);
-});
-
 module.exports = router;
