@@ -120,6 +120,10 @@ router.get("/singlePosition/:id", async (req, res) => {
 router.post("/addInviteeToPosition/:id", async (req, res) => {
   const position = await Position.findByPk(req.params.id);
 
+  const invite = position.invitations;
+  position.invitations = invite + 1;
+  await position.save();
+
   if (!position) {
     return res.status(400).send({ error: "Position not found" });
   }
@@ -132,6 +136,14 @@ router.post("/addInviteeToPosition/:id", async (req, res) => {
   });
 
   res.send({ invitee: createInvitee, position });
+});
+
+router.get("/getPositionInvitations/:id", async (req, res) => {
+  const position = await Position.findByPk(req.params.id);
+
+  const invitations = position.invitations;
+
+  res.send({ invitations });
 });
 
 module.exports = router;

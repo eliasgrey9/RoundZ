@@ -4,8 +4,7 @@ import SignUp from "./Signup/SignUp";
 import SignIn from "./SignIn/SignIn";
 import DashboardHome from "./Dashboard/DashboardHome/DashboardHome";
 import SinglePositionView from "./Dashboard/SinglePositionView/SinglePositionView";
-import Test from "./Dashboard/SinglePositionView/EmailInviteForm";
-
+import InterviewPage from "./InterviewPage/InterviewPage";
 import { Routes, Route } from "react-router-dom";
 
 function Main() {
@@ -22,7 +21,7 @@ function Main() {
           element={<SinglePositionView />}
         ></Route>
 
-        <Route path="/testlink/" element={<Test />}></Route>
+        <Route path="/interview" element={<InterviewPage />}></Route>
       </Routes>
     </div>
   );

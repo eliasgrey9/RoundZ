@@ -18,10 +18,18 @@ const SinglePositionView = () => {
       setDataFromApi(response.data);
     };
     renderSinglePosition();
-  }, []);
+  }, [params.id]);
 
   const showInvitesBtn = () => {
     setShowInvites(true);
+  };
+
+  const updateInvitations = (response) => {
+    const updatedInvites = {
+      ...dataFromApi,
+      invitations: response.invitations,
+    };
+    setDataFromApi(updatedInvites);
   };
 
   return (
@@ -40,7 +48,10 @@ const SinglePositionView = () => {
             </h3>
           </div>
 
-          <EmailInviteForm position_id={params.id} />
+          <EmailInviteForm
+            position_id={params.id}
+            updateInvitations={updateInvitations}
+          />
         </>
       ) : null}
     </div>
