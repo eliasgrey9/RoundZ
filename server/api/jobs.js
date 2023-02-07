@@ -146,4 +146,12 @@ router.get("/getPositionInvitations/:id", async (req, res) => {
   res.send({ invitations });
 });
 
+router.get("/getAllQuestionsFromPosition/:id", async (req, res) => {
+  const position = await Position.findByPk(req.params.id, {
+    include: Question,
+  });
+
+  res.send(position);
+});
+
 module.exports = router;
