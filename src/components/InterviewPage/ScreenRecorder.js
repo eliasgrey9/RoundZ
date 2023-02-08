@@ -1,6 +1,8 @@
 import React, { useRef, useEffect } from "react";
 import { ReactMediaRecorder } from "react-media-recorder";
 
+
+
 const VideoPreview = ({ stream }) => {
   const videoRef = useRef(null);
 
@@ -15,7 +17,11 @@ const VideoPreview = ({ stream }) => {
   return <video ref={videoRef} width={650} height={650} autoPlay controls />;
 };
 
-const ScreenRecorder = () => {
+const ScreenRecorder = ({
+  nextQuestionBtn,
+  submitAnswerBtn,
+  allowNextQuestion,
+}) => {
   return (
     <>
       <ReactMediaRecorder
@@ -31,6 +37,11 @@ const ScreenRecorder = () => {
             <p>{status}</p>
             <button onClick={startRecording}>startRecording</button>
             <button onClick={stopRecording}>stopRecording</button>
+            {allowNextQuestion ? (
+              <button onClick={nextQuestionBtn}>Next Question</button>
+            ) : (
+              <button onClick={submitAnswerBtn}>Submit Answer</button>
+            )}
             {status === "recording" ? (
               <VideoPreview stream={previewStream} />
             ) : (
@@ -45,6 +56,7 @@ const ScreenRecorder = () => {
           </div>
         )}
       />
+      <div></div>
     </>
   );
 };
