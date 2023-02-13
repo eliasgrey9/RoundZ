@@ -33,18 +33,18 @@ const InterviewPage = () => {
     setAllowNextQuestion(true);
   };
 
-  console.log("allowNextQuestion", allowNextQuestion);
-  console.log("questions", questions);
+  //   console.log("allowNextQuestion", allowNextQuestion);
+  //   console.log("questions", questions);
 
   return (
     <div>
-      <h3>
+      <div>
         {questions.length ? (
           questions[0].question
         ) : (
-          <h3>That's all for now!</h3>
+          <div>That's all for now!</div>
         )}
-      </h3>
+      </div>
       <ScreenRecorder
         allowNextQuestion={allowNextQuestion}
         nextQuestionBtn={nextQuestionBtn}
