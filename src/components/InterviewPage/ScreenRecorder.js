@@ -58,7 +58,6 @@ const ScreenRecorder = ({
       },
     };
 
-
     await S3FileUpload.uploadFile(params, bucket).then((data) => {
       console.log("data", data);
     });
