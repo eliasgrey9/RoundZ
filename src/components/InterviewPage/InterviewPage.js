@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import "./interviewPage.css";
 import ScreenRecorder from "./ScreenRecorder";
+import ScreenRecorderTest from "./ScreenRecorderTest";
 
 const InterviewPage = () => {
   const location = useLocation();
@@ -45,11 +46,12 @@ const InterviewPage = () => {
           <div>That's all for now!</div>
         )}
       </div>
-      <ScreenRecorder
+      {/* <ScreenRecorder
         allowNextQuestion={allowNextQuestion}
         nextQuestionBtn={nextQuestionBtn}
         submitAnswerBtn={submitAnswerBtn}
-      />
+      /> */}
+      <ScreenRecorderTest />
     </div>
   );
 };
