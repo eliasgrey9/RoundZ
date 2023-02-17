@@ -6,7 +6,7 @@ const api = axios.create({
 });
 
 // original source: https://github.com/pilovm/multithreaded-uploader/blob/master/frontend/uploader.js
-export class Uploader {
+export class MediaChunksHandler {
   constructor(options) {
     // this must be bigger than or equal to 5MB,
     // otherwise AWS will respond with:

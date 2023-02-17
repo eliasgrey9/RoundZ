@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import "./interviewPage.css";
 import ScreenRecorder from "./ScreenRecorder";
-import ScreenRecorderTest from "./ScreenRecorderTest";
+import UploadMediaHandler from "./UploadMediaHandler";
 
 const InterviewPage = () => {
   const location = useLocation();
@@ -13,6 +13,7 @@ const InterviewPage = () => {
   const [positionData, setPositionData] = useState({});
   const [questions, setQuestions] = useState([]);
   const [allowNextQuestion, setAllowNextQuestion] = useState(false);
+  const [questionId, setQuestionId] = useState();
 
   useEffect(() => {
     const renderPositionData = async () => {
@@ -21,7 +22,9 @@ const InterviewPage = () => {
       );
       setPositionData(response.data);
       setQuestions(response.data.questions);
+      setQuestionId(response.data.questions[0].id);
     };
+
     renderPositionData();
   }, [positionId]);
 
@@ -34,9 +37,6 @@ const InterviewPage = () => {
     setAllowNextQuestion(true);
   };
 
-  //   console.log("allowNextQuestion", allowNextQuestion);
-  //   console.log("questions", questions);
-
   return (
     <div>
       <div>
@@ -46,12 +46,12 @@ const InterviewPage = () => {
           <div>That's all for now!</div>
         )}
       </div>
-      {/* <ScreenRecorder
+      <ScreenRecorder
         allowNextQuestion={allowNextQuestion}
         nextQuestionBtn={nextQuestionBtn}
         submitAnswerBtn={submitAnswerBtn}
-      /> */}
-      <ScreenRecorderTest />
+      />
+      <UploadMediaHandler questionId={questionId} inviteId={inviteId} />
     </div>
   );
 };

@@ -1,12 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import { ReactMediaRecorder } from "react-media-recorder";
-import S3FileUpload from "react-s3/lib/ReactS3";
-
-const S3_BUCKET = process.env.REACT_APP_S3_BUCKET;
-const REGION = process.env.REACT_APP_REGION;
-const ACCESS_KEY = process.env.REACT_APP_ACCESS_KEY;
-const SECRET_ACCESS_KEY = process.env.REACT_APP_SECRET_ACCESS_KEY;
-
+import ScreenRecorderTest from "./UploadMediaHandler";
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
 const VideoPreview = ({ stream }) => {
@@ -29,40 +23,14 @@ const ScreenRecorder = ({
   allowNextQuestion,
 }) => {
   const [isUploaded, setIsUploaded] = useState(false);
-
-  const bucket = {
-    bucketName: S3_BUCKET,
-    accessKeyId: ACCESS_KEY,
-    secretAccessKey: SECRET_ACCESS_KEY,
-    region: REGION,
-  };
-
+  const [file, setFile] = useState();
   const handleUpload = async (blob) => {
-    const extension = ".webm";
+    const response = await fetch(blob);
+    let myBlobData = await response.blob();
 
-    const file = new File([blob], "InterviewSubmission", {
-      type: "video/webm",
-      path: "videos",
-    });
-
-    await uploadFilesToS3(extension, "videos", file, "InterviewSubmission");
+    const myfile = new File([myBlobData], "webm");
+    setFile(myfile);
   };
-
-  const uploadFilesToS3 = async (extension, path, file, fileName) => {
-    const params = {
-      body: file,
-      type: "video/webm",
-      key: path + "/" + fileName + extension,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-      },
-    };
-
-    await S3FileUpload.uploadFile(params, bucket).then((data) => {
-      console.log("data", data);
-    });
-  };
-
   return (
     <>
       <ReactMediaRecorder
@@ -100,7 +68,8 @@ const ScreenRecorder = ({
           </div>
         )}
       />
-      <div></div>
+
+      {file ? <ScreenRecorderTest file={file} /> : null}
     </>
   );
 };
