@@ -53,7 +53,6 @@ export class MediaChunksHandler {
       });
 
       const AWSFileDataOutput = initializeReponse.data;
-
       this.fileId = AWSFileDataOutput.fileId;
       this.fileKey = AWSFileDataOutput.fileKey;
 

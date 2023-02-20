@@ -28,7 +28,6 @@ const ScreenRecorder = ({
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const inviteId = queryParams.get("inviteId");
-
   const [isUploaded, setIsUploaded] = useState(false);
   const [file, setFile] = useState();
   const [currentFileName, setCurrentFileName] = useState();
@@ -83,7 +82,7 @@ const ScreenRecorder = ({
         )}
       />
 
-      {file ? (
+      {fileName ? (
         <UploadMediaHandler file={file} fileName={currentFileName} />
       ) : null}
     </>

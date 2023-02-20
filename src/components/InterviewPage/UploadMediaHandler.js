@@ -1,8 +1,8 @@
 import { MediaChunksHandler } from "./MediaChunksHandler";
 import { useEffect, useState } from "react";
+
 export default function ScreenRecorderTest(props) {
   const { file, fileName } = props;
-
   const [uploader, setUploader] = useState(undefined);
 
   useEffect(() => {
