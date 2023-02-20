@@ -1,6 +1,8 @@
 import React, { useRef, useEffect, useState } from "react";
 import { ReactMediaRecorder } from "react-media-recorder";
-import ScreenRecorderTest from "./UploadMediaHandler";
+import UploadMediaHandler from "./UploadMediaHandler";
+import { useLocation } from "react-router-dom";
+
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
 const VideoPreview = ({ stream }) => {
@@ -21,9 +23,20 @@ const ScreenRecorder = ({
   nextQuestionBtn,
   submitAnswerBtn,
   allowNextQuestion,
+  fileName,
 }) => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const inviteId = queryParams.get("inviteId");
+
   const [isUploaded, setIsUploaded] = useState(false);
   const [file, setFile] = useState();
+  const [currentFileName, setCurrentFileName] = useState();
+
+  useEffect(() => {
+    setCurrentFileName(fileName);
+  }, [fileName]);
+
   const handleUpload = async (blob) => {
     const response = await fetch(blob);
     let myBlobData = await response.blob();
@@ -31,6 +44,7 @@ const ScreenRecorder = ({
     const myfile = new File([myBlobData], "webm");
     setFile(myfile);
   };
+
   return (
     <>
       <ReactMediaRecorder
@@ -69,7 +83,9 @@ const ScreenRecorder = ({
         )}
       />
 
-      {file ? <ScreenRecorderTest file={file} /> : null}
+      {file ? (
+        <UploadMediaHandler file={file} fileName={currentFileName} />
+      ) : null}
     </>
   );
 };

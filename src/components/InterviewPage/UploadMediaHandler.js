@@ -1,24 +1,17 @@
 import { MediaChunksHandler } from "./MediaChunksHandler";
 import { useEffect, useState } from "react";
 export default function ScreenRecorderTest(props) {
-  const { file, questionId, inviteId } = props;
+  const { file, fileName } = props;
 
-  const [currentFile, setCurrentFile] = useState(null);
   const [uploader, setUploader] = useState(undefined);
 
   useEffect(() => {
     if (file) {
-      setCurrentFile(file);
-    }
-  }, [file]);
-
-  useEffect(() => {
-    if (currentFile) {
       let percentage = undefined;
 
       const videoUploaderOptions = {
-        fileName: "fileNameGoesHere",
-        file: currentFile,
+        fileName: fileName,
+        file: file,
       };
 
       const uploader = new MediaChunksHandler(videoUploaderOptions);
@@ -38,9 +31,7 @@ export default function ScreenRecorderTest(props) {
 
       uploader.start();
     }
-  }, [currentFile]);
+  }, [file]);
 
-  console.log(inviteId);
-  console.log(questionId);
   return null;
 }

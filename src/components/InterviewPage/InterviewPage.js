@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import "./interviewPage.css";
 import ScreenRecorder from "./ScreenRecorder";
-import UploadMediaHandler from "./UploadMediaHandler";
 
 const InterviewPage = () => {
   const location = useLocation();
@@ -11,9 +10,9 @@ const InterviewPage = () => {
   const inviteId = queryParams.get("inviteId");
   const positionId = queryParams.get("positionId");
   const [positionData, setPositionData] = useState({});
-  const [questions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([{ test: "test" }]);
   const [allowNextQuestion, setAllowNextQuestion] = useState(false);
-  const [questionId, setQuestionId] = useState();
+  const [fileName, setFileName] = useState("");
 
   useEffect(() => {
     const renderPositionData = async () => {
@@ -22,15 +21,23 @@ const InterviewPage = () => {
       );
       setPositionData(response.data);
       setQuestions(response.data.questions);
-      setQuestionId(response.data.questions[0].id);
     };
 
     renderPositionData();
-  }, [positionId]);
+  }, [positionId, inviteId]);
+
+  useEffect(() => {
+    if (questions.length > 0) {
+      const stringAndConcatQuestionIdAndInviteId =
+        JSON.stringify(questions[0].id) + inviteId;
+
+      setFileName(stringAndConcatQuestionIdAndInviteId);
+    }
+  }, [questions]);
 
   const nextQuestionBtn = () => {
-    setAllowNextQuestion(false);
     setQuestions(questions.slice(1));
+    setAllowNextQuestion(false);
   };
 
   const submitAnswerBtn = () => {
@@ -50,8 +57,8 @@ const InterviewPage = () => {
         allowNextQuestion={allowNextQuestion}
         nextQuestionBtn={nextQuestionBtn}
         submitAnswerBtn={submitAnswerBtn}
+        fileName={fileName}
       />
-      <UploadMediaHandler questionId={questionId} inviteId={inviteId} />
     </div>
   );
 };
