@@ -24,6 +24,7 @@ const ScreenRecorder = ({
   submitAnswerBtn,
   allowNextQuestion,
   fileName,
+  questionId,
 }) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -82,8 +83,12 @@ const ScreenRecorder = ({
         )}
       />
 
-      {fileName ? (
-        <UploadMediaHandler file={file} fileName={currentFileName} />
+      {fileName && questionId ? (
+        <UploadMediaHandler
+          file={file}
+          fileName={currentFileName}
+          questionId={questionId}
+        />
       ) : null}
     </>
   );

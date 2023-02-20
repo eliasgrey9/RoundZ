@@ -98,11 +98,17 @@ router.post("/finalizeMultipartUpload", async function (req, res) {
       },
     };
 
-    await s3.completeMultipartUpload(multipartParams).promise();
+    const completeMultipartUploadOutput = await s3
+      .completeMultipartUpload(multipartParams)
+      .promise();
 
     // completeMultipartUploadOutput.Location represents the
     // URL to the resource just uploaded to the cloud storage
-    res.send();
+    console.log(
+      "completeMultipartUploadOutput.Location",
+      completeMultipartUploadOutput.Location
+    );
+    res.send({ url: completeMultipartUploadOutput.Location });
   } catch (err) {
     console.error(err);
     res.status(500).send({ error: "Failed to finalize multipart upload" });

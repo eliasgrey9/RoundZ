@@ -1,4 +1,6 @@
 import axios from "axios";
+import React from "react";
+import UploadMediaHandler from "./UploadMediaHandler";
 
 // initializing axios
 const api = axios.create({
@@ -7,7 +9,8 @@ const api = axios.create({
 
 // original source: https://github.com/pilovm/multithreaded-uploader/blob/master/frontend/uploader.js
 export class MediaChunksHandler {
-  constructor(options) {
+  constructor(options, myProps) {
+    this.props = myProps;
     // this must be bigger than or equal to 5MB,
     // otherwise AWS will respond with:
     // "Your proposed upload is smaller than the minimum allowed size"
@@ -147,11 +150,21 @@ export class MediaChunksHandler {
         parts: this.uploadedParts,
       };
 
-      await api.request({
+      const response = await api.request({
         url: "/api/uploads/finalizeMultipartUpload",
         method: "POST",
         data: videoFinalizationMultiPartInput,
       });
+
+      const answerData = {
+        answer: response.data.url,
+        inviteId: this.props.inviteId,
+        questionId: this.props.questionId,
+      };
+
+      
+
+      console.log("myobj", answerData);
     }
   }
 

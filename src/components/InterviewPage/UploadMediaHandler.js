@@ -1,8 +1,13 @@
 import { MediaChunksHandler } from "./MediaChunksHandler";
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 export default function ScreenRecorderTest(props) {
-  const { file, fileName } = props;
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const inviteId = queryParams.get("inviteId");
+
+  const { file, fileName, questionId } = props;
   const [uploader, setUploader] = useState(undefined);
 
   useEffect(() => {
@@ -14,7 +19,12 @@ export default function ScreenRecorderTest(props) {
         file: file,
       };
 
-      const uploader = new MediaChunksHandler(videoUploaderOptions);
+      const myProps = {
+        questionId: questionId,
+        inviteId: inviteId,
+      };
+
+      const uploader = new MediaChunksHandler(videoUploaderOptions, myProps);
       setUploader(uploader);
 
       uploader

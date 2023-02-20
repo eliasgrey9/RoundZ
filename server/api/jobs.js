@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Position, Question, db } = require("../db");
+const { Position, Question, db, Answer } = require("../db");
 const Invitee = require("../db/Invitee");
 
 router.post("/create", async function (req, res) {
@@ -152,6 +152,16 @@ router.get("/getAllQuestionsFromPosition/:id", async (req, res) => {
   });
 
   res.send(position);
+});
+
+router.post("/createAnswer", async (req, res) => {
+  const createAnswer = await Answer.create({
+    answer: req.body.answer,
+    questionId: req.body.questionId,
+    inviteId: req.body.inviteId,
+  });
+
+  res.send({ answer: createAnswer });
 });
 
 module.exports = router;

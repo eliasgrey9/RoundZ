@@ -10,8 +10,6 @@ const Answer = require("./Answer");
 // Question.belongsTo(Position);
 Position.hasMany(Question);
 Position.hasMany(Invitee);
-Invitee.hasMany(Answer);
-Question.hasMany(Answer);
 
 module.exports = {
   db,
