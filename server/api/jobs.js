@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { Position, Question, db, Answer } = require("../db");
-const Invitee = require("../db/Invitee");
+const Candidate = require("../db/Candidate");
 
 router.post("/create", async function (req, res) {
   const payload = req.body;
@@ -104,7 +104,7 @@ router.put("/changeJobStatusToOpen/:id", async (req, res, next) => {
   await position.save();
 });
 
-router.get("/singlePosition/:id", async (req, res) => {
+router.get("/singlePosition/:id", async (req, res, next) => {
   try {
     const result = await Position.findByPk(req.params.id, {
       where: { status: true },
@@ -117,7 +117,7 @@ router.get("/singlePosition/:id", async (req, res) => {
   }
 });
 
-router.post("/addInviteeToPosition/:id", async (req, res) => {
+router.post("/addCandidateToPosition/:id", async (req, res) => {
   const position = await Position.findByPk(req.params.id);
 
   const invite = position.invitations;
@@ -128,14 +128,14 @@ router.post("/addInviteeToPosition/:id", async (req, res) => {
     return res.status(400).send({ error: "Position not found" });
   }
 
-  const createInvitee = await Invitee.create({
+  const createCandidate = await Candidate.create({
     name: req.body.name,
     email: req.body.email,
     code: req.body.code,
     positionId: position.id,
   });
 
-  res.send({ invitee: createInvitee, position });
+  res.send({ candidate: createCandidate, position });
 });
 
 router.get("/getPositionInvitations/:id", async (req, res) => {
@@ -158,10 +158,33 @@ router.post("/createAnswer", async (req, res) => {
   const createAnswer = await Answer.create({
     answer: req.body.answer,
     questionId: req.body.questionId,
-    inviteId: req.body.inviteId,
+    candidateId: req.body.candidateId,
   });
 
   res.send({ answer: createAnswer });
+});
+
+router.get("/renderCandidates/:id", async (req, res) => {
+  const candidates = await Position.findByPk(req.params.id, {
+    include: Candidate,
+  });
+
+  res.send(candidates);
+});
+
+router.get("/getCandidateId/:id", async (req, res) => {
+  try {
+    const candidateId = await Candidate.findAll({
+      where: {
+        code: req.params.id,
+      },
+    });
+
+    res.send(candidateId);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 module.exports = router;

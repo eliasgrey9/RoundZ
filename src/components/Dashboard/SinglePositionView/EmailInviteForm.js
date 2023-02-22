@@ -34,7 +34,7 @@ const EmailInviteForm = (props) => {
 
   //**SUBMISSION TO INVITE RECIPIENT */
   //Submits email
-  //If email is successful creates invitee record
+  //If email is successful creates candidate record
   //Then updates invitations, generates a new string, and Clears formData
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -54,7 +54,7 @@ const EmailInviteForm = (props) => {
         .then(function (response) {
           if (response) {
             axios.post(
-              `http://localhost:8080/api/jobs/addInviteeToPosition/${position_id}`,
+              `http://localhost:8080/api/jobs/addCandidateToPosition/${position_id}`,
               {
                 name: formData.name,
                 email: formData.email,

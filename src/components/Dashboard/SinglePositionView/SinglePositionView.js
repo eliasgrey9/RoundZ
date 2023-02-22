@@ -3,10 +3,12 @@ import React, { useEffect, useState } from "react";
 import "./singlePositionView.css";
 import { useParams } from "react-router-dom";
 import EmailInviteForm from "./EmailInviteForm";
+import Candidates from "./Candidates";
 
 const SinglePositionView = () => {
   const [dataFromApi, setDataFromApi] = useState({});
   const [showInvites, setShowInvites] = useState(true);
+  const [showToEvaluate, setShowToEvaluate] = useState(false);
 
   const params = useParams();
 
@@ -22,6 +24,12 @@ const SinglePositionView = () => {
 
   const showInvitesBtn = () => {
     setShowInvites(true);
+    setShowToEvaluate(false);
+  };
+
+  const showToEvaluateBtn = () => {
+    setShowToEvaluate(true);
+    setShowInvites(false);
   };
 
   const updateInvitations = (response) => {
@@ -36,7 +44,7 @@ const SinglePositionView = () => {
     <div className="singlePositionBody">
       <div>
         <button onClick={showInvitesBtn}>Invites</button>
-        <button>To Evalute</button>
+        <button onClick={showToEvaluateBtn}>To Evalute</button>
       </div>
 
       {showInvites ? (
@@ -51,6 +59,16 @@ const SinglePositionView = () => {
           <EmailInviteForm
             position_id={params.id}
             updateInvitations={updateInvitations}
+          />
+        </>
+      ) : null}
+
+      {showToEvaluate ? (
+        <>
+          <Candidates
+            positionId={params.id}
+            showToEvaluate={showToEvaluate}
+            setShowToEvaluate={setShowToEvaluate}
           />
         </>
       ) : null}

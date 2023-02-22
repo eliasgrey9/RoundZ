@@ -1,7 +1,7 @@
 const Sequelize = require("sequelize");
 const db = require("./database");
 
-module.exports = db.define("invitee", {
+module.exports = db.define("candidate", {
   name: {
     type: Sequelize.STRING,
   },

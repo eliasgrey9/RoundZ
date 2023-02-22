@@ -4,18 +4,23 @@ const db = require("./database");
 const User = require("./User");
 const Position = require("./Position");
 const Question = require("./Question");
-const Invitee = require("./Invitee");
+const Candidate = require("./Candidate");
 const Answer = require("./Answer");
 
-// Question.belongsTo(Position);
 Position.hasMany(Question);
-Position.hasMany(Invitee);
+Question.belongsTo(Position);
+Question.hasMany(Answer);
+Answer.belongsTo(Question);
+Candidate.hasMany(Answer);
+Candidate.belongsTo(Position);
+Position.hasMany(Candidate);
+// Candidate.hasMany(Position);
 
 module.exports = {
   db,
   User,
   Position,
   Question,
-  Invitee,
+  Candidate,
   Answer,
 };

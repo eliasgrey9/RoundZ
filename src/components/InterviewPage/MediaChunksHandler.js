@@ -10,6 +10,7 @@ const api = axios.create({
 // original source: https://github.com/pilovm/multithreaded-uploader/blob/master/frontend/uploader.js
 export class MediaChunksHandler {
   constructor(options, myProps) {
+    const { candidateId, questionId } = myProps;
     this.props = myProps;
     // this must be bigger than or equal to 5MB,
     // otherwise AWS will respond with:
@@ -34,6 +35,7 @@ export class MediaChunksHandler {
   // starting the multipart upload request
   start() {
     this.initialize();
+    console.log("This.props", this.props);
   }
 
   async initialize() {
@@ -158,13 +160,15 @@ export class MediaChunksHandler {
 
       const answerData = {
         answer: response.data.url,
-        inviteId: this.props.inviteId,
+        candidateId: this.props.candidateId,
         questionId: this.props.questionId,
       };
 
-      
-
-      console.log("myobj", answerData);
+      const addAnswerToDb = await api.request({
+        url: "/api/jobs/createAnswer",
+        method: "POST",
+        data: answerData,
+      });
     }
   }
 

@@ -15,6 +15,9 @@ const InterviewPage = () => {
   const [allowNextQuestion, setAllowNextQuestion] = useState(false);
   const [fileName, setFileName] = useState("");
   const [questionId, setQuestionId] = useState(0);
+  const [candidate, setCandidate] = useState([]);
+
+
 
   useEffect(() => {
     const renderPositionData = async () => {
@@ -47,7 +50,6 @@ const InterviewPage = () => {
   const submitAnswerBtn = () => {
     setAllowNextQuestion(true);
   };
-
   return (
     <div>
       <div>
@@ -66,7 +68,7 @@ const InterviewPage = () => {
         questionId={questionId}
       />
 
-      <UploadMediaHandler questionId={questionId} />
+      <UploadMediaHandler questionId={questionId} candidateId={candidate} />
     </div>
   );
 };

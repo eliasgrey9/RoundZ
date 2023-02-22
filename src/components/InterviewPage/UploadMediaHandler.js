@@ -1,6 +1,7 @@
 import { MediaChunksHandler } from "./MediaChunksHandler";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import axios from "axios";
 
 export default function ScreenRecorderTest(props) {
   const location = useLocation();
@@ -9,6 +10,19 @@ export default function ScreenRecorderTest(props) {
 
   const { file, fileName, questionId } = props;
   const [uploader, setUploader] = useState(undefined);
+  const [candidateId, setCandidateId] = useState(0);
+
+  useEffect(() => {
+    const renderCandidate = async () => {
+      const response = await axios.get(
+        `http://localhost:8080/api/jobs/getCandidateId/${inviteId}`
+      );
+      response.data.map((c) => {
+        setCandidateId(c.id);
+      });
+    };
+    renderCandidate();
+  }, [inviteId]);
 
   useEffect(() => {
     if (file) {
@@ -22,6 +36,7 @@ export default function ScreenRecorderTest(props) {
       const myProps = {
         questionId: questionId,
         inviteId: inviteId,
+        candidateId: candidateId,
       };
 
       const uploader = new MediaChunksHandler(videoUploaderOptions, myProps);
