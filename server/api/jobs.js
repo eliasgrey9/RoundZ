@@ -187,4 +187,17 @@ router.get("/getCandidateId/:id", async (req, res) => {
   }
 });
 
+router.get("/getCandidate/:id", async (req, res) => {
+  try {
+    const candidateId = await Candidate.findByPk(req.params.id, {
+      include: Answer,
+    });
+
+    res.send(candidateId);
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 module.exports = router;

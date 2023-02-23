@@ -6,9 +6,21 @@ import EmailInviteForm from "./EmailInviteForm";
 import Candidates from "./Candidates";
 
 const SinglePositionView = () => {
+  const SHOW_TO_EVALUATE_TAB = "SHOW_TO_EVALUATE_TAB";
+  const SHOW_INVITES_TAB = "SHOW_INVITES_TAB";
+
   const [dataFromApi, setDataFromApi] = useState({});
-  const [showInvites, setShowInvites] = useState(true);
-  const [showToEvaluate, setShowToEvaluate] = useState(false);
+  const [activeTab, setActiveTab] = useState(SHOW_INVITES_TAB);
+  const [boolClicker, setBoolClicker] = useState(false);
+
+  const displayShowToEvaluateTab = () => {
+    setActiveTab(SHOW_TO_EVALUATE_TAB);
+    setBoolClicker(!boolClicker);
+  };
+  const displayInvitesTab = () => setActiveTab(SHOW_INVITES_TAB);
+
+  const isShowToEvaluateTabActive = activeTab === SHOW_TO_EVALUATE_TAB;
+  const isInvitesTabActive = activeTab === SHOW_INVITES_TAB;
 
   const params = useParams();
 
@@ -22,16 +34,6 @@ const SinglePositionView = () => {
     renderSinglePosition();
   }, [params.id]);
 
-  const showInvitesBtn = () => {
-    setShowInvites(true);
-    setShowToEvaluate(false);
-  };
-
-  const showToEvaluateBtn = () => {
-    setShowToEvaluate(true);
-    setShowInvites(false);
-  };
-
   const updateInvitations = (response) => {
     const updatedInvites = {
       ...dataFromApi,
@@ -43,11 +45,11 @@ const SinglePositionView = () => {
   return (
     <div className="singlePositionBody">
       <div>
-        <button onClick={showInvitesBtn}>Invites</button>
-        <button onClick={showToEvaluateBtn}>To Evalute</button>
+        <button onClick={displayInvitesTab}>Invites</button>
+        <button onClick={displayShowToEvaluateTab}>To Evalute</button>
       </div>
 
-      {showInvites ? (
+      {isInvitesTabActive ? (
         <>
           <div>
             <h3>
@@ -63,13 +65,9 @@ const SinglePositionView = () => {
         </>
       ) : null}
 
-      {showToEvaluate ? (
+      {isShowToEvaluateTabActive ? (
         <>
-          <Candidates
-            positionId={params.id}
-            showToEvaluate={showToEvaluate}
-            setShowToEvaluate={setShowToEvaluate}
-          />
+          <Candidates positionId={params.id} boolClicker={boolClicker} />
         </>
       ) : null}
     </div>

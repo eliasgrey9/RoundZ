@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import MediaPlayer from "./MediaPlayer";
 
-const Candidates = ({ positionId, showToEvaluate, setShowToEvaluate }) => {
+const Candidates = ({ positionId, boolClicker }) => {
+  const SHOW_All_CANDIDATES = "SHOW_All_CANDIDATES";
+  const SHOW_SINGLE_CANDIDATE = "SHOW_SINGLE_CANDIDATE";
+
   const [candidates, setCandidates] = useState([]);
-  const [showSingleCandidate, seShowSingleCandidate] = useState(false);
-  const [showAllCandidates, setShowAllCandidates] = useState(true);
-  const [currentCandidateId, setCurrentCandidateId] = useState(0);
+  const [selectedCandidate, setSelectedCandidate] = useState({});
+  const [activeTab, setActiveTab] = useState(SHOW_All_CANDIDATES);
+
+  const displayAllCandidates = () => setActiveTab(SHOW_All_CANDIDATES);
+  const displaySingleCandidate = () => setActiveTab(SHOW_SINGLE_CANDIDATE);
+
+  const isAllCandidatesActive = activeTab === SHOW_All_CANDIDATES;
+  const isSinlgeCandidateActive = activeTab === SHOW_SINGLE_CANDIDATE;
 
   useEffect(() => {
-    setShowAllCandidates(true);
-  }, []);
+    displayAllCandidates();
+  }, [boolClicker]);
 
   useEffect(() => {
     const renderCandidates = async () => {
@@ -21,14 +30,17 @@ const Candidates = ({ positionId, showToEvaluate, setShowToEvaluate }) => {
     renderCandidates();
   }, [positionId]);
 
-  const renderCandidate = (id) => {
-    setShowToEvaluate(false);
-    console.log("This is the candidate ID we will use to grab their info", id);
+  const renderCandidate = async (id) => {
+    displaySingleCandidate();
+    const response = await axios.get(
+      `http://localhost:8080/api/jobs/getCandidate/${id}`
+    );
+    setSelectedCandidate(response.data);
   };
 
   return (
     <>
-      {showToEvaluate ? (
+      {isAllCandidatesActive ? (
         <>
           <h2>All Candidates</h2>
           <div>
@@ -47,9 +59,10 @@ const Candidates = ({ positionId, showToEvaluate, setShowToEvaluate }) => {
         </>
       ) : null}
 
-      {showSingleCandidate ? (
+      {isSinlgeCandidateActive ? (
         <>
-          <h2>Single Candidates</h2>
+          <h2>{selectedCandidate.name}</h2>
+          <MediaPlayer />
         </>
       ) : null}
     </>
