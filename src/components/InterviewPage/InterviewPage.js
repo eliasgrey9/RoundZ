@@ -17,8 +17,6 @@ const InterviewPage = () => {
   const [questionId, setQuestionId] = useState(0);
   const [candidate, setCandidate] = useState([]);
 
-
-
   useEffect(() => {
     const renderPositionData = async () => {
       const response = await axios.get(
@@ -50,6 +48,9 @@ const InterviewPage = () => {
   const submitAnswerBtn = () => {
     setAllowNextQuestion(true);
   };
+
+  console.log("questions", questions);
+
   return (
     <div>
       <div>
