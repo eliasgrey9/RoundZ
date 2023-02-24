@@ -155,13 +155,29 @@ router.get("/getAllQuestionsFromPosition/:id", async (req, res) => {
 });
 
 router.post("/createAnswer", async (req, res) => {
-  const createAnswer = await Answer.create({
-    answer: req.body.answer,
-    questionId: req.body.questionId,
-    candidateId: req.body.candidateId,
-  });
+  try {
+    const existingAnswer = await Answer.findOne({
+      where: {
+        questionId: req.body.questionId,
+        candidateId: req.body.candidateId,
+      },
+    });
 
-  res.send({ answer: createAnswer });
+    if (existingAnswer) {
+      await existingAnswer.destroy();
+    }
+
+    const createdAnswer = await Answer.create({
+      answer: req.body.answer,
+      questionId: req.body.questionId,
+      candidateId: req.body.candidateId,
+    });
+
+    res.send({ answer: createdAnswer });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Internal Server Error");
+  }
 });
 
 router.get("/renderCandidates/:id", async (req, res) => {

@@ -14,7 +14,7 @@ const Candidates = ({ positionId, boolClicker }) => {
   const displaySingleCandidate = () => setActiveTab(SHOW_SINGLE_CANDIDATE);
 
   const isAllCandidatesActive = activeTab === SHOW_All_CANDIDATES;
-  const isSinlgeCandidateActive = activeTab === SHOW_SINGLE_CANDIDATE;
+  const isSingleCandidateActive = activeTab === SHOW_SINGLE_CANDIDATE;
 
   useEffect(() => {
     displayAllCandidates();
@@ -59,7 +59,7 @@ const Candidates = ({ positionId, boolClicker }) => {
         </>
       ) : null}
 
-      {isSinlgeCandidateActive ? (
+      {isSingleCandidateActive ? (
         <>
           <h2>{selectedCandidate.name}</h2>
           <MediaPlayer />
