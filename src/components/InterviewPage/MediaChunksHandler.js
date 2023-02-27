@@ -10,7 +10,6 @@ const api = axios.create({
 // original source: https://github.com/pilovm/multithreaded-uploader/blob/master/frontend/uploader.js
 export class MediaChunksHandler {
   constructor(options, myProps) {
-    const { candidateId, questionId } = myProps;
     this.props = myProps;
     // this must be bigger than or equal to 5MB,
     // otherwise AWS will respond with:
@@ -162,6 +161,7 @@ export class MediaChunksHandler {
         answer: response.data.url,
         candidateId: this.props.candidateId,
         questionId: this.props.questionId,
+        positionId: this.props.positionId,
       };
 
       const addAnswerToDb = await api.request({

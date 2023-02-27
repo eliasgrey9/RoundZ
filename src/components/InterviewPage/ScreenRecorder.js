@@ -25,6 +25,7 @@ const ScreenRecorder = ({
   allowNextQuestion,
   fileName,
   questionId,
+  positionId = { positionId },
 }) => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -88,6 +89,7 @@ const ScreenRecorder = ({
           file={file}
           fileName={currentFileName}
           questionId={questionId}
+          positionId={positionId}
         />
       ) : null}
     </>

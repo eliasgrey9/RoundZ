@@ -11,6 +11,7 @@ Position.hasMany(Question);
 Question.belongsTo(Position);
 Question.hasMany(Answer);
 Answer.belongsTo(Question);
+Position.hasMany(Answer);
 Candidate.hasMany(Answer);
 Candidate.belongsTo(Position);
 Position.hasMany(Candidate);

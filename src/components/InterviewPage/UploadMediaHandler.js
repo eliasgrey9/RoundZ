@@ -8,7 +8,7 @@ export default function ScreenRecorderTest(props) {
   const queryParams = new URLSearchParams(location.search);
   const inviteId = queryParams.get("inviteId");
 
-  const { file, fileName, questionId } = props;
+  const { file, fileName, questionId, positionId } = props;
   const [uploader, setUploader] = useState(undefined);
   const [candidateId, setCandidateId] = useState(0);
 
@@ -37,6 +37,7 @@ export default function ScreenRecorderTest(props) {
         questionId: questionId,
         inviteId: inviteId,
         candidateId: candidateId,
+        positionId: positionId,
       };
 
       const uploader = new MediaChunksHandler(videoUploaderOptions, myProps);

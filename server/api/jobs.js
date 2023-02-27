@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Position, Question, db, Answer } = require("../db");
-const Candidate = require("../db/Candidate");
+const { Position, Question, db, Answer, Candidate } = require("../db");
 
 router.post("/create", async function (req, res) {
   const payload = req.body;
@@ -44,18 +43,28 @@ router.post("/create", async function (req, res) {
   }
 });
 
-router.delete("/delete/:id", async function (req, res, next) {
+router.delete("/delete/:id", async (req, res, next) => {
   try {
     const position = await Position.findByPk(req.params.id, {
-      include: Question,
+      include: [Question, Candidate, Answer],
     });
 
-    await Promise.all(position.questions.map((q) => q.destroy()));
-    await position.destroy();
+    if (!position) {
+      return res.status(404).json({ error: "Position not found" });
+    }
 
-    res.send(true);
+    const promises = [
+      ...position.questions.map((question) => question.destroy()),
+      ...position.candidates.map((candidate) => candidate.destroy()),
+      ...position.answers.map((answer) => answer.destroy()),
+      position.destroy(),
+    ];
+
+    await Promise.all(promises);
+
+    res.status(204).send();
   } catch (error) {
-    console.log("delete REQ ERROR", error);
+    console.error("Failed to delete position", error);
     next(error);
   }
 });
@@ -171,6 +180,7 @@ router.post("/createAnswer", async (req, res) => {
       answer: req.body.answer,
       questionId: req.body.questionId,
       candidateId: req.body.candidateId,
+      positionId: req.body.positionId,
     });
 
     res.send({ answer: createdAnswer });

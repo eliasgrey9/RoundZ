@@ -67,9 +67,14 @@ const InterviewPage = () => {
         fileName={fileName}
         inviteId={inviteId}
         questionId={questionId}
+        positionId={positionId}
       />
 
-      <UploadMediaHandler questionId={questionId} candidateId={candidate} />
+      <UploadMediaHandler
+        questionId={questionId}
+        candidateId={candidate}
+        positionId={positionId}
+      />
     </div>
   );
 };
