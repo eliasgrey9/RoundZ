@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+
+* {
+  margin: 0;
+}
+
+.body {
+  width: 100vw;
+  height: 3000px;
+  background: linear-gradient(
+    180deg,
+    #010b15 17.71%,
+    #115261 47.92%,
+    rgba(0, 0, 0, 0.9) 92.38%
+  );
+  margin: 0;
+}
+
+.interviewsMadeEasy {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 91px;
+  line-height: 109px;
+}
+
+/*Moves "Interviews" to the right*/
+.interviews {
+  margin-right: 425px;
+  background: linear-gradient(
+    270deg,
+    #fefefe -15.5%,
+    rgba(254, 254, 254, 0.54) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.madeEasy {
+  background: linear-gradient(
+    90deg,
+    #fefefe -5.56%,
+    rgba(254, 254, 254, 0.4) 93.31%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/*subheading to "Interviews Made Easy"*/
+.mainSubheading {
+  display: flex;
+  align-items: center;
+}
+
+.onePlatformOneFocus {
+  display: flex;
+  justify-content: space-between;
+  margin: 50px 380px 0px 0px;
+  width: 327px;
+  height: 32px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 28px;
+  line-height: 32px;
+  color: #fefefe;
+}
+
+.getStartedBtn {
+  background: #f5f5f5;
+  box-shadow: -4px 4px 0px #035f7c;
+  border-radius: 4px;
+  padding: 10px 18px;
+}
+
+.getStartedBtn:hover {
+  cursor: pointer;
+  box-shadow: -4px 4px 0px #036887;
+  background-color: white;
+}
+
+/*Start of No more scheduling, More Candidates, Share recorded interviews, Great candidate experience...*/
+
+.theFourSquares {
+  margin-top: 120px;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 40px;
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 230px;
+  height: 230px;
+  background: radial-gradient(circle, #105652, #09e3d6fa, #fefefefa);
+  z-index: 1;
+  border-radius: 30px;
+}
+
+.squareContent {
+  display: flex;
+  color: white;
+  border-radius: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  width: 223px;
+  height: 223px;
+  background-color: #0c3d48;
+  z-index: 2;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 38px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #fefefe;
+}
+
+/*"One way video software"*/
+
+.oneWayVideoSoftware {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 200px;
+  width: 760px;
+  height: 77px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 64px;
+  line-height: 77px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+}
+.softwareColor {
+  color: #00a99f;
+}
+
+/*Visual section is a row containing the paragraph and an image best describing the description*/
+
+.visualSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 400px;
+  color: white;
+}
+/*vs is short for visual section*/
+.vsParagraph {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 25%;
+  height: 300px;
+  font-size: 2.5vmin;
+  line-height: normal;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 300;
+  text-align: left;
+}
+
+.vsImage {
+  background-color: #010b15;
+  width: 25%;
+  height: 300px;
+}

@@ -1,34 +1,19 @@
 import React from "react";
-import "./footer.css";
-import { FaFacebookF } from "react-icons/fa";
-import { AiOutlineLinkedin, AiOutlineCopyright } from "react-icons/ai";
-import { CgMail } from "react-icons/cg";
+import style from "../Footer/footer.module.css";
 
 const Footer = () => {
   return (
-    <footer>
-      <div className="permalinks">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </div>
+    <div className={style.body}>
+      <div className={style.logo}>RoundZ</div>
 
-      <div className="footer_socials">
-        <a href="https://www.linkedin.com/in/elias-grey" target="_blank">
-          <AiOutlineLinkedin />
-        </a>
-        <a href="#contact">
-          <CgMail />
-        </a>
+      <div className={style.navLinks}>
+        <div className={style.navLink}>
+          <a>Demo</a>
+        </div>
+        <div className={style.navLink}>About</div>
+        <div className={style.navLink}>Contact</div>
       </div>
-
-      <div className="footer_copyright">
-        <small>
-          &copy; copyright
-          <AiOutlineCopyright /> RoundZ 2023. All rights reserved
-        </small>
-      </div>
-    </footer>
+    </div>
   );
 };
 

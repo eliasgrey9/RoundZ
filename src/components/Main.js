@@ -11,7 +11,7 @@ function Main() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/home" element={<Homepage />}></Route>
+        <Route path="/" element={<Homepage />}></Route>
         <Route path="/signUp" element={<SignUp />}></Route>
         <Route path="/signIn" element={<SignIn />}></Route>
         <Route path="/dashboard" element={<DashboardHome />}></Route>
@@ -30,5 +30,4 @@ function Main() {
 export default Main;
 
 //How to pass headers to an api request
-
 //axios.METHOD(ROUTE_URL, { headers: { Authorization: 'Bearer myVeryLongJWT' } })

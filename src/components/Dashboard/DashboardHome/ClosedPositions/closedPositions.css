@@ -1,5 +1,4 @@
 .closedPositionsBody {
-  margin-top: 4vmin;
   height: auto;
   width: 100vw;
   display: flex;
@@ -11,7 +10,5 @@
   display: flex;
   justify-content: space-between;
   width: 30vmin;
-  padding: 2vmin;
-  margin: 1vmin;
   border: solid black 1px;
 }
