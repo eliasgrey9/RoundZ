@@ -6,11 +6,11 @@
 
 .body {
   width: 100vw;
-  height: 3000px;
+  height: 3110px;
   background: linear-gradient(
     180deg,
-    #010b15 17.71%,
-    #115261 47.92%,
+    #010b15 7%,
+    #115261 30.92%,
     rgba(0, 0, 0, 0.9) 92.38%
   );
   margin: 0;
@@ -73,15 +73,19 @@
 }
 
 .getStartedBtn {
-  background: #f5f5f5;
-  box-shadow: -4px 4px 0px #035f7c;
+  font-family:'Lato';
+  font-style:normal;
+  font-weight:700;
+  background: #F5F5F5;
+  box-shadow: -4px 4px 0px  #09E3D6;;
   border-radius: 4px;
   padding: 10px 18px;
+  border:none;
 }
 
 .getStartedBtn:hover {
   cursor: pointer;
-  box-shadow: -4px 4px 0px #036887;
+  box-shadow: -4px 4px 0px #00A99F;
   background-color: white;
 }
 

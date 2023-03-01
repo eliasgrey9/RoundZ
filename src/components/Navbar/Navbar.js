@@ -8,15 +8,15 @@ const Navbar = () => {
 
       <div className={style.navLinks}>
         <div className={style.navLink}>
-          <a>Demo</a>
+          <a>Home</a>
         </div>
-        <div className={style.navLink}>Contact</div>
-        <div className={style.navLink}>About</div>
+        <div className={style.navLink}><a>Contact</a></div>
+        <div className={style.navLink}><a>About</a></div>
       </div>
 
       <div className={style.signUpIn}>
-        <div className={style.signUpLink}>Sign up</div>
-        <div className={style.signInBtn}>Sign in</div>
+        <div className={style.signUpLink}><a>Sign up</a></div>
+        <div className={style.signInBtn}><a>Sign in</a></div>
       </div>
     </div>
   );
