@@ -51,8 +51,10 @@
   font-size: 15px;
 }
 
-/* .signUpLink {
-} */
+.signUpLink {
+  text-decoration:none;
+  color:white;
+}
 
 .signUpLink:hover {
   font-family: "Lato";

@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./Homepage.module.css";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "./Navbar/Navbar";
 import schedulingIcon from "../../assets/schedulingIcon.svg";
 import peopleIcon from "../../assets/people.svg";
 import thumbsUpIcon from "../../assets/thumbsUp.svg";
@@ -70,7 +70,7 @@ const Homepage = () => {
             </div>
           </div>
           <div className={style.oneWayVideoSoftware}>
-            One way video <div className={style.softwareColor}> software</div>
+            Easy interview <div className={style.softwareColor}> software</div>
           </div>
           <div className={style.visualSection}>
             <div className={style.vsParagraph}>
