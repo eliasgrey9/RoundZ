@@ -8,19 +8,14 @@ const Navbar = () => {
       <div className={style.logo}>RoundZ</div>
 
       <div className={style.navLinks}>
-        <div className={style.navLink}>
-          <a>Home</a>
+        <div>
+          <Link className={style.navLink} to={'/'}>Home</Link>
         </div>
         <div className={style.navLink}><a>Contact</a></div>
         <div className={style.navLink}><a>About</a></div>
       </div>
 
-      <div className={style.signUpIn}>
-        <div>
-        <Link className={style.signUpLink} to={'/signUp'}>
-          Sign up</Link></div>
-        <div><Link className={style.signInBtn} to={'/signIn'}>Sign in</Link></div>
-      </div>
+    
     </div>
   );
 };
