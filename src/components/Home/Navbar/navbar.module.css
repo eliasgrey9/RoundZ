@@ -87,7 +87,7 @@
   cursor: pointer;
 }
 
-.smScreen {
+.hamburgerScreen {
   display: flex;
   justify-content: flex-end;
   height: auto;
@@ -100,27 +100,23 @@
   display: none;
   font-size: 30px;
 }
-
-.mdScreen {
-  display: flex;
-  justify-content: flex-end;
-  height: auto;
-  color: white;
-  display: none;
+.hamburgerMenu:hover {
+  cursor: pointer;
 }
 
 /* responsive, form small screens, use 13px font size */
-@media (max-width: 768px) {
+@media (max-width: 1430px) {
+  .body {
+    display: flex;
+    justify-content: space-around;
+  }
   .logo {
-    font-size: 20px;
+    font-size: 22px;
   }
   .lgScreen {
     display: none;
   }
-  .mdScreen {
-    display: none;
-  }
-  .smScreen {
+  .hamburgerScreen {
     display: block;
   }
   .hamburgerMenu {

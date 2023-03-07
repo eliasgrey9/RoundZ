@@ -176,7 +176,7 @@
   align-items: center;
   width: 25%;
   height: 300px;
-  font-size: 2.5vmin;
+  font-size: 18px;
   line-height: normal;
   font-family: "Lato";
   font-style: normal;
@@ -192,9 +192,6 @@
 
 /* responsive, form small screens, use 13px font size */
 @media (max-width: 390px) {
-  .body {
-    height: max-content;
-  }
   .interviewsMadeEasy {
     font-size: 50px;
     line-height: 70px;
@@ -208,39 +205,13 @@
     margin-left: 90px;
   }
   /*subheading to "Interviews Made Easy"*/
-  .mainSubheading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-  }
-  .onePlatformOneFocus {
-    width: 50vw;
-    margin: 0;
-    font-size: small;
-    justify-content: space-evenly;
-  }
-  .theFourSquares {
-    flex-direction: column;
-  }
-  .oneWayVideoSoftware {
-    justify-content: center;
-    max-width: 390px;
-  }
-  .visualSection {
-    height: 250px;
-  }
 
   .vsParagraph {
-    height: 150px;
-  }
-  .vsImage {
-    height: 150px;
-    width: 150px;
+    font-size: 13px;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .body {
     height: max-content;
   }
@@ -260,32 +231,39 @@
   .mainSubheading {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
+    margin: 0;
   }
   .onePlatformOneFocus {
-    width: 50vw;
+    width: 40vw;
     margin: 0;
     font-size: small;
     justify-content: space-evenly;
   }
   .theFourSquares {
+    max-width: 500px;
     flex-wrap: wrap;
-    justify-content: space-evenly;
   }
   .oneWayVideoSoftware {
     justify-content: center;
     max-width: 390px;
   }
   .visualSection {
-    height: 450px;
+    height: 350px;
   }
 
   .vsParagraph {
-    height: 50px;
+    height: 40%;
+    width: 40%;
   }
   .vsImage {
-    height: 150px;
-    width: 150px;
+    height: 240px;
+    width: 40%;
+  }
+
+  .squareContent {
+  }
+  .square {
   }
 }

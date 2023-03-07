@@ -35,13 +35,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className={style.mdScreen}>
-        <i className={style.hamburgerMenu}>
-          <GiHamburgerMenu />
-        </i>
-      </div>
-
-      <div className={style.smScreen}>
+      <div className={style.hamburgerScreen}>
         <i className={style.hamburgerMenu}>
           <GiHamburgerMenu />
         </i>
