@@ -9,7 +9,7 @@ import Footer from "../Footer/Footer";
 
 const Homepage = () => {
   return (
-    <div className={style.body}>
+    <div className={`${style.body}`}>
       <Navbar />
       <div>
         <div className={style.interviewsMadeEasy}>

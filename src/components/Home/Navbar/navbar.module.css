@@ -6,6 +6,14 @@
   margin: 0;
   color: white;
   height: 100px;
+  width: 100vw;
+}
+
+.lgScreen {
+  display: flex;
+  justify-content: space-evenly;
+  height: auto;
+  width: 1000px;
 }
 
 .logo {
@@ -41,7 +49,7 @@
 }
 
 .signUpIn {
-  width: 15%;
+  width: 25%;
   display: flex;
   align-items: center;
   gap: 20px;
@@ -52,8 +60,8 @@
 }
 
 .signUpLink {
-  text-decoration:none;
-  color:white;
+  text-decoration: none;
+  color: white;
 }
 
 .signUpLink:hover {
@@ -69,12 +77,53 @@
   padding: 6px 20px 6px 20px;
   width: 80px;
   text-align: center;
-  color:white;
-  text-decoration:none;
+  color: white;
+  text-decoration: none;
 }
 
 .signInBtn:hover {
   background-color: white;
   color: black;
   cursor: pointer;
+}
+
+.smScreen {
+  display: flex;
+  justify-content: flex-end;
+  height: auto;
+  font-size: large;
+  color: white;
+  display: none;
+}
+
+.hamburgerMenu {
+  display: none;
+  font-size: 30px;
+}
+
+.mdScreen {
+  display: flex;
+  justify-content: flex-end;
+  height: auto;
+  color: white;
+  display: none;
+}
+
+/* responsive, form small screens, use 13px font size */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 20px;
+  }
+  .lgScreen {
+    display: none;
+  }
+  .mdScreen {
+    display: none;
+  }
+  .smScreen {
+    display: block;
+  }
+  .hamburgerMenu {
+    display: block;
+  }
 }

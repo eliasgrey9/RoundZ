@@ -73,19 +73,19 @@
 }
 
 .getStartedBtn {
-  font-family:'Lato';
-  font-style:normal;
-  font-weight:700;
-  background: #F5F5F5;
-  box-shadow: -4px 4px 0px  #09E3D6;;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  background: #f5f5f5;
+  box-shadow: -4px 4px 0px #09e3d6;
   border-radius: 4px;
   padding: 10px 18px;
-  border:none;
+  border: none;
 }
 
 .getStartedBtn:hover {
   cursor: pointer;
-  box-shadow: -4px 4px 0px #00A99F;
+  box-shadow: -4px 4px 0px #00a99f;
   background-color: white;
 }
 
@@ -188,4 +188,104 @@
   background-color: #010b15;
   width: 25%;
   height: 300px;
+}
+
+/* responsive, form small screens, use 13px font size */
+@media (max-width: 390px) {
+  .body {
+    height: max-content;
+  }
+  .interviewsMadeEasy {
+    font-size: 50px;
+    line-height: 70px;
+  }
+
+  /*Moves "Interviews" to the right*/
+  .interviews {
+    margin-right: 90px;
+  }
+  .madeEasy {
+    margin-left: 90px;
+  }
+  /*subheading to "Interviews Made Easy"*/
+  .mainSubheading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .onePlatformOneFocus {
+    width: 50vw;
+    margin: 0;
+    font-size: small;
+    justify-content: space-evenly;
+  }
+  .theFourSquares {
+    flex-direction: column;
+  }
+  .oneWayVideoSoftware {
+    justify-content: center;
+    max-width: 390px;
+  }
+  .visualSection {
+    height: 250px;
+  }
+
+  .vsParagraph {
+    height: 150px;
+  }
+  .vsImage {
+    height: 150px;
+    width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .body {
+    height: max-content;
+  }
+  .interviewsMadeEasy {
+    font-size: 50px;
+    line-height: 70px;
+  }
+
+  /*Moves "Interviews" to the right*/
+  .interviews {
+    margin-right: 90px;
+  }
+  .madeEasy {
+    margin-left: 90px;
+  }
+  /*subheading to "Interviews Made Easy"*/
+  .mainSubheading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .onePlatformOneFocus {
+    width: 50vw;
+    margin: 0;
+    font-size: small;
+    justify-content: space-evenly;
+  }
+  .theFourSquares {
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  .oneWayVideoSoftware {
+    justify-content: center;
+    max-width: 390px;
+  }
+  .visualSection {
+    height: 450px;
+  }
+
+  .vsParagraph {
+    height: 50px;
+  }
+  .vsImage {
+    height: 150px;
+    width: 150px;
+  }
 }
