@@ -1,56 +1,106 @@
-.body{
-    position:relative;
-    height:1100px;
-    width:100vw;
-    background: linear-gradient(180deg, #010B15 17.71%, #115261 47.92%, rgba(0, 0, 0, 0.9) 92.38%);
-}
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap");
 
-.backArrow{
-color:white;
-margin:40px 0px 0px 250px;
+.body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: linear-gradient(
+    180deg,
+    #010b15 17.71%,
+    #115261 47.92%,
+    rgba(0, 0, 0, 0.9) 92.38%
+  );
+  color: white;
 }
 
 .form {
-    height:50%;
-    width:auto;
-    display:flex;
-    justify-content:center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 625px;
+  height: 565px;
+  border: 2px solid #f6f6f6;
+  border-radius: 10px;
 }
 
-.formInput{
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background: #F6F6F6;
-    border: 1px solid rgba(255, 255, 255, 0.37);
-    border-radius: 7px;
-    width:35%;
-    height:48px;
-    padding:5px;
+.logo {
+  text-align: center;
+  width: 334px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 86px;
+  color: #00a99f;
 }
 
-.formLabel{    
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 19px;
-    width:35%;
-    padding-bottom:10px;
-    color: #FFFFFF;
-
+.subHeading {
+  text-align: center;
+  width: 306px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  color: #f6f6f6;
+  margin: 40px;
 }
 
-.submitBtn{
-    font-size:18px;
-    width: 277px;
-    height: 46px;
-    background: #F6F6F6;
-    border-radius: 7px;
+.input {
+  width: 500px;
+  height: 45px;
+  background: #f6f6f6;
+  border: 1px solid rgba(255, 255, 255, 0.37);
+  border-radius: 7px;
+  margin-top: 4px;
+  padding-left: 10px;
 }
 
-.submitBtn:hover{
-background-color:white;
-cursor:pointer;
+.label {
+  font-family: "Lato";
+  font-style: normal;
+  margin-top: 20px;
+  width: 500px;
+}
+
+.submitBtn {
+  margin-top: 70px;
+  margin-bottom: 20px;
+  width: 500px;
+  height: 60px;
+  background: #00a99f;
+  border-radius: 40px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #f6f6f6;
+  border: none;
+}
+.submitBtn:hover {
+  cursor: pointer;
+}
+
+.alreadyHaveAnAccount {
+  display: flex;
+  width: 500px;
+  margin-bottom: 70px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+}
+
+.logIn {
+  color: #00a99f;
+  margin-left: 10px;
+}
+.logIn:hover {
+  color: #09e3d6;
+  cursor: pointer;
 }
