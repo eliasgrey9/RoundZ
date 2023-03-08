@@ -6,7 +6,7 @@
   margin: 0;
   color: white;
   height: 100px;
-  width: 100vw;
+  width: 100%;
 }
 
 .lgScreen {
@@ -108,7 +108,8 @@
 @media (max-width: 1430px) {
   .body {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    width: 83%;
   }
   .logo {
     font-size: 22px;

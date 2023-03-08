@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./navbar.module.css";
 import { Link } from "react-router-dom";
-import { GiHamburgerMenu } from "react-icons/gi";
+import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
 
 const Navbar = () => {
   return (
@@ -36,9 +36,9 @@ const Navbar = () => {
       </div>
 
       <div className={style.hamburgerScreen}>
-        <i className={style.hamburgerMenu}>
-          <GiHamburgerMenu />
-        </i>
+        <div className={style.hamburgerMenu}>
+          <HamburgerMenu />
+        </div>
       </div>
     </div>
   );
