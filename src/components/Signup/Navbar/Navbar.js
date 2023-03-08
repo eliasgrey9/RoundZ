@@ -9,13 +9,17 @@ const Navbar = () => {
 
       <div className={style.navLinks}>
         <div>
-          <Link className={style.navLink} to={'/'}>Home</Link>
+          <Link className={style.navLink} to={"/"}>
+            Home
+          </Link>
         </div>
-        <div className={style.navLink}><a>Contact</a></div>
-        <div className={style.navLink}><a>About</a></div>
+        <div className={style.navLink}>
+          <a>Contact</a>
+        </div>
+        <div className={style.navLink}>
+          <a>About</a>
+        </div>
       </div>
-
-    
     </div>
   );
 };

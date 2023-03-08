@@ -21,7 +21,7 @@
   justify-content: center;
   align-items: center;
   width: 625px;
-  height: 400px;
+  height: 440px;
   border: 2px solid #f6f6f6;
   border-radius: 10px;
 }
@@ -75,4 +75,46 @@
 }
 .submitBtn:hover {
   cursor: pointer;
+}
+
+.alreadyHaveAnAccount {
+  display: flex;
+  width: 500px;
+  margin-bottom: 70px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+}
+
+.logIn {
+  color: #00a99f;
+  margin-left: 10px;
+}
+.logIn:hover {
+  color: #09e3d6;
+  cursor: pointer;
+}
+
+@media (max-width: 390px) {
+  .form {
+    width: 300px;
+  }
+  .input {
+    width: 200px;
+  }
+  .label {
+    width: 200px;
+  }
+  .submitBtn {
+    width: 200px;
+  }
+  .alreadyHaveAnAccount {
+    width: 200px;
+  }
+}
+
+@media (max-width: 844px) {
+  .body {
+    height: 1100px;
+  }
 }
