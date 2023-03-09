@@ -25,14 +25,16 @@ const Navbar = () => {
       <div className={style.lgScreen}>
         <div className={style.navLinks}>
           <div>
-            <a
-              onClick={underlineDashboardNavLink}
-              className={
-                isDashboardLinkClicked ? style.highlightActive : style.navLink
-              }
-            >
-              Dashboard
-            </a>
+            <Link to={"/dashboard"}>
+              <a
+                onClick={underlineDashboardNavLink}
+                className={
+                  isDashboardLinkClicked ? style.highlightActive : style.navLink
+                }
+              >
+                Dashboard
+              </a>
+            </Link>
           </div>
           <div>
             <a

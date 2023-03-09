@@ -6,6 +6,7 @@ import DashboardHome from "./Dashboard/DashboardHome/DashboardHome";
 import SinglePositionView from "./Dashboard/SinglePositionView/SinglePositionView";
 import InterviewPage from "./InterviewPage/InterviewPage";
 import { Routes, Route } from "react-router-dom";
+import CreateJobPosition from "./Dashboard/CreateJobPosition/CreateJobPosition";
 
 function Main() {
   return (
@@ -15,6 +16,10 @@ function Main() {
         <Route path="/signUp" element={<SignUp />}></Route>
         <Route path="/signIn" element={<SignIn />}></Route>
         <Route path="/dashboard" element={<DashboardHome />}></Route>
+        <Route
+          path="/dashboard/createJobPosition"
+          element={<CreateJobPosition />}
+        ></Route>
 
         <Route
           path="/dashboard/position/:id"
