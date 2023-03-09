@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap");
+
+.dashboardBody {
+  display: flex;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 70vmin;
+  font-size: 3vmin;
+}
+
+.heading {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  margin-left: 150px;
+}
+.headingAndBtn {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.createBtn {
+  margin-right: 170px;
+  width: 150px;
+  height: 50px;
+  background: #00a99f;
+  border-radius: 40px;
+  border: none;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f6f6f6;
+}
+
+.createBtn:hover {
+  cursor: pointer;
+}
+
+.section1 {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fcfcfc;
+  box-shadow: 7px 8px 11px 4px rgba(186, 183, 183, 0.2);
+  margin-bottom: 50px;
+}
+
+.leftSideSection1 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.statusLinks {
+  width: 275px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 150px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  color: #aaaaaa;
+}
+
+.underLineActive {
+  border-bottom: #00a99f solid 3px;
+  padding-bottom: 4px;
+}
+
+.statusLinks:hover {
+  cursor: pointer;
+}
+
+.section3 {
+  display: flex;
+  width: 100%;
+  border: solid black 1px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}

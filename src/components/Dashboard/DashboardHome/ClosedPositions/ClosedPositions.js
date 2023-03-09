@@ -29,8 +29,6 @@ const ClosedPositions = () => {
 
   return (
     <div className="closedPositionsBody">
-      <div>Closed</div>
-
       <div>
         {dataFromApi.map((data) => (
           <div className="positionCard" key={data.id}>

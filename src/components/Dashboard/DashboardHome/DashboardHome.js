@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./dashboardHome.css";
+import style from "./dashboardHome.module.css";
 import ClosedPositions from "./ClosedPositions/ClosedPositions";
 import ActivePositions from "./ActivePositions/ActivePositions";
+import Navbar from "./Navbar/Navbar";
 
 const DashboardHome = () => {
   const [openPositionCreator, setOpenPositionCreator] = useState(true);
@@ -59,16 +60,38 @@ const DashboardHome = () => {
   };
   return (
     <div className="dashboardBody">
+      <Navbar />
       {openPositionCreator ? (
         <div>
-          <div className="section1">
-            New<button onClick={openPositionCreatorBtn}>+</button>
-          </div>
-          <div className="section1">
-            <div>Status</div>
+          <div className={style.section1}>
+            <div className={style.leftSideSection1}>
+              <div className={style.heading}>My Dashboard</div>
+
+              <div>
+                <div className={style.statusLinks}>
+                  <div
+                    className={status === true ? style.underLineActive : null}
+                    onClick={() => setStatus(true)}
+                  >
+                    Active Interviews
+                  </div>
+
+                  <div
+                    className={status === false ? style.underLineActive : null}
+                    onClick={() => setStatus(false)}
+                  >
+                    Closed Interviews
+                  </div>
+                </div>
+              </div>
+            </div>
             <div>
-              <button onClick={() => setStatus(true)}>Active</button>
-              <button onClick={() => setStatus(false)}>Closed</button>
+              <button
+                className={style.createBtn}
+                onClick={openPositionCreatorBtn}
+              >
+                + CREATE
+              </button>
             </div>
           </div>
           {status ? <ActivePositions /> : <ClosedPositions />}

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./activePositions.css";
+import style from "./activePositions.module.css";
 import { NavLink } from "react-router-dom";
 
 const ActivePositions = () => {
@@ -22,14 +22,12 @@ const ActivePositions = () => {
   };
 
   return (
-    <div className="activePositionsBody">
-      <div>Active</div>
-
+    <div className={style.body}>
       <div>
         {dataFromApi.map((data) => (
-          <div className="positionCard" key={data.id}>
+          <div className={style.positionCard} key={data.id}>
             <div>
-              <div>{data.title}</div>
+              <div className={style.cardTitle}>{data.title}</div>
               <div>{data.invitations} Invites</div>
             </div>
 

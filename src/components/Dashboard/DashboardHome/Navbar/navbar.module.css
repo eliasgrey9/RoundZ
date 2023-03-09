@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap");
+
+.body {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  color: white;
+  height: 100px;
+  width: 100%;
+  border-bottom: 1px solid #aaaaaa;
+}
+
+.lgScreen {
+  display: flex;
+  justify-content: space-evenly;
+  height: auto;
+  width: 1000px;
+}
+
+.logo {
+  width: 60%;
+  height: 24px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #00a99f;
+  margin-left: 150px;
+}
+
+.navLinks {
+  display: flex;
+  width: 10%;
+  gap: 30px;
+  color: black;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  margin-right: 20px;
+}
+.navLinks {
+  cursor: pointer;
+}
+.navLink {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  color: #aaaaaa;
+}
+
+.navLink:hover {
+  font-family: "Lato";
+  font-style: normal;
+  cursor: pointer;
+}
+
+.signUpIn {
+  width: 25%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+}
+
+.signUpLink {
+  text-decoration: none;
+  color: black;
+}
+
+.signUpLink:hover {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.signInBtn {
+  border-radius: 24px;
+  border: 2px solid black;
+  padding: 6px 20px 6px 20px;
+  width: 80px;
+  text-align: center;
+  text-decoration: none;
+  color: black;
+}
+
+.signInBtn:hover {
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+
+.hamburgerScreen {
+  display: flex;
+  justify-content: flex-end;
+  height: auto;
+  font-size: large;
+  color: white;
+  display: none;
+}
+
+.hamburgerMenu {
+  display: none;
+  font-size: 30px;
+}
+.hamburgerMenu:hover {
+  cursor: pointer;
+}
+
+/* responsive, form small screens, use 13px font size */
+@media (max-width: 1430px) {
+  .body {
+    display: flex;
+    justify-content: space-between;
+    width: 83%;
+  }
+  .logo {
+    font-size: 22px;
+  }
+  .lgScreen {
+    display: none;
+  }
+  .hamburgerScreen {
+    display: block;
+  }
+  .hamburgerMenu {
+    display: block;
+  }
+}
+.highlightActive {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  color: #00a99f;
+}
