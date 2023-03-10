@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap");
+
+.body {
+  height: 1500px;
+}
+
 .section1 {
   height: 150px;
   display: flex;
@@ -45,4 +51,90 @@
 }
 .backToDashboardBtn:hover {
   cursor: pointer;
+}
+
+.section2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.jobForm {
+  width: 900px;
+  height: 630px;
+  border: 2px solid #104d5b;
+  filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+  border-radius: 12px;
+}
+.cancelOrNext {
+  display: flex;
+  height: 75px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  justify-content: flex-end;
+}
+.cancelLink {
+  margin-right: 24px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 29px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+}
+.cancelLink:hover {
+  cursor: pointer;
+}
+
+.nextBtn {
+  margin-right: 25px;
+  width: 115px;
+  height: 40px;
+  background: #00a99f;
+  border-radius: 30px;
+  border: none;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  color: #f6f6f6;
+}
+.nextBtn:hover {
+  cursor: pointer;
+}
+
+.inputLabel {
+  width: 700px;
+  margin-bottom: 10px;
+  margin-top: 24px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+
+  color: #000000;
+}
+
+.titleInput {
+  box-sizing: border-box;
+  width: 700px;
+  height: 77px;
+  border: 1px solid #010c15;
+  border-radius: 12px;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.descriptionInput {
+  box-sizing: border-box;
+  width: 700px;
+  height: 262px;
+  border: 1px solid #010c15;
+  border-radius: 12px;
+  font-size: 20px;
 }
