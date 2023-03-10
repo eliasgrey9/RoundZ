@@ -1,0 +1,48 @@
+.section1 {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fcfcfc;
+  box-shadow: 7px 8px 11px 4px rgba(186, 183, 183, 0.2);
+  margin-bottom: 50px;
+}
+
+.buttonAndHeading {
+  display: flex;
+  width: 73%;
+  justify-content: space-evenly;
+}
+
+.heading {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 43px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #010c15;
+}
+
+.backToDashboardBtn {
+  width: 179px;
+  height: 56px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  color: #00a99f;
+  background-color: white;
+  border: 2px solid #00a99f;
+  border-radius: 40px;
+}
+.backToDashboardBtn:hover {
+  cursor: pointer;
+}

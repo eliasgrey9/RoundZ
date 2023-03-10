@@ -31,11 +31,10 @@
   border: none;
   font-family: "Lato";
   font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
+  font-size: 20px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   color: #f6f6f6;
 }
 

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import style from "./createJobPosition.module.css";
+import { MdArrowBackIosNew } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const CreateJobPosition = () => {
   const [currentQuestionInputValue, setCurrentQuestionInputValue] =
@@ -8,7 +10,6 @@ const CreateJobPosition = () => {
   const [displayQuestions, setDisplayQuestions] = useState([]);
   const [questionArray, setQuestionArray] = useState([]);
   const [title, setTitle] = useState("");
-
 
   const updateTitle = (e) => {
     e.preventDefault();
@@ -44,7 +45,7 @@ const CreateJobPosition = () => {
         // .then((data) => console.log(data, "data"))
         .then(() => setTitle(""))
         .then(() => setQuestionArray([]))
-        .then(() => setDisplayQuestions([]))
+        .then(() => setDisplayQuestions([]));
       ///END API REQUEST
     } else {
       return;
@@ -54,27 +55,37 @@ const CreateJobPosition = () => {
   return (
     <div>
       <Navbar />
-      <div>
-        <form onSubmit={submitForm}>
-          <input
-            value={title}
-            onChange={updateTitle}
-            placeholder="Job Position Title"
-          ></input>
-          <div>
-            <input
-              onChange={currentQuestionVal}
-              placeholder="Ask a question!"
-              value={currentQuestionInputValue}
-            />
-            <button onClick={updateQuestionArray}>+</button>
-          </div>
-          {displayQuestions.map((q) => {
-            return <li key={Math.random() * -50}>{q}</li>;
-          })}
-          <input type="submit"></input>
-        </form>
+      <div className={style.section1}>
+        <div className={style.buttonAndHeading}>
+          <Link to={"/dashboard"}>
+            <button className={style.backToDashboardBtn}>
+              <MdArrowBackIosNew />
+              Dashboard
+            </button>
+          </Link>
+          <div className={style.heading}>Create Job Position</div>
+        </div>
       </div>
+
+      <form onSubmit={submitForm}>
+        <input
+          value={title}
+          onChange={updateTitle}
+          placeholder="Job Position Title"
+        ></input>
+        <div>
+          <input
+            onChange={currentQuestionVal}
+            placeholder="Ask a question!"
+            value={currentQuestionInputValue}
+          />
+          <button onClick={updateQuestionArray}>+</button>
+        </div>
+        {displayQuestions.map((q) => {
+          return <li key={Math.random() * -50}>{q}</li>;
+        })}
+        <input type="submit"></input>
+      </form>
     </div>
   );
 };

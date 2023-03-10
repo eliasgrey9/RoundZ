@@ -4,6 +4,7 @@ import ClosedPositions from "./ClosedPositions/ClosedPositions";
 import ActivePositions from "./ActivePositions/ActivePositions";
 import Navbar from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
+import { TbPlus } from "react-icons/tb";
 
 const DashboardHome = () => {
   const [status, setStatus] = useState(true);
@@ -35,9 +36,12 @@ const DashboardHome = () => {
             </div>
           </div>
           <div>
-            <button className={style.createBtn}>
-              <Link to={"/dashboard/createJobPosition"}>+ CREATE</Link>
-            </button>
+            <Link to={"/dashboard/createJobPosition"}>
+              <button className={style.createBtn}>
+                <TbPlus />
+                <div>Create</div>
+              </button>
+            </Link>
           </div>
         </div>
         {status ? <ActivePositions /> : <ClosedPositions />}
