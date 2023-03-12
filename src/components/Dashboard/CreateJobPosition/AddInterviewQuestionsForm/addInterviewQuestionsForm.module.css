@@ -1,0 +1,94 @@
+.addQuestionsForm {
+  box-sizing: border-box;
+  width: 823px;
+  height: 306px;
+  background: #ffffff;
+  border: 1px solid #010c15;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+.formHeading {
+  width: 100%;
+  height: 75px;
+  display: flex;
+  align-items: center;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  border-bottom: 1px solid #aaaaaa;
+  margin-bottom: 35px;
+}
+.colorCircle {
+  width: 37px;
+  height: 37px;
+  background-color: #105652;
+  border-radius: 100%;
+  margin: 20px;
+}
+.inputLabel {
+  height: 40px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  color: #000000;
+  width: 697px;
+}
+
+.questionInput {
+  box-sizing: border-box;
+  width: 697px;
+  height: 77px;
+  border: 1px solid #010c15;
+  border-radius: 12px;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.addNextQuestionBtn {
+  box-sizing: border-box;
+  width: 224px;
+  height: 52px;
+  border: 2px solid #105652;
+  border-radius: 30px;
+  background-color: white;
+  color: #105652;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.addNextQuestionBtn:hover {
+  cursor: pointer;
+}
+
+.finishQuestionsBtn {
+  color: #f6f6f6;
+  background: #00a99f;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  box-sizing: border-box;
+  width: 224px;
+  height: 52px;
+  border-radius: 30px;
+  border: none;
+  font-size: 18px;
+}
+.finishQuestionsBtn:hover {
+  cursor: pointer;
+}
+.buttonsBelowForm {
+  display: flex;
+  height: 220px;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: end;
+  color: #105652;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+}

@@ -16,19 +16,19 @@ const HamburgerMenu = () => {
         <div className={`line ${isOpen ? "open" : ""}`}></div>
       </div>
       <div className={`hamburger-menu-links ${isOpen ? "open" : ""}`}>
-        <a classname={style.a} href="/">
+        <a className={style.a} href="/">
           Home
         </a>
-        <a classname={style.a} href="/contact">
+        <a className={style.a} href="/contact">
           Contact
         </a>
-        <a classname={style.a} href="/about">
+        <a className={style.a} href="/about">
           About
         </a>
-        <a classname={style.a} href="/signup">
+        <a className={style.a} href="/signup">
           Sign Up
         </a>
-        <a classname={style.a} href="/signin">
+        <a className={style.a} href="/signin">
           Sign In
         </a>
       </div>

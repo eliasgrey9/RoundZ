@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import style from "./createJobPosition.module.css";
 import { MdArrowBackIosNew } from "react-icons/md";
 import { Link } from "react-router-dom";
+import AddInterviewQuestionsForm from "./AddInterviewQuestionsForm/AddInterviewQuestionsForm";
+import CreateJobForm from "./CreateJobForm/CreateJobForm";
+import SaveAndPublishForm from "./SaveAndPublishForm/SaveAndPublishForm";
 
 const CreateJobPosition = () => {
   const [currentQuestionInputValue, setCurrentQuestionInputValue] =
@@ -11,6 +14,7 @@ const CreateJobPosition = () => {
   const [questionArray, setQuestionArray] = useState([]);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [liquidHeading, setLiquidHeading] = useState("");
 
   const SAVE_AND_PUBLISH = "SAVE_AND_PUBLISH";
   const ADD_QUESTION_FORM = "ADD_QUESTION_FORM";
@@ -20,12 +24,34 @@ const CreateJobPosition = () => {
 
   const showCreateJobPositionForm = () =>
     setActiveForm(CREATE_JOB_POSITION_FORM);
-  const showAddQuestionForm = () => setActiveForm(ADD_QUESTION_FORM);
-  const showSaveAndPublishForm = () => setActiveForm(SAVE_AND_PUBLISH);
+
+  const showAddQuestionForm = () => {
+    if (title && description) {
+      setActiveForm(ADD_QUESTION_FORM);
+    }
+  };
+
+  const showSaveAndPublishForm = () => {
+    if (questionArray.length) {
+      setActiveForm(SAVE_AND_PUBLISH);
+    }
+  };
 
   const isActiveFormCreateJobPosition = activeForm === CREATE_JOB_POSITION_FORM;
   const isActiveFormAddQuestion = activeForm === ADD_QUESTION_FORM;
   const isActiveFormSaveAndPublish = activeForm === SAVE_AND_PUBLISH;
+
+  useEffect(() => {
+    if (isActiveFormAddQuestion) {
+      setLiquidHeading("Add Interview Questions");
+    }
+    if (isActiveFormCreateJobPosition) {
+      setLiquidHeading("Create Job Position");
+    }
+    if (isActiveFormSaveAndPublish) {
+      setLiquidHeading("Publish Job Postion");
+    }
+  }, [activeForm]);
 
   const updateTitle = (e) => {
     e.preventDefault();
@@ -74,7 +100,7 @@ const CreateJobPosition = () => {
       return;
     }
   };
-
+  console.log(questionArray, "questionArray");
   return (
     <div className={style.body}>
       <Navbar />
@@ -86,62 +112,38 @@ const CreateJobPosition = () => {
               Dashboard
             </button>
           </Link>
-          <div className={style.heading}>Create Job Position</div>
+
+          <div className={style.heading}>{liquidHeading}</div>
         </div>
       </div>
       <div className={style.section2}>
         {isActiveFormCreateJobPosition ? (
-          <form className={style.jobForm}>
-            <div className={style.cancelOrNext}>
-              <Link to={"/dashboard"}>
-                <div className={style.cancelLink}>Cancel</div>
-              </Link>
-
-              <button className={style.nextBtn} onClick={showAddQuestionForm}>
-                Next
-              </button>
-            </div>
-            <div className={style.inputLabel}>Title</div>
-            <input
-              className={style.titleInput}
-              value={title}
-              onChange={updateTitle}
-              placeholder="Job Position Title"
-            ></input>
-            <div className={style.inputLabel}>Description</div>
-
-            <div>
-              <input
-                className={style.descriptionInput}
-                value={description}
-                onChange={updateDescription}
-                placeholder="Job Description"
-              ></input>
-            </div>
-          </form>
+          <CreateJobForm
+            updateDescription={updateDescription}
+            updateTitle={updateTitle}
+            showAddQuestionForm={showAddQuestionForm}
+            title={title}
+            description={description}
+          />
         ) : null}
 
         {isActiveFormAddQuestion ? (
-          <form onSubmit={updateQuestionArray}>
-            <div>
-              <input
-                onChange={currentQuestionVal}
-                placeholder="Ask a question!"
-                value={currentQuestionInputValue}
-              />
-              <input
-                className={style.addNextQuestionBtn}
-                type="submit"
-                value="Add Next Question"
-              ></input>
-            </div>
-          </form>
+          <AddInterviewQuestionsForm
+            title={title}
+            updateQuestionArray={updateQuestionArray}
+            currentQuestionVal={currentQuestionVal}
+            currentQuestionInputValue={currentQuestionInputValue}
+            showSaveAndPublishForm={showSaveAndPublishForm}
+          />
         ) : null}
 
         {isActiveFormSaveAndPublish ? (
-          <form onSubmit={submitForm}>
-            <input type="submit"></input>
-          </form>
+          <SaveAndPublishForm
+            submitForm={submitForm}
+            title={title}
+            description={description}
+            questionArray={questionArray}
+          />
         ) : null}
       </div>
     </div>
