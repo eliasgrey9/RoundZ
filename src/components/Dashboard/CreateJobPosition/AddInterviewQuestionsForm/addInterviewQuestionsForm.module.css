@@ -86,7 +86,7 @@
   height: 220px;
   flex-direction: column;
   justify-content: space-evenly;
-  align-items: end;
+  align-items: flex-end;
   color: #105652;
   font-family: "Lato";
   font-style: normal;

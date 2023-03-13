@@ -1,6 +1,5 @@
 import React from "react";
 import style from "./saveAndPublishForm.module.css";
-import { Link } from "react-router-dom";
 
 const SaveAndPublishForm = ({
   submitForm,

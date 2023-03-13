@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import style from "./activePositions.module.css";
 import { NavLink } from "react-router-dom";
+import { VscClose } from "react-icons/vsc";
 
 const ActivePositions = () => {
   const [dataFromApi, setDataFromApi] = useState([]);
@@ -23,28 +24,27 @@ const ActivePositions = () => {
 
   return (
     <div className={style.body}>
-      <div>
+      <div className={style.allCards}>
         {dataFromApi.map((data) => (
           <div className={style.positionCard} key={data.id}>
-            <div>
+            <div className={style.leftSideOfCard}>
               <div className={style.cardTitle}>{data.title}</div>
-              <div>{data.invitations} Invites</div>
-            </div>
+              <NavLink to={`/dashboard/position/${data.id}`}>
+                <div className={style.viewInterviewDetails}>
+                  View Interview Details
+                </div>
+              </NavLink>
 
-            <div>
-              <button
+              <div className={style.invites}>{data.invitations} Invites</div>
+            </div>
+            <div className={style.rightSideOfCard}>
+              <VscClose
                 onClick={() => {
                   changeStatusToClosed(data.id);
                 }}
-              >
-                Close Position
-              </button>
-              <NavLink
-                to={`/dashboard/position/${data.id}`}
-                className="dashboardSinglePosition"
-              >
-                <button>Go to position</button>
-              </NavLink>
+                className={style.closePositionX}
+              />
+              <button className={style.shareBtn}>Share</button>
             </div>
           </div>
         ))}
