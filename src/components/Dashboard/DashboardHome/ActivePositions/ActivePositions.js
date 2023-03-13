@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import style from "./activePositions.module.css";
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { VscClose } from "react-icons/vsc";
 
 const ActivePositions = () => {
@@ -22,6 +22,9 @@ const ActivePositions = () => {
     setDataFromApi(dataFromApi.filter((item) => item.id !== id));
   };
 
+  const test = (id) => {
+    console.log(id, "TESTING");
+  };
   return (
     <div className={style.body}>
       <div className={style.allCards}>
@@ -29,11 +32,11 @@ const ActivePositions = () => {
           <div className={style.positionCard} key={data.id}>
             <div className={style.leftSideOfCard}>
               <div className={style.cardTitle}>{data.title}</div>
-              <NavLink to={`/dashboard/position/${data.id}`}>
+              <Link to={`/dashboard/position/${data.id}`}>
                 <div className={style.viewInterviewDetails}>
                   View Interview Details
                 </div>
-              </NavLink>
+              </Link>
 
               <div className={style.invites}>{data.invitations} Invites</div>
             </div>
@@ -44,7 +47,9 @@ const ActivePositions = () => {
                 }}
                 className={style.closePositionX}
               />
-              <button className={style.shareBtn}>Share</button>
+              <Link to={`/dashboard/shareInterview/${data.id}`}>
+                <button className={style.shareBtn}>Share</button>
+              </Link>
             </div>
           </div>
         ))}

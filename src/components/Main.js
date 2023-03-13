@@ -7,6 +7,7 @@ import SinglePositionView from "./Dashboard/SinglePositionView/SinglePositionVie
 import InterviewPage from "./InterviewPage/InterviewPage";
 import { Routes, Route } from "react-router-dom";
 import CreateJobPosition from "./Dashboard/CreateJobPosition/CreateJobPosition";
+import ShareInterview from "./Dashboard/ShareInterview/ShareInterview";
 
 function Main() {
   return (
@@ -19,6 +20,10 @@ function Main() {
         <Route
           path="/dashboard/createJobPosition"
           element={<CreateJobPosition />}
+        ></Route>
+        <Route
+          path="/dashboard/shareInterview/:id"
+          element={<ShareInterview />}
         ></Route>
 
         <Route

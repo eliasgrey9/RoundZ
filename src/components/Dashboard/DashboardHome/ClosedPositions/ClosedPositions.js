@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./closedPositions.css";
+import style from "./closedPositions.module.css";
+import { BsTrash3 } from "react-icons/bs";
 
 const ClosedPositions = () => {
   const [dataFromApi, setDataFromApi] = useState([]);
@@ -28,21 +29,27 @@ const ClosedPositions = () => {
   };
 
   return (
-    <div className="closedPositionsBody">
-      <div>
+    <div className={style.body}>
+      <div className={style.allCards}>
         {dataFromApi.map((data) => (
-          <div className="positionCard" key={data.id}>
-            <div>
-              <div>{data.title}</div>
-              <div>{data.invitations} Invites</div>
+          <div className={style.positionCard} key={data.id}>
+            <div className={style.leftSideOfCard}>
+              <div className={style.cardTitle}>{data.title}</div>
+              <div className={style.invites}>{data.invitations} Invites</div>
             </div>
 
-            <div>
-              <button onClick={() => deletePosition(data.id)}>
-                Delete Position
-              </button>
-              <button onClick={() => changeStatusToOpen(data.id)}>
-                Re-open Position
+            <div className={style.rightSideOfCard}>
+              <BsTrash3
+                className={style.trashCan}
+                onClick={() => deletePosition(data.id)}
+                Delete
+                Position
+              />
+              <button
+                className={style.reOpenBtn}
+                onClick={() => changeStatusToOpen(data.id)}
+              >
+                Reactivate
               </button>
             </div>
           </div>

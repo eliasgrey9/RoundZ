@@ -1,0 +1,93 @@
+.body {
+  height: auto;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.positionCard {
+  width: 450px;
+  height: 250px;
+  background: #ffffff;
+  box-shadow: 4px 6px 7px -1px rgba(0, 0, 0, 0.25);
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  margin: 22px;
+  display: flex;
+}
+
+.allCards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 5%;
+}
+
+.leftSideOfCard {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 15px;
+}
+
+.cardTitle {
+  height: 38px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  color: #010c15;
+}
+
+.invites {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #aaaaaa;
+}
+
+.rightSideOfCard {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.reOpenBtn {
+  width: 100px;
+  height: 40px;
+  border: 2px solid #105652;
+  border-radius: 40px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #105652;
+  background-color: white;
+  margin: 20px;
+}
+.reOpenBtn:hover {
+  cursor: pointer;
+}
+
+.trashCan {
+  font-size: 20px;
+  margin: 20px;
+}
+
+.trashCan:hover {
+  cursor: pointer;
+}
