@@ -75,12 +75,13 @@
   justify-content: space-between;
   align-items: flex-end;
 }
-.closePositionX {
-  font-size: 20px;
+.closePosition {
+  font-size: 16px;
   margin: 20px;
+  font-weight: 400;
 }
 
-.closePositionX:hover {
+.closePosition:hover {
   cursor: pointer;
 }
 

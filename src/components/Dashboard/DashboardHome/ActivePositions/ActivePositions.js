@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import style from "./activePositions.module.css";
 import { Link } from "react-router-dom";
-import { VscClose } from "react-icons/vsc";
 
 const ActivePositions = () => {
   const [dataFromApi, setDataFromApi] = useState([]);
@@ -22,9 +21,7 @@ const ActivePositions = () => {
     setDataFromApi(dataFromApi.filter((item) => item.id !== id));
   };
 
-  const test = (id) => {
-    console.log(id, "TESTING");
-  };
+ 
   return (
     <div className={style.body}>
       <div className={style.allCards}>
@@ -41,12 +38,14 @@ const ActivePositions = () => {
               <div className={style.invites}>{data.invitations} Invites</div>
             </div>
             <div className={style.rightSideOfCard}>
-              <VscClose
+              <div
                 onClick={() => {
                   changeStatusToClosed(data.id);
                 }}
-                className={style.closePositionX}
-              />
+                className={style.closePosition}
+              >
+                Close
+              </div>
               <Link to={`/dashboard/shareInterview/${data.id}`}>
                 <button className={style.shareBtn}>Share</button>
               </Link>

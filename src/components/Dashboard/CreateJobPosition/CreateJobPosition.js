@@ -6,8 +6,11 @@ import { Link } from "react-router-dom";
 import AddInterviewQuestionsForm from "./AddInterviewQuestionsForm/AddInterviewQuestionsForm";
 import CreateJobForm from "./CreateJobForm/CreateJobForm";
 import SaveAndPublishForm from "./SaveAndPublishForm/SaveAndPublishForm";
+import { useNavigate } from "react-router-dom";
 
 const CreateJobPosition = () => {
+  const navigate = useNavigate();
+
   const [currentQuestionInputValue, setCurrentQuestionInputValue] =
     useState("");
   const [displayQuestions, setDisplayQuestions] = useState([]);
@@ -49,7 +52,7 @@ const CreateJobPosition = () => {
       setLiquidHeading("Create Job Position");
     }
     if (isActiveFormSaveAndPublish) {
-      setLiquidHeading("Publish Job Postion");
+      setLiquidHeading("Publish Job Position");
     }
   }, [activeForm]);
 
@@ -78,7 +81,7 @@ const CreateJobPosition = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-
+    navigate("/dashboard");
     if (questionArray.length > 0 && !(title === "")) {
       const result = { questions: [...questionArray], title, status: true };
       //API REQUEST///
@@ -97,10 +100,11 @@ const CreateJobPosition = () => {
         .then(() => setDisplayQuestions([]));
       ///END API REQUEST
     } else {
+      <div>Form not submitted</div>;
       return;
     }
   };
-  console.log(questionArray, "questionArray");
+
   return (
     <div className={style.body}>
       <Navbar />

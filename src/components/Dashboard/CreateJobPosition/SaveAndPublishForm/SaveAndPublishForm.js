@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import style from "./saveAndPublishForm.module.css";
 
 const SaveAndPublishForm = ({
@@ -20,10 +21,9 @@ const SaveAndPublishForm = ({
           ))}
         </ol>
       </div>
-
-      <button onClick={submitForm} className={style.saveBtn}>
-        Save and Publish
-      </button>
+        <button onClick={submitForm} className={style.saveBtn}>
+          Save and Publish
+        </button>
     </div>
   );
 };

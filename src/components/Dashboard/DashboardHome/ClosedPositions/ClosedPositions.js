@@ -46,7 +46,7 @@ const ClosedPositions = () => {
                 Position
               />
               <button
-                className={style.reOpenBtn}
+                className={style.reActivateBtn}
                 onClick={() => changeStatusToOpen(data.id)}
               >
                 Reactivate

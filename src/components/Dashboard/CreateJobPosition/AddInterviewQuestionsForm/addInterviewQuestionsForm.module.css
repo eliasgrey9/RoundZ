@@ -1,7 +1,7 @@
 .addQuestionsForm {
   box-sizing: border-box;
   width: 823px;
-  height: 306px;
+  height: 275px;
   background: #ffffff;
   border: 1px solid #010c15;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -40,7 +40,7 @@
 .questionInput {
   box-sizing: border-box;
   width: 697px;
-  height: 77px;
+  height: 60px;
   border: 1px solid #010c15;
   border-radius: 12px;
   font-size: 20px;

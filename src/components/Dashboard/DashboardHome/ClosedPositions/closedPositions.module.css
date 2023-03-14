@@ -61,8 +61,8 @@
   align-items: flex-end;
 }
 
-.reOpenBtn {
-  width: 100px;
+.reActivateBtn {
+  width: 120px;
   height: 40px;
   border: 2px solid #105652;
   border-radius: 40px;
@@ -79,7 +79,7 @@
   background-color: white;
   margin: 20px;
 }
-.reOpenBtn:hover {
+.reActivateBtn:hover {
   cursor: pointer;
 }
 

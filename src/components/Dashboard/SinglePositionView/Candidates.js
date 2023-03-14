@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import MediaPlayer from "./MediaPlayer";
 
-const Candidates = ({ positionId, boolClicker }) => {
+const Candidates = ({ positionId }) => {
   const SHOW_All_CANDIDATES = "SHOW_All_CANDIDATES";
   const SHOW_SINGLE_CANDIDATE = "SHOW_SINGLE_CANDIDATE";
 
@@ -18,10 +18,6 @@ const Candidates = ({ positionId, boolClicker }) => {
 
   const isAllCandidatesActive = activeTab === SHOW_All_CANDIDATES;
   const isSingleCandidateActive = activeTab === SHOW_SINGLE_CANDIDATE;
-
-  useEffect(() => {
-    displayAllCandidates();
-  }, [boolClicker]);
 
   useEffect(() => {
     const renderCandidates = async () => {
