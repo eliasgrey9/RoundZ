@@ -216,7 +216,7 @@ router.get("/getCandidateId/:id", async (req, res) => {
 router.get("/getCandidate/:id", async (req, res) => {
   try {
     const candidateId = await Candidate.findByPk(req.params.id, {
-      include: Answer,
+      include: { model: Answer, include: Question },
     });
 
     res.send(candidateId);

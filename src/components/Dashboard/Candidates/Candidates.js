@@ -1,30 +1,35 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import MediaPlayer from "./MediaPlayer";
 import { useParams } from "react-router-dom";
 import style from "./candidates.module.css";
 import Navbar from "../Navbar/Navbar";
 import { Link } from "react-router-dom";
 import { MdArrowBackIosNew } from "react-icons/md";
-import arrowForward from "../../../assets/arrowForward.svg";
+import AllCandidates from "./AllCandidates";
+import SingleCandidate from "./SingleCandidate";
+import ReviewAnswer from "./ReviewAnswer";
+import { current } from "@reduxjs/toolkit";
 
 const Candidates = () => {
   const params = useParams();
   const SHOW_All_CANDIDATES = "SHOW_All_CANDIDATES";
   const SHOW_SINGLE_CANDIDATE = "SHOW_SINGLE_CANDIDATE";
+  const REVIEW_ANSWER = "REVIEW_ANSWER";
 
   const [candidates, setCandidates] = useState([]);
   const [selectedCandidate, setSelectedCandidate] = useState({});
   const [activeTab, setActiveTab] = useState(SHOW_All_CANDIDATES);
-  const [questions, setQuestions] = useState([]);
-  const [mediaPlayerUrl, setMediaPlayerUrl] = useState("");
+  const [answerUrl, setAnswerUrl] = useState("");
   const [candidateAnswers, setCandidateAnswers] = useState([]);
+  const [currentQuestionIdx, setCurrentQuestionIdx] = useState(-1);
 
   const displayAllCandidates = () => setActiveTab(SHOW_All_CANDIDATES);
   const displaySingleCandidate = () => setActiveTab(SHOW_SINGLE_CANDIDATE);
+  const displayReviewAnswer = () => setActiveTab(REVIEW_ANSWER);
 
   const isAllCandidatesActive = activeTab === SHOW_All_CANDIDATES;
   const isSingleCandidateActive = activeTab === SHOW_SINGLE_CANDIDATE;
+  const isReviewAnswerActive = activeTab === REVIEW_ANSWER;
 
   useEffect(() => {
     const renderCandidates = async () => {
@@ -32,11 +37,6 @@ const Candidates = () => {
         `http://localhost:8080/api/jobs/renderCandidates/${params.id}`
       );
       setCandidates(response.data.candidates);
-
-      const positionQuestions = await axios.get(
-        `http://localhost:8080/api/jobs/getAllQuestionsFromPosition/${params.id}`
-      );
-      setQuestions(positionQuestions.data.questions);
     };
     renderCandidates();
   }, [params.id]);
@@ -48,33 +48,6 @@ const Candidates = () => {
     );
     setSelectedCandidate(response.data);
     setCandidateAnswers(response.data.answers);
-
-    response.data.answers.forEach((a) => {
-      if (a.questionId === questions[0].id) {
-        setMediaPlayerUrl(a.answer);
-      }
-    });
-
-    const positionQuestions = await axios.get(
-      `http://localhost:8080/api/jobs/getAllQuestionsFromPosition/${params.id}`
-    );
-    setQuestions(positionQuestions.data.questions);
-  };
-
-  useEffect(() => {
-    candidateAnswers.forEach((a) => {
-      if (a.questionId === questions[0].id) {
-        setMediaPlayerUrl(a.answer);
-      }
-    });
-  }, [questions]);
-
-  const changeQuestion = () => {
-    const tempArr = [...questions];
-    const firstElement = tempArr.shift();
-    tempArr.push(firstElement);
-
-    setQuestions(tempArr);
   };
 
   const changeStatusToClosed = async () => {
@@ -89,104 +62,51 @@ const Candidates = () => {
     );
   };
 
+  const playAnswerToQuestion = (i) => {
+    setCurrentQuestionIdx(i);
+    displayReviewAnswer(REVIEW_ANSWER);
+  };
+
+  const questions = candidateAnswers.map((a) => a.question);
+  const question = questions[currentQuestionIdx];
+  const answer = candidateAnswers[currentQuestionIdx];
+
   return (
     <div className={style.body}>
       <Navbar />
-      <div className={style.section1}>
-        <div className={style.buttonAndHeading}>
-          <Link to={"/dashboard"}>
-            <button className={style.backToDashboardBtn}>
-              <MdArrowBackIosNew />
-              Dashboard
-            </button>
-          </Link>
 
-          {isAllCandidatesActive ? (
-            <div className={style.heading}>{params.title}</div>
-          ) : (
-            <div className={style.heading}>{selectedCandidate.name}</div>
-          )}
-        </div>
-      </div>
       {isAllCandidatesActive ? (
-        <>
-          <div className={style.candidatesList}>
-            {candidates.map((candidate, i) => (
-              <div
-                className={i % 2 ? style.columnColor1 : style.columnColor2}
-                key={candidate.id}
-              >
-                <div
-                  className={i % 2 ? style.columnColor1 : style.columnColor2}
-                >
-                  {candidate.name}
-                </div>
-                <div
-                  className={i % 2 ? style.columnColor1 : style.columnColor2}
-                >
-                  {candidate.status ? (
-                    <div>Completed</div>
-                  ) : (
-                    <div>Incomplete</div>
-                  )}
-                </div>
-                <div
-                  className={i % 2 ? style.columnColor1 : style.columnColor2}
-                >
-                  {candidate.interviewedAt === null ? (
-                    <div>N/A</div>
-                  ) : (
-                    <div>{candidate.interviewedAt}</div>
-                  )}
-                </div>
-
-                <div
-                  className={
-                    (i % 2 ? style.columnColor1 : style.columnColor2,
-                    style.selectCandidate)
-                  }
-                  onClick={() => {
-                    renderCandidate(candidate.id);
-                  }}
-                >
-                  <img
-                    className={
-                      (i % 2 ? style.columnColor1 : style.columnColor2,
-                      style.selectCandidate)
-                    }
-                    src={arrowForward}
-                  ></img>
-                </div>
-              </div>
-            ))}
-            <div className={style.closeAndDeleteBtns}>
-              <Link to={"/dashboard"}>
-                <button
-                  onClick={changeStatusToClosed}
-                  className={style.closeBtn}
-                >
-                  Close Position
-                </button>
-              </Link>
-
-              <Link to={"/dashboard"}>
-                <button onClick={deletePosition} className={style.deleteBtn}>
-                  Delete Position
-                </button>
-              </Link>
-            </div>
-          </div>
-        </>
+        <AllCandidates
+          candidates={candidates}
+          renderCandidate={renderCandidate}
+          changeStatusToClosed={changeStatusToClosed}
+          deletePosition={deletePosition}
+          params={params}
+        />
       ) : null}
 
       {isSingleCandidateActive ? (
-        <>
-          <h2>Candidate {selectedCandidate.name}</h2>
-          <h3>{questions[0].question}</h3>
-          <button onClick={changeQuestion}>Next question</button>
-
-          <MediaPlayer S3Url={mediaPlayerUrl} />
-        </>
+        <SingleCandidate
+          selectedCandidate={selectedCandidate}
+          params={params}
+          playAnswerToQuestion={playAnswerToQuestion}
+          questions={questions}
+          displayAllCandidates={displayAllCandidates}
+        />
+      ) : null}
+      {isReviewAnswerActive ? (
+        <ReviewAnswer
+          onNext={() => {
+            if (questions.length - 1 === currentQuestionIdx) {
+              setCurrentQuestionIdx(0);
+            } else {
+              setCurrentQuestionIdx(currentQuestionIdx + 1);
+            }
+          }}
+          answer={answer}
+          params={params}
+          displaySingleCandidate={displaySingleCandidate}
+        />
       ) : null}
     </div>
   );

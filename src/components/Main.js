@@ -8,6 +8,7 @@ import { Routes, Route } from "react-router-dom";
 import CreateJobPosition from "./Dashboard/CreateJobPosition/CreateJobPosition";
 import ShareInterview from "./Dashboard/ShareInterview/ShareInterview";
 import Candidates from "./Dashboard/Candidates/Candidates";
+import ReviewAnswer from "./Dashboard/Candidates/ReviewAnswer";
 
 function Main() {
   return (
@@ -29,6 +30,11 @@ function Main() {
         <Route
           path="/dashboard/position/:title/:id"
           element={<Candidates />}
+        ></Route>
+
+        <Route
+          path="/dashboard/reviewAnswer/:url"
+          element={<ReviewAnswer />}
         ></Route>
 
         <Route path="/interview" element={<InterviewPage />}></Route>
