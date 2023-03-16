@@ -34,7 +34,6 @@ export class MediaChunksHandler {
   // starting the multipart upload request
   start() {
     this.initialize();
-    console.log("This.props", this.props);
   }
 
   async initialize() {

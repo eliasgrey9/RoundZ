@@ -21,7 +21,6 @@ const ActivePositions = () => {
     setDataFromApi(dataFromApi.filter((item) => item.id !== id));
   };
 
- 
   return (
     <div className={style.body}>
       <div className={style.allCards}>
@@ -29,7 +28,7 @@ const ActivePositions = () => {
           <div className={style.positionCard} key={data.id}>
             <div className={style.leftSideOfCard}>
               <div className={style.cardTitle}>{data.title}</div>
-              <Link to={`/dashboard/position/${data.id}`}>
+              <Link to={`/dashboard/position/${data.title}/${data.id}`}>
                 <div className={style.viewInterviewDetails}>
                   View Interview Details
                 </div>

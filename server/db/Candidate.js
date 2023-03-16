@@ -13,4 +13,12 @@ module.exports = db.define("candidate", {
   code: {
     type: Sequelize.STRING,
   },
+  status: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  },
+
+  interviewedAt: {
+    type: Sequelize.DATEONLY,
+  },
 });

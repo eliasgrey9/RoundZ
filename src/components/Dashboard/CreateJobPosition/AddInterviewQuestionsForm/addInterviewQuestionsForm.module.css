@@ -6,6 +6,8 @@
   border: 1px solid #010c15;
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 12px;
+  display: flex;
+  align-items: center;
 }
 
 .formHeading {

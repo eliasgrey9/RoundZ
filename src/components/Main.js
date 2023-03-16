@@ -3,11 +3,11 @@ import Homepage from "./Home/Homepage";
 import SignUp from "./Signup/SignUp";
 import SignIn from "./SignIn/SignIn";
 import DashboardHome from "./Dashboard/DashboardHome/DashboardHome";
-import SinglePositionView from "./Dashboard/SinglePositionView/SinglePositionView";
 import InterviewPage from "./InterviewPage/InterviewPage";
 import { Routes, Route } from "react-router-dom";
 import CreateJobPosition from "./Dashboard/CreateJobPosition/CreateJobPosition";
 import ShareInterview from "./Dashboard/ShareInterview/ShareInterview";
+import Candidates from "./Dashboard/Candidates/Candidates";
 
 function Main() {
   return (
@@ -27,8 +27,8 @@ function Main() {
         ></Route>
 
         <Route
-          path="/dashboard/position/:id"
-          element={<SinglePositionView />}
+          path="/dashboard/position/:title/:id"
+          element={<Candidates />}
         ></Route>
 
         <Route path="/interview" element={<InterviewPage />}></Route>

@@ -226,4 +226,19 @@ router.get("/getCandidate/:id", async (req, res) => {
   }
 });
 
+router.get("/updateCandidateInterviewStatus/:id", async (req, res, next) => {
+  try {
+    const candidate = await Candidate.findByPk(req.params.id);
+    console.log("CANDIDATE", candidate);
+    res.send(
+      await candidate.update({
+        status: true,
+        interviewedAt: new Date(),
+      })
+    );
+  } catch (error) {
+    next(error);
+  }
+});
+
 module.exports = router;

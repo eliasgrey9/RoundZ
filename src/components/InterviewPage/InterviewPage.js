@@ -15,7 +15,7 @@ const InterviewPage = () => {
   const [allowNextQuestion, setAllowNextQuestion] = useState(false);
   const [fileName, setFileName] = useState("");
   const [questionId, setQuestionId] = useState(0);
-  const [candidate, setCandidate] = useState([]);
+  const [candidateId, setCandiateId] = useState(0);
 
   useEffect(() => {
     const renderPositionData = async () => {
@@ -25,7 +25,14 @@ const InterviewPage = () => {
       setPositionData(response.data);
       setQuestions(response.data.questions);
     };
+    const getCandidateId = async () => {
+      const response = await axios.get(
+        `http://localhost:8080/api/jobs/getCandidateId/${inviteId}`
+      );
+      setCandiateId(response.data[0].id);
+    };
 
+    getCandidateId();
     renderPositionData();
   }, [positionId, inviteId]);
 
@@ -48,8 +55,16 @@ const InterviewPage = () => {
   const submitAnswerBtn = () => {
     setAllowNextQuestion(true);
   };
-
-  console.log("questions", questions);
+  const updateCandidateInterviewStatus = async () => {
+    const response = await axios.get(
+      `http://localhost:8080/api/jobs/updateCandidateInterviewStatus/${candidateId}`
+    );
+    console.log("RESPONSE", response);
+  };
+  //   Activates a request to update the candidate to complete status along with current time
+  if (!questions.length) {
+    updateCandidateInterviewStatus();
+  }
 
   return (
     <div>
@@ -70,11 +85,7 @@ const InterviewPage = () => {
         positionId={positionId}
       />
 
-      <UploadMediaHandler
-        questionId={questionId}
-        candidateId={candidate}
-        positionId={positionId}
-      />
+      <UploadMediaHandler questionId={questionId} positionId={positionId} />
     </div>
   );
 };
