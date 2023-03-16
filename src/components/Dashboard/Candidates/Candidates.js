@@ -3,12 +3,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import style from "./candidates.module.css";
 import Navbar from "../Navbar/Navbar";
-import { Link } from "react-router-dom";
-import { MdArrowBackIosNew } from "react-icons/md";
 import AllCandidates from "./AllCandidates";
 import SingleCandidate from "./SingleCandidate";
 import ReviewAnswer from "./ReviewAnswer";
-import { current } from "@reduxjs/toolkit";
 
 const Candidates = () => {
   const params = useParams();

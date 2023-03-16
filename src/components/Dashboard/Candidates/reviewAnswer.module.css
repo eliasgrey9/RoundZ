@@ -34,6 +34,9 @@
 .backBtn:hover {
   cursor: pointer;
 }
+.backBtn:hover {
+  cursor: pointer;
+}
 
 .heading {
   font-family: "Lato";
@@ -49,5 +52,32 @@
 
 .mediaPlayerContainer {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.btnContainer {
+  display: flex;
+  justify-content: flex-end;
+  width: 36%;
+}
+.nextBtn {
+  width: 140px;
+  height: 50px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  color: #00a99f;
+  background-color: white;
+  border: 2px solid #00a99f;
+  border-radius: 40px;
+  margin-top: 50px;
+}
+.nextBtn:hover {
+  cursor: pointer;
 }

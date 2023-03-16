@@ -2,6 +2,7 @@ import React from "react";
 import style from "./reviewAnswer.module.css";
 import MediaPlayer from "./MediaPlayer";
 import { MdArrowBackIosNew } from "react-icons/md";
+import { MdOutlineArrowForwardIos } from "react-icons/md";
 
 const ReviewAnswer = ({ answer, displaySingleCandidate, onNext }) => {
   return (
@@ -20,8 +21,11 @@ const ReviewAnswer = ({ answer, displaySingleCandidate, onNext }) => {
         <div className={style.mediaPlayer}>
           <MediaPlayer S3Url={answer.answer} />
         </div>
-        <div>
-          <button onClick={onNext}>Next</button>
+        <div className={style.btnContainer}>
+          <button className={style.nextBtn} onClick={onNext}>
+            Next
+            <MdOutlineArrowForwardIos />
+          </button>
         </div>
       </div>
     </>

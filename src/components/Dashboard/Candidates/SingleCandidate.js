@@ -1,7 +1,6 @@
 import React from "react";
 import style from "./singleCandidate.module.css";
 import arrowForward from "../../../assets/arrowForward.svg";
-import { Link } from "react-router-dom";
 import { MdArrowBackIosNew } from "react-icons/md";
 
 const SingleCandidate = ({
@@ -11,6 +10,7 @@ const SingleCandidate = ({
   questions,
   displayAllCandidates,
 }) => {
+  console.log(selectedCandidate.name);
   return (
     <>
       <div className={style.section1}>
@@ -19,7 +19,7 @@ const SingleCandidate = ({
             <MdArrowBackIosNew />
             Back
           </button>
-          <div className={style.heading}>{params.title}</div>
+          <div className={style.heading}>{selectedCandidate.name}</div>
         </div>
       </div>
       <div className={style.listContainer}>
@@ -39,7 +39,10 @@ const SingleCandidate = ({
               >
                 <div>{q.question}</div>
                 <div onClick={() => playAnswerToQuestion(i)}>
-                  <img src={arrowForward}></img>
+                  <img
+                    className={style.selectQuestion}
+                    src={arrowForward}
+                  ></img>
                 </div>
               </div>
             </div>

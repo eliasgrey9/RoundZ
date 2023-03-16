@@ -51,7 +51,11 @@ const AllCandidates = ({
                 style.selectCandidate)
               }
               onClick={() => {
-                renderCandidate(candidate.id);
+                if (candidate.status) {
+                  renderCandidate(candidate.id);
+                } else {
+                  console.log("They haven't finished their interview!");
+                }
               }}
             >
               <img

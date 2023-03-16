@@ -11,7 +11,7 @@ const MediaPlayer = ({ S3Url }) => {
   console.log(url);
   return (
     <div>
-      <video src={url} controls autoPlay loop />
+      <video src={url} controls autoPlay />
     </div>
   );
 };

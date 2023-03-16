@@ -103,6 +103,10 @@
   cursor: pointer;
 }
 
+.backBtn:hover {
+  cursor: pointer;
+}
+
 .heading {
   font-family: "Lato";
   font-style: normal;
@@ -113,4 +117,8 @@
   align-items: center;
   text-align: center;
   color: #010c15;
+}
+
+.selectQuestion:hover {
+  cursor: pointer;
 }
