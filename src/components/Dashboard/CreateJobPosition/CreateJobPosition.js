@@ -138,6 +138,7 @@ const CreateJobPosition = () => {
             currentQuestionVal={currentQuestionVal}
             currentQuestionInputValue={currentQuestionInputValue}
             showSaveAndPublishForm={showSaveAndPublishForm}
+            questionArray={questionArray}
           />
         ) : null}
 

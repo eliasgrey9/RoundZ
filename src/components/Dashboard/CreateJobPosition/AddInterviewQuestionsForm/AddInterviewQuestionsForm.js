@@ -7,6 +7,7 @@ const AddInterviewQuestionsForm = ({
   currentQuestionInputValue,
   title,
   showSaveAndPublishForm,
+  questionArray,
 }) => {
   return (
     <div className={style.body}>
@@ -15,7 +16,9 @@ const AddInterviewQuestionsForm = ({
           <div className={style.colorCircle}></div>
           <div>{title}</div>
         </div>
-        <div className={style.inputLabel}>Add Question:</div>
+        <div className={style.inputLabel}>
+          Question # {questionArray.length + 1}
+        </div>
         <div>
           <input
             className={style.questionInput}
