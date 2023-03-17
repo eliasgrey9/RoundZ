@@ -3,6 +3,7 @@ import style from "./allCandidates.module.css";
 import arrowForward from "../../../assets/arrowForward.svg";
 import { Link } from "react-router-dom";
 import { MdArrowBackIosNew } from "react-icons/md";
+import { BsClockHistory } from "react-icons/bs";
 
 const AllCandidates = ({
   candidates,
@@ -58,13 +59,24 @@ const AllCandidates = ({
                 }
               }}
             >
-              <img
-                className={
-                  (i % 2 ? style.rowColor1 : style.rowColor2,
-                  style.selectCandidate)
-                }
-                src={arrowForward}
-              ></img>
+              {candidate.status ? (
+                <img
+                  className={
+                    (i % 2 ? style.rowColor1 : style.rowColor2,
+                    style.selectCandidate)
+                  }
+                  src={arrowForward}
+                ></img>
+              ) : (
+                <div
+                  className={
+                    (i % 2 ? style.rowColor1 : style.rowColor2,
+                    style.selectCandidate)
+                  }
+                >
+                  <BsClockHistory className={style.pendingClock} />
+                </div>
+              )}
             </div>
           </div>
         ))}

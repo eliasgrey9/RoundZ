@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./addInterviewQuestionsForm.module.css";
+import { FaPlus } from "react-icons/fa";
 
 const AddInterviewQuestionsForm = ({
   updateQuestionArray,
@@ -19,22 +20,21 @@ const AddInterviewQuestionsForm = ({
         <div className={style.inputLabel}>
           Question # {questionArray.length + 1}
         </div>
-        <div>
+        <div className={style.questionAndBtn}>
           <input
             className={style.questionInput}
             onChange={currentQuestionVal}
             value={currentQuestionInputValue}
           />
+          <button
+            className={style.addNextQuestionBtn}
+            onClick={updateQuestionArray}
+          >
+            <FaPlus />
+          </button>
         </div>
       </form>
       <div className={style.buttonsBelowForm}>
-        <button
-          className={style.addNextQuestionBtn}
-          onClick={updateQuestionArray}
-        >
-          Add Question
-        </button>
-
         <button
           onClick={showSaveAndPublishForm}
           className={style.finishQuestionsBtn}
