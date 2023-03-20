@@ -45,6 +45,7 @@ const ShareInterview = () => {
 
     const dynamicLink = `http://localhost:3000/interview?inviteId=${randomString}&positionId=${params.id}`;
 
+    
     if (formData.email !== "" && formData.name !== "") {
       emailjs.init(emailjsKey);
 
@@ -93,6 +94,7 @@ const ShareInterview = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     generateString(15);
   };
+
   const updateInvitations = (response) => {
     const updatedInvites = {
       ...dataFromApi,
@@ -110,6 +112,8 @@ const ShareInterview = () => {
     };
     renderSinglePosition();
   }, [params.id]);
+
+  console.log("formData", formData);
 
   return (
     <form ref={myForm} onSubmit={handleSubmit}>
