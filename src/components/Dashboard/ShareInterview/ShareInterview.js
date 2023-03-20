@@ -3,12 +3,18 @@ import emailjs from "@emailjs/browser";
 import axios from "axios";
 import style from "./shareInterview.module.css";
 import { useParams } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
+import { MdArrowBackIosNew } from "react-icons/md";
+import { FaPlus } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import Confetti from "react-confetti";
+
 const emailjsKey = process.env.REACT_APP_EMAILJS_KEY;
 const uuidv4 = require("uuid/v4");
 
 const ShareInterview = () => {
   const [formData, setFormData] = useState({ email: "", name: "" });
-  const [linkSent, setLinkSent] = useState(false);
+  const [bulkEmailRequest, setBulkEmailRequest] = useState(false);
   const [randomString, setRandomString] = useState("");
   const [dataFromApi, setDataFromApi] = useState({});
   const [bulkEmailArray, setBulkEmailArray] = useState([]);
@@ -78,7 +84,7 @@ const ShareInterview = () => {
           }
         })
         .then(function () {
-          setLinkSent(true);
+          setBulkEmailRequest(true);
         })
         .then(function () {
           generateString(15);
@@ -94,6 +100,8 @@ const ShareInterview = () => {
           console.error("Failed to send email: " + error);
         });
     });
+
+    setBulkEmailArray([]);
   };
 
   //Sets the values of the input fields for the handleSubmit fn to grab
@@ -119,8 +127,6 @@ const ShareInterview = () => {
     renderSinglePosition();
   }, [params.id]);
 
-  console.log("BulkEmailArray", bulkEmailArray);
-
   const updateEmailArray = (e) => {
     e.preventDefault();
     if (formData.email !== "" && formData.name !== "") {
@@ -128,36 +134,84 @@ const ShareInterview = () => {
       updateEmailArray.push({ name: formData.name, email: formData.email });
       setBulkEmailArray(updateEmailArray);
       setFormData({ email: "", name: "" });
+      setBulkEmailRequest(false);
     }
   };
 
   return (
     <>
-      <form ref={myForm} onSubmit={updateEmailArray}>
-        {linkSent && <p>Link sent to your email!</p>}
-        <input
-          type="text"
-          name="name"
-          placeholder="Recipients name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Recipients email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <button type="submit">+</button>
-        <button onClick={handleSubmit}>Send invites</button>
-      </form>
-      <div>
-        {bulkEmailArray.map((e) => (
-          <div key={uuidv4()}>
-            Name:{e.name}Email{e.email}
+      <div className={style.body}>
+        <Navbar />
+        <div className={style.section1}>
+          <div className={style.buttonAndHeading}>
+            <Link to={"/dashboard"}>
+              <button className={style.backToDashboardBtn}>
+                <MdArrowBackIosNew />
+                Dashboard
+              </button>
+            </Link>
+
+            <div className={style.heading}>Share Position</div>
           </div>
-        ))}
+        </div>
+        <div className={style.section2}>
+          <form className={style.form} ref={myForm} onSubmit={updateEmailArray}>
+            <div>
+              <input
+                className={style.inputs}
+                type="text"
+                name="name"
+                placeholder="Recipients name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+            </div>
+            <div>
+              <input
+                className={style.inputs}
+                type="email"
+                name="email"
+                placeholder="Recipients email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+            </div>
+
+            <button className={style.plusBtn} type="submit">
+              <FaPlus />
+            </button>
+          </form>
+          {!bulkEmailRequest ? (
+            <div className={style.emailList}>
+              {bulkEmailArray.map((e, i) => (
+                <div
+                  className={i % 2 ? style.rowColor1 : style.rowColor2}
+                  key={uuidv4()}
+                >
+                  <div className={i % 2 ? style.rowColor1 : style.rowColor2}>
+                    {e.name}
+                  </div>
+                  <div className={i % 2 ? style.rowColor1 : style.rowColor2}>
+                    {e.email}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className={style.invitationConfirmation}>
+              Your candidates have been invited!
+              <Confetti numberOfPieces={1000} recycle={false} />
+            </div>
+          )}
+
+          <div className={style.invitesBtnSection}>
+            {bulkEmailArray.length ? (
+              <button className={style.sendInvitesBtn} onClick={handleSubmit}>
+                Send invites
+              </button>
+            ) : null}
+          </div>
+        </div>
       </div>
     </>
   );

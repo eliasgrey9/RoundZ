@@ -1,0 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap");
+
+.body {
+  height: 1500px;
+  width: 100%;
+}
+
+.section1 {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background: #fcfcfc;
+  box-shadow: 7px 8px 11px 4px rgba(186, 183, 183, 0.2);
+  margin-bottom: 50px;
+}
+
+.buttonAndHeading {
+  display: flex;
+  width: 73%;
+  justify-content: space-evenly;
+}
+
+.heading {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 43px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #010c15;
+}
+
+.backToDashboardBtn {
+  width: 179px;
+  height: 56px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  text-align: center;
+  color: #00a99f;
+  background-color: white;
+  border: 2px solid #00a99f;
+  border-radius: 40px;
+}
+.backToDashboardBtn:hover {
+  cursor: pointer;
+}
+
+.section2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form {
+  width: 60%;
+  height: 100px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.inputs {
+  box-sizing: border-box;
+  width: 350px;
+  height: 50px;
+  border: 1px solid #010c15;
+  border-radius: 12px;
+  font-size: 20px;
+  padding: 10px;
+}
+
+.plusBtn {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  border-radius: 30px;
+  border: none;
+  color: white;
+  background-color: #00a99f;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.plusBtn:hover {
+  cursor: pointer;
+}
+
+.invitesBtnSection {
+  display: flex;
+  justify-content: flex-end;
+  width: 56%;
+}
+
+.sendInvitesBtn {
+  width: 220px;
+  height: 50px;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 29px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #00a99f;
+  border-radius: 40px;
+  color: #f6f6f6;
+  border: none;
+}
+.sendInvitesBtn:hover {
+  cursor: pointer;
+}
+
+.emailList {
+  display: flex;
+  height: auto;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+  margin-bottom: 50px;
+}
+
+.rowColor1 {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  justify-content: space-evenly;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  height: 60px;
+  background-color: #f6f6f6;
+  padding-right: 20px;
+}
+.rowColor2 {
+  align-items: center;
+  display: flex;
+  width: 60%;
+  justify-content: space-evenly;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  height: 60px;
+  background: #fcfcfc;
+  padding-right: 20px;
+}
+
+.invitationConfirmation {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  margin-top: 50px;
+}
