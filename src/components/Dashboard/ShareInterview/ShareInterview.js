@@ -142,17 +142,15 @@ const ShareInterview = () => {
     <>
       <div className={style.body}>
         <Navbar />
-        <div className={style.section1}>
-          <div className={style.buttonAndHeading}>
-            <Link to={"/dashboard"}>
-              <button className={style.backToDashboardBtn}>
-                <MdArrowBackIosNew />
-                Dashboard
-              </button>
-            </Link>
+        <div className={style.buttonAndHeading}>
+          <Link to={"/dashboard"}>
+            <button className={style.backToDashboardBtn}>
+              <MdArrowBackIosNew />
+              Dashboard
+            </button>
+          </Link>
 
-            <div className={style.heading}>Share Position</div>
-          </div>
+          <div className={style.heading}>Share Position</div>
         </div>
         <div className={style.section2}>
           <form className={style.form} ref={myForm} onSubmit={updateEmailArray}>
@@ -188,7 +186,13 @@ const ShareInterview = () => {
                   className={i % 2 ? style.rowColor1 : style.rowColor2}
                   key={uuidv4()}
                 >
-                  <div className={i % 2 ? style.rowColor1 : style.rowColor2}>
+                  <div
+                    className={
+                      i % 2 === 0
+                        ? style.rowColor2 + " " + style.inputName
+                        : style.rowColor1 + " " + style.inputName
+                    }
+                  >
                     {e.name}
                   </div>
                   <div className={i % 2 ? style.rowColor1 : style.rowColor2}>
