@@ -1,12 +1,12 @@
-.hamburger-menu {
+.hamburgerMenu {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 140px;
+  height: 45%;
   position: absolute;
 }
 
-.hamburger-menu-icon {
+.hamburgerMenuIcon {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,10 +22,9 @@
   color: white;
   margin: 3px 0;
   transition: height 3s;
-  /* position: absolute; */
 }
 
-.hamburger-menu-links {
+.hamburgerMenuLinks {
   padding-top: 10px;
   display: flex;
   flex-direction: column;
@@ -36,18 +35,20 @@
   transition: height 0.7s;
   font-size: 15px;
 }
-.hamburger-menu-links a:hover {
+.hamburgerMenuLinks a:hover {
   text-decoration: lightgray underline 1px;
+  color: white;
 }
 
-.hamburger-menu-links.open {
+.hamburgerMenuLinks.open {
   gap: 3.5px;
   height: 260px;
   width: auto;
   font-size: 15px;
+  color: white;
 }
 
-a {
+.a {
   text-decoration: none;
   color: white;
 }

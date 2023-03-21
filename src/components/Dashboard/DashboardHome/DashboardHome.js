@@ -10,42 +10,40 @@ const DashboardHome = () => {
   const [status, setStatus] = useState(true);
 
   return (
-    <div className="dashboardBody">
+    <div>
       <Navbar />
-      <div>
-        <div className={style.section1}>
-          <div className={style.leftSideSection1}>
-            <div className={style.heading}>My Dashboard</div>
+      <div className={style.dashboardControls}>
+        <div className={style.leftSideDashboardControls}>
+          <div className={style.heading}>My Dashboard</div>
 
-            <div>
-              <div className={style.statusLinks}>
-                <div
-                  className={status === true ? style.underLineActive : null}
-                  onClick={() => setStatus(true)}
-                >
-                  Active Interviews
-                </div>
+          <div>
+            <div className={style.statusLinks}>
+              <div
+                className={status === true ? style.underLineActive : null}
+                onClick={() => setStatus(true)}
+              >
+                Active Interviews
+              </div>
 
-                <div
-                  className={status === false ? style.underLineActive : null}
-                  onClick={() => setStatus(false)}
-                >
-                  Closed Interviews
-                </div>
+              <div
+                className={status === false ? style.underLineActive : null}
+                onClick={() => setStatus(false)}
+              >
+                Closed Interviews
               </div>
             </div>
           </div>
-          <div>
-            <Link to={"/dashboard/createJobPosition"}>
-              <button className={style.createBtn}>
-                <TbPlus />
-                <div>Create</div>
-              </button>
-            </Link>
-          </div>
         </div>
-        {status ? <ActivePositions /> : <ClosedPositions />}
+        <div className={style.rightSideDashboardControls}>
+          <Link to={"/dashboard/createJobPosition"}>
+            <button className={style.createBtn}>
+              <TbPlus />
+              <div>Create</div>
+            </button>
+          </Link>
+        </div>
       </div>
+      {status ? <ActivePositions /> : <ClosedPositions />}
     </div>
   );
 };

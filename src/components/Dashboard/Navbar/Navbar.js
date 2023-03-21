@@ -22,40 +22,38 @@ const Navbar = () => {
     <div className={style.body}>
       <div className={style.logo}>RoundZ</div>
 
-      <div className={style.lgScreen}>
-        <div className={style.navLinks}>
-          <div>
-            <Link to={"/dashboard"}>
-              <a
-                onClick={underlineDashboardNavLink}
-                className={
-                  isDashboardLinkClicked ? style.highlightActive : style.navLink
-                }
-              >
-                Dashboard
-              </a>
-            </Link>
-          </div>
-          <div>
+      <div className={style.navLinks}>
+        <div>
+          <Link to={"/dashboard"}>
             <a
-              onClick={underlineHelpNavLink}
+              onClick={underlineDashboardNavLink}
               className={
-                isHelpLinkClicked ? style.highlightActive : style.navLink
+                isDashboardLinkClicked ? style.highlightActive : style.navLink
               }
             >
-              Help
+              Dashboard
             </a>
-          </div>
-          <div>
-            <a
-              onClick={underlineAccountNavLink}
-              className={
-                isAccountLinkClicked ? style.highlightActive : style.navLink
-              }
-            >
-              Account
-            </a>
-          </div>
+          </Link>
+        </div>
+        <div>
+          <a
+            onClick={underlineHelpNavLink}
+            className={
+              isHelpLinkClicked ? style.highlightActive : style.navLink
+            }
+          >
+            Help
+          </a>
+        </div>
+        <div>
+          <a
+            onClick={underlineAccountNavLink}
+            className={
+              isAccountLinkClicked ? style.highlightActive : style.navLink
+            }
+          >
+            Account
+          </a>
         </div>
       </div>
 

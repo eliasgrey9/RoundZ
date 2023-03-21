@@ -4,34 +4,26 @@
   display: flex;
   align-items: center;
   margin: 0;
-  color: white;
   height: 100px;
   width: 100%;
   border-bottom: 1px solid #aaaaaa;
 }
 
-.lgScreen {
-  display: flex;
-  justify-content: space-evenly;
-  height: auto;
-  width: 1000px;
-}
-
 .logo {
-  width: 60%;
-  height: 24px;
+  width: 70%;
+  height: 25%;
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 24px;
   color: #00a99f;
-  margin-left: 150px;
+  margin-left: 5%;
 }
 
 .navLinks {
   display: flex;
-  width: 10%;
+  width: 30%;
   gap: 30px;
   color: black;
   font-family: "Lato";
@@ -57,43 +49,10 @@
   cursor: pointer;
 }
 
-.signUpIn {
-  width: 25%;
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 400;
+.highlightActive {
   font-size: 15px;
-}
 
-.signUpLink {
-  text-decoration: none;
-  color: black;
-}
-
-.signUpLink:hover {
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.signInBtn {
-  border-radius: 24px;
-  border: 2px solid black;
-  padding: 6px 20px 6px 20px;
-  width: 80px;
-  text-align: center;
-  text-decoration: none;
-  color: black;
-}
-
-.signInBtn:hover {
-  background-color: white;
-  color: black;
-  cursor: pointer;
+  color: #00a99f;
 }
 
 .hamburgerScreen {
@@ -101,7 +60,7 @@
   justify-content: flex-end;
   height: auto;
   font-size: large;
-  color: white;
+  color: black;
   display: none;
 }
 
@@ -114,18 +73,17 @@
 }
 
 /* responsive, form small screens, use 13px font size */
-@media (max-width: 1430px) {
+@media (max-width: 390px) {
   .body {
     display: flex;
-    justify-content: space-between;
-    width: 83%;
   }
   .logo {
     font-size: 22px;
   }
-  .lgScreen {
+  .navLinks {
     display: none;
   }
+
   .hamburgerScreen {
     display: block;
   }
@@ -133,10 +91,8 @@
     display: block;
   }
 }
-.highlightActive {
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 15px;
-  color: #00a99f;
+@media (max-width: 768px) {
+  .navLinks {
+    width: 50%;
+  }
 }

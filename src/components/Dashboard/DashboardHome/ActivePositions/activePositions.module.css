@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap");
+
 .body {
   height: auto;
   width: 100vw;
@@ -12,7 +14,7 @@
 }
 
 .positionCard {
-  width: 450px;
+  width: 400px;
   height: 250px;
   background: #ffffff;
   box-shadow: 4px 6px 7px -1px rgba(0, 0, 0, 0.25);
@@ -105,4 +107,41 @@
 }
 .shareBtn:hover {
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .positionCard {
+    width: 300px;
+    height: 200px;
+    display: flex;
+  }
+
+  .cardTitle {
+    height: 38px;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    color: #010c15;
+  }
+
+  .viewInterviewDetails {
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #aaaaaa;
+    height: 38px;
+  }
+
+  .viewInterviewDetails:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .invites {
+    display: none;
+  }
 }

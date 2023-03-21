@@ -9,27 +9,23 @@ const HamburgerMenu = () => {
   };
 
   return (
-    <div className="hamburger-menu">
-      <div className="hamburger-menu-icon" onClick={handleMenuClick}>
-        <div className={`line ${isOpen ? "open" : ""}`}></div>
-        <div className={`line ${isOpen ? "open" : ""}`}></div>
-        <div className={`line ${isOpen ? "open" : ""}`}></div>
+    <div className={style.hamburgerMenu}>
+      <div className={style.hamburgerMenuIcon} onClick={handleMenuClick}>
+        <div className={`${style.line} ${isOpen ? style.open : ""}`}></div>
+        <div className={`${style.line} ${isOpen ? style.open : ""}`}></div>
+        <div className={`${style.line} ${isOpen ? style.open : ""}`}></div>
       </div>
-      <div className={`hamburger-menu-links ${isOpen ? "open" : ""}`}>
-        <a className={style.a} href="/">
-          Home
+      <div
+        className={`${style.hamburgerMenuLinks} ${isOpen ? style.open : ""}`}
+      >
+        <a className={style.a} href="/dashboard">
+          Dashboard
         </a>
-        <a className={style.a} href="/contact">
-          Contact
+        <a className={style.a} href="/help">
+          Help
         </a>
-        <a className={style.a} href="/about">
-          About
-        </a>
-        <a className={style.a} href="/signup">
-          Sign Up
-        </a>
-        <a className={style.a} href="/signin">
-          Sign In
+        <a className={style.a} href="/account">
+          Account
         </a>
       </div>
     </div>

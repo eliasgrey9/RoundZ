@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./hamburgerMenu.css";
+import style from "./hamburgerMenu.module.css";
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,18 +9,24 @@ const HamburgerMenu = () => {
   };
 
   return (
-    <div className="hamburger-menu">
-      <div className="hamburger-menu-icon" onClick={handleMenuClick}>
-        <div className={`line ${isOpen ? "open" : ""}`}></div>
-        <div className={`line ${isOpen ? "open" : ""}`}></div>
-        <div className={`line ${isOpen ? "open" : ""}`}></div>
+    <div className={style.hamburgerMenu}>
+      <div className={style.hamburgerMenuIcon} onClick={handleMenuClick}>
+        <div className={`${style.line} ${isOpen ? style.open : ""}`}></div>
+        <div className={`${style.line} ${isOpen ? style.open : ""}`}></div>
+        <div className={`${style.line} ${isOpen ? style.open : ""}`}></div>
       </div>
-      <div className={`hamburger-menu-links ${isOpen ? "open" : ""}`}>
-        <a href="/">Home</a>
-        <a href="/contact">Contact</a>
-        <a href="/about">About</a>
-        <a href="/signup">Sign Up</a>
-        <a href="/signin">Sign In</a>
+      <div
+        className={`${style.hamburgerMenuLinks} ${isOpen ? style.open : ""}`}
+      >
+        <a className={style.a} href="/dashboard">
+          Dashboard
+        </a>
+        <a className={style.a} href="/help">
+          Help
+        </a>
+        <a className={style.a} href="/account">
+          Account
+        </a>
       </div>
     </div>
   );
