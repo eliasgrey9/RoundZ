@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import "./interviewPage.css";
 import ScreenRecorder from "./ScreenRecorder";
 import UploadMediaHandler from "./UploadMediaHandler";
+import Navbar from "./Navbar/Navbar";
+import style from "./interviewPage.module.css";
+import Confetti from "react-confetti";
 
 const InterviewPage = () => {
   const location = useLocation();
@@ -68,24 +70,39 @@ const InterviewPage = () => {
 
   return (
     <div>
-      <div>
+      <Navbar />
+      <div className={style.questionSection}>
         {questions.length ? (
-          questions[0].question
+          <div className={style.questionHeading}>{questions[0].question}</div>
         ) : (
-          <div>That's all for now!</div>
+          <>
+            <Confetti recycle={false} />
+            <div className={style.congratulations}>Congratulations!</div>
+          </>
         )}
       </div>
-      <ScreenRecorder
-        allowNextQuestion={allowNextQuestion}
-        nextQuestionBtn={nextQuestionBtn}
-        submitAnswerBtn={submitAnswerBtn}
-        fileName={fileName}
-        inviteId={inviteId}
-        questionId={questionId}
-        positionId={positionId}
-      />
+      {questions.length ? (
+        <div className={style.recorderContainer}>
+          <ScreenRecorder
+            className={style.recorder}
+            allowNextQuestion={allowNextQuestion}
+            nextQuestionBtn={nextQuestionBtn}
+            submitAnswerBtn={submitAnswerBtn}
+            fileName={fileName}
+            inviteId={inviteId}
+            questionId={questionId}
+            positionId={positionId}
+          />
 
-      <UploadMediaHandler questionId={questionId} positionId={positionId} />
+          <UploadMediaHandler questionId={questionId} positionId={positionId} />
+        </div>
+      ) : (
+        <>
+          <div className={style.endOfInterviewMessage}>
+            Your interview has been submitted!
+          </div>
+        </>
+      )}
     </div>
   );
 };

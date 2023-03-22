@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap");
+
+.questionSection {
+  height: 150px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: #fcfcfc;
+  box-shadow: 7px 8px 11px 4px rgba(186, 183, 183, 0.2);
+  margin-bottom: 50px;
+}
+.questionHeading {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 43px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #010c15;
+}
+.recorderContainer {
+  display: flex;
+  flex-direction: column;
+  height: 1000px;
+}
+
+.screenAndControls {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+.recordBtn,
+.stopBtn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.recordBtn:hover,
+.stopBtn:hover {
+  cursor: pointer;
+}
+
+.stopAndRecordBtns {
+  display: flex;
+  width: 150px;
+  justify-content: space-evenly;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 400px;
+  height: 200px;
+}
+.nextSubmitBtn {
+  width: 200px;
+  height: 50px;
+  background: #00a99f;
+  border-radius: 30px;
+  border: none;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  color: #ffffff;
+}
+.nextSubmitBtn {
+  cursor: pointer;
+}
+
+.recorder {
+  width: 600px;
+  height: 400px;
+  background: #d9d9d9;
+  border-radius: 12px;
+}
+
+.congratulations {
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  color: #00a99f;
+}
+
+.endOfInterviewMessage {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+@media (max-width: 390px) {
+  .recorder {
+    width: 300px;
+    height: 300px;
+  }
+  .endOfInterviewMessage {
+    font-size: 20px;
+  }
+} ;

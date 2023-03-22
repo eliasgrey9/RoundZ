@@ -2,6 +2,9 @@ import React, { useRef, useEffect, useState } from "react";
 import { ReactMediaRecorder } from "react-media-recorder";
 import UploadMediaHandler from "./UploadMediaHandler";
 import { useLocation } from "react-router-dom";
+import style from "./interviewPage.module.css";
+import { BsFillCameraReelsFill } from "react-icons/bs";
+import { FaStop } from "react-icons/fa";
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -16,7 +19,7 @@ const VideoPreview = ({ stream }) => {
   if (!stream) {
     return null;
   }
-  return <video ref={videoRef} width={650} height={650} autoPlay controls />;
+  return <video className={style.recorder} ref={videoRef} autoPlay controls />;
 };
 
 const ScreenRecorder = ({
@@ -58,28 +61,48 @@ const ScreenRecorder = ({
           stopRecording,
           mediaBlobUrl,
         }) => (
-          <div>
+          <div className={style.screenAndControls}>
             {isUploaded ? <div>File successfully uploaded!</div> : null}
+            <div className={style.controls}>
+              <div className={style.stopAndRecordBtns}>
+                <button className={style.recordBtn} onClick={startRecording}>
+                  <BsFillCameraReelsFill />
+                </button>
+                <button className={style.stopBtn} onClick={stopRecording}>
+                  <FaStop />
+                </button>
+              </div>
+              <div className={style.nextSubmitBtn}>
+                {allowNextQuestion ? (
+                  <button
+                    className={style.nextSubmitBtn}
+                    onClick={nextQuestionBtn}
+                  >
+                    Next Question
+                  </button>
+                ) : (
+                  <button
+                    className={style.nextSubmitBtn}
+                    onClick={submitAnswerBtn}
+                  >
+                    Submit Answer
+                  </button>
+                )}
+              </div>
+            </div>
 
-            <p>{status}</p>
-            <button onClick={startRecording}>startRecording</button>
-            <button onClick={stopRecording}>stopRecording</button>
-            {allowNextQuestion ? (
-              <button onClick={nextQuestionBtn}>Next Question</button>
-            ) : (
-              <button onClick={submitAnswerBtn}>Submit Answer</button>
-            )}
-            {status === "recording" ? (
-              <VideoPreview stream={previewStream} />
-            ) : (
-              <video
-                width={650}
-                height={650}
-                src={mediaBlobUrl}
-                autoPlay
-                controls
-              ></video>
-            )}
+            <div>
+              {status === "recording" ? (
+                <VideoPreview stream={previewStream} />
+              ) : (
+                <video
+                  className={style.recorder}
+                  src={mediaBlobUrl}
+                  autoPlay
+                  controls
+                ></video>
+              )}
+            </div>
           </div>
         )}
       />
