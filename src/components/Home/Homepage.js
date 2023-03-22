@@ -6,6 +6,8 @@ import peopleIcon from "../../assets/people.svg";
 import thumbsUpIcon from "../../assets/thumbsUp.svg";
 import recordingIcon from "../../assets/recording.svg";
 import Footer from "../Footer/Footer";
+import noMoreSchedulingImg from "../../assets/noMoreScheduling.png";
+import moreCandidatesLessTime from "../../assets/moreCandidatesLessTime.png";
 
 const Homepage = () => {
   return (
@@ -84,11 +86,15 @@ const Homepage = () => {
                 nisi ut aliquip ex ea commodo consequat.
               </div>
             </div>
-            <div className={style.vsImage}></div>
+            <div className={style.vsImage}>
+              <img className={style.vsImage} src={noMoreSchedulingImg}></img>
+            </div>
           </div>
 
           <div className={style.visualSection}>
-            <div className={style.vsImage}></div>
+            <div className={style.vsImage}>
+              <img className={style.vsImage} src={moreCandidatesLessTime}></img>
+            </div>
 
             <div className={style.vsParagraph}>
               <div>
