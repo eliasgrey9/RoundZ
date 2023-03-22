@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useReactMediaRecorder } from "react-media-recorder";
+import style from "./reviewAnswer.module.css";
 
 const MediaPlayer = ({ S3Url }) => {
   useReactMediaRecorder({ video: true });
@@ -11,7 +12,7 @@ const MediaPlayer = ({ S3Url }) => {
   console.log(url);
   return (
     <div>
-      <video src={url} controls autoPlay />
+      <video className={style.mediaPlayer} src={url} controls autoPlay />
     </div>
   );
 };

@@ -113,7 +113,7 @@
   border: 2px solid #00a99f;
   border-radius: 40px;
 }
-.backdBtn:hover {
+.backBtn:hover {
   cursor: pointer;
 }
 .selectQuestion:hover {

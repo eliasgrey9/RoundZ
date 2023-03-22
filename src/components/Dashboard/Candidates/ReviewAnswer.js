@@ -7,19 +7,17 @@ import { MdOutlineArrowForwardIos } from "react-icons/md";
 const ReviewAnswer = ({ answer, displaySingleCandidate, onNext }) => {
   return (
     <>
-      <div className={style.section1}>
-        <div className={style.buttonAndHeading}>
-          <button onClick={displaySingleCandidate} className={style.backBtn}>
-            <MdArrowBackIosNew />
-            Back
-          </button>
-          <div className={style.heading}>{answer.question.question}</div>
-        </div>
+      <div className={style.buttonAndHeading}>
+        <button onClick={displaySingleCandidate} className={style.backBtn}>
+          <MdArrowBackIosNew />
+          Back
+        </button>
+        <div className={style.heading}>{answer.question.question}</div>
       </div>
 
       <div className={style.mediaPlayerContainer}>
         <div className={style.mediaPlayer}>
-          <MediaPlayer S3Url={answer.answer} />
+          <MediaPlayer className={style.mediaPlayer} S3Url={answer.answer} />
         </div>
         <div className={style.btnContainer}>
           <button className={style.nextBtn} onClick={onNext}>
