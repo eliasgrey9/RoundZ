@@ -4,23 +4,19 @@
   height: 1500px;
 }
 
-.section1 {
+.buttonAndHeading {
   height: 150px;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
   background: #fcfcfc;
   box-shadow: 7px 8px 11px 4px rgba(186, 183, 183, 0.2);
   margin-bottom: 50px;
 }
 
-.buttonAndHeading {
-  display: flex;
-  width: 73%;
-  justify-content: space-evenly;
-}
-
 .heading {
+  width: 50%;
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
@@ -58,7 +54,11 @@
   justify-content: center;
   align-items: center;
 }
-/*START OF CREATE JOB FORM*/
 
-/*END OF CREATE JOB FORM*/
-
+@media (max-width: 390px) {
+  .buttonAndHeading {
+    display: flex;
+    flex-direction: column;
+    height: 250px;
+  }
+}

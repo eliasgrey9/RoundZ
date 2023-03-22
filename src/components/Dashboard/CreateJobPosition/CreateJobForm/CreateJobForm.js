@@ -20,8 +20,10 @@ const CreateJobForm = ({
             Next
           </button>
         </div>
+
         <div className={style.inputLabel}>Job Title</div>
         <input
+          maxlength="28"
           className={style.titleInput}
           value={title}
           onChange={updateTitle}

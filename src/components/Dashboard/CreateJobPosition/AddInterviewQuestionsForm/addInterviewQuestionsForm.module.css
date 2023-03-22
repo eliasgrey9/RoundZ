@@ -1,4 +1,4 @@
-.addQuestionsForm {
+.form {
   box-sizing: border-box;
   width: 823px;
   height: 275px;
@@ -100,4 +100,36 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+}
+
+@media(max-width:768px) {
+  .form {
+    width: 600px;
+    height: 300px;
+  }
+  .inputLabel {
+    width: 450px;
+  }
+
+  .questionInput {
+    width:450px;
+  }
+}
+
+@media (max-width: 390px) {
+  .form {
+    width: 350px;
+    height: 375px;
+  }
+  .inputLabel {
+    width: 300px;
+  }
+
+  .questionInput {
+    width: 300px;
+  }
+  .questionAndBtn {
+    flex-direction: column;
+    height: 250px;
+  }
 }

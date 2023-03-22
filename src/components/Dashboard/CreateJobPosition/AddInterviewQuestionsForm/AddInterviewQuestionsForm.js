@@ -12,7 +12,7 @@ const AddInterviewQuestionsForm = ({
 }) => {
   return (
     <div className={style.body}>
-      <form className={style.addQuestionsForm}>
+      <form className={style.form}>
         <div className={style.formHeading}>
           <div className={style.colorCircle}></div>
           <div>{title}</div>

@@ -108,7 +108,6 @@ const CreateJobPosition = () => {
   return (
     <div className={style.body}>
       <Navbar />
-      <div className={style.section1}>
         <div className={style.buttonAndHeading}>
           <Link to={"/dashboard"}>
             <button className={style.backToDashboardBtn}>
@@ -119,7 +118,6 @@ const CreateJobPosition = () => {
 
           <div className={style.heading}>{liquidHeading}</div>
         </div>
-      </div>
       <div className={style.section2}>
         {isActiveFormCreateJobPosition ? (
           <CreateJobForm
