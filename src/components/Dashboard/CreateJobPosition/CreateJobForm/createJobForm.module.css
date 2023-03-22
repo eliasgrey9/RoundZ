@@ -113,8 +113,8 @@
 
 @media (max-width: 390px) {
   .form {
-    width: 340px;
-    height: 600px;
+    width: 360px;
+    height: 550px;
   }
   .inputLabel {
     width: 300px;
@@ -147,5 +147,4 @@
     font-size: 16px;
     color: #aaaaaa;
   }
-
 }

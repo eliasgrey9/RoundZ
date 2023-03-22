@@ -14,16 +14,14 @@ const AllCandidates = ({
 }) => {
   return (
     <div>
-      <div className={style.section1}>
-        <div className={style.buttonAndHeading}>
-          <Link to={"/dashboard"}>
-            <button className={style.backToDashboardBtn}>
-              <MdArrowBackIosNew />
-              Dashboard
-            </button>
-          </Link>
-          <div className={style.heading}>{params.title}</div>
-        </div>
+      <div className={style.buttonAndHeading}>
+        <Link to={"/dashboard"}>
+          <button className={style.backToDashboardBtn}>
+            <MdArrowBackIosNew />
+            Dashboard
+          </button>
+        </Link>
+        <div className={style.heading}>{params.title}</div>
       </div>
 
       <div className={style.candidatesList}>
@@ -33,10 +31,14 @@ const AllCandidates = ({
             key={candidate.id}
           >
             <div className={i % 2 ? style.rowColor1 : style.rowColor2}>
-              {candidate.name}
+              <div className={style.name}>{candidate.name}</div>
             </div>
             <div className={i % 2 ? style.rowColor1 : style.rowColor2}>
-              {candidate.status ? <div>Completed</div> : <div>Incomplete</div>}
+              {candidate.status ? (
+                <div className={style.status}>Completed</div>
+              ) : (
+                <div className={style.status}>Incomplete</div>
+              )}
             </div>
             <div className={i % 2 ? style.rowColor1 : style.rowColor2}>
               {candidate.interviewedAt === null ? (

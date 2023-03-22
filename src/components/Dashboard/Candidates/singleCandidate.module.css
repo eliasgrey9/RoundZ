@@ -45,13 +45,6 @@
   margin-bottom: 70px;
 }
 
-.heading {
-  font-size: 28px;
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-}
-
 .subHeading {
   font-size: 22px;
   font-family: "Lato";
@@ -66,24 +59,45 @@
   width: 100vw;
 }
 
-.section1 {
+.buttonAndHeading {
   height: 150px;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-around;
   background: #fcfcfc;
   box-shadow: 7px 8px 11px 4px rgba(186, 183, 183, 0.2);
   margin-bottom: 50px;
 }
 
-.buttonAndHeading {
+.heading {
+  width: 50%;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 43px;
   display: flex;
-  width: 73%;
-  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  color: #010c15;
+}
+
+.nameHeading {
+  width: 50%;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 43px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #010c15;
 }
 
 .backBtn {
-  width: 140px;
+  width: 179px;
   height: 56px;
   font-family: "Lato";
   font-style: normal;
@@ -99,26 +113,76 @@
   border: 2px solid #00a99f;
   border-radius: 40px;
 }
-.backBtn:hover {
+.backdBtn:hover {
   cursor: pointer;
 }
-
-.backBtn:hover {
-  cursor: pointer;
-}
-
-.heading {
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 43px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #010c15;
-}
-
 .selectQuestion:hover {
   cursor: pointer;
+}
+@media (max-width: 768px) {
+  .buttonAndHeading {
+    flex-direction: column;
+  }
+  .heading {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 28px;
+    width: 65%;
+  }
+  .subHeading {
+    width: 65%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .headingAndSubHeading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nameHeading {
+    width: 100%;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 43px;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 390px) {
+  .buttonAndHeading {
+    flex-direction: column;
+  }
+  .heading {
+    display: flex;
+    justify-content: center;
+    font-size: 24px;
+    width: 100%;
+  }
+  .subHeading {
+    width: 65%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .headingAndSubHeading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  .nameHeading {
+    width: 100%;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 43px;
+    display: flex;
+    justify-content: center;
+  }
 }

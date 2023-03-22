@@ -13,14 +13,15 @@ const SingleCandidate = ({
   console.log(selectedCandidate.name);
   return (
     <>
-      <div className={style.section1}>
-        <div className={style.buttonAndHeading}>
-          <button onClick={displayAllCandidates} className={style.backBtn}>
-            <MdArrowBackIosNew />
-            Back
-          </button>
-          <div className={style.heading}>{selectedCandidate.name}</div>
-        </div>
+      <div className={style.buttonAndHeading}>
+        <button
+          onClick={displayAllCandidates}
+          className={style.backBtn}
+        >
+          <MdArrowBackIosNew />
+          Back
+        </button>
+        <div className={style.nameHeading}>{selectedCandidate.name}</div>
       </div>
       <div className={style.listContainer}>
         <div className={style.headingAndSubHeading}>
