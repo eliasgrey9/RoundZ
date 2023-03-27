@@ -105,22 +105,15 @@
 }
 
 /* responsive, form small screens, use 13px font size */
-@media (max-width: 1430px) {
-  .body {
-    display: flex;
-    justify-content: space-between;
-    width: 83%;
-  }
-  .logo {
-    font-size: 22px;
-  }
-  .lgScreen {
-    display: none;
+
+@media (max-width: 1024px) {
+  .hamburgerMenu {
+    display: block;
   }
   .hamburgerScreen {
     display: block;
   }
-  .hamburgerMenu {
-    display: block;
+  .lgScreen {
+    display: none;
   }
 }

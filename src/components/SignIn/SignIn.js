@@ -39,7 +39,7 @@ const SignIn = () => {
           value="Sign In"
         ></input>
 
-        <div className={style.alreadyHaveAnAccount}>
+        <div className={style.needAnAccount}>
           Need an account?
           <div>
             <Link className={style.logIn} to={"/signUp"}>

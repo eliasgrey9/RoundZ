@@ -18,14 +18,20 @@ const HamburgerMenu = () => {
       <div
         className={`${style.hamburgerMenuLinks} ${isOpen ? style.open : ""}`}
       >
-        <a className={style.a} href="/dashboard">
-          Dashboard
+        <a className={style.a} href="/">
+          Home
         </a>
-        <a className={style.a} href="/help">
-          Help
+        <a className={style.a} href="/contact">
+          Contact
         </a>
-        <a className={style.a} href="/account">
-          Account
+        <a className={style.a} href="/about">
+          About
+        </a>
+        <a className={style.a} href="/signUp">
+          Sign Up
+        </a>{" "}
+        <a className={style.a} href="/signIn">
+          Sign In
         </a>
       </div>
     </div>

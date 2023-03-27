@@ -10,7 +10,7 @@ const DashboardHome = () => {
   const [status, setStatus] = useState(true);
 
   return (
-    <div>
+    <div className={style.body}>
       <Navbar />
       <div className={style.dashboardControls}>
         <div className={style.leftSideDashboardControls}>
@@ -22,14 +22,14 @@ const DashboardHome = () => {
                 className={status === true ? style.underLineActive : null}
                 onClick={() => setStatus(true)}
               >
-                Active Interviews
+                Active
               </div>
 
               <div
                 className={status === false ? style.underLineActive : null}
                 onClick={() => setStatus(false)}
               >
-                Closed Interviews
+                Closed
               </div>
             </div>
           </div>

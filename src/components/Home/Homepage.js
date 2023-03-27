@@ -80,10 +80,10 @@ const Homepage = () => {
                 <h1>No more scattered scheduling</h1>
               </div>
               <div>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat.
+                No need to schedule appointments with each candidate seeking the
+                job. The hiring manager can pose each interview question ahead
+                of time, and the invited applicants may provide their responses
+                at their convenience, like homework!.
               </div>
             </div>
             <div className={style.vsImage}>
@@ -92,7 +92,7 @@ const Homepage = () => {
           </div>
 
           <div className={style.visualSection}>
-            <div className={style.vsImage}>
+            <div>
               <img className={style.vsImage} src={moreCandidatesLessTime}></img>
             </div>
 

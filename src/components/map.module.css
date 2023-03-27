@@ -1,0 +1,47 @@
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 1000px;
+}
+.mapContainer {
+  height: 50%;
+  width: 50%;
+  margin-bottom: 20px;
+}
+canvas {
+  border: solid 1px black;
+}
+canvas path,
+circle,
+ellipse,
+svg {
+  display: none;
+}
+
+.mapContainer a {
+  display: none;
+}
+
+.mapContainer button {
+  display: none;
+}
+
+.mapViewAndExportBtn {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.styleBtns {
+  width: 50%;
+  margin-top: 50px;
+  display: flex;
+  border-radius: 40px;
+  border: none;
+  font-weight: 400;
+  font-size: 18px;
+  justify-content: space-evenly;
+}

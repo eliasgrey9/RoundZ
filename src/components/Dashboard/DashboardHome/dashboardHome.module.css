@@ -1,17 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap");
 
+.body {
+  width: 100%;
+  height: auto;
+}
+.dashboardControls {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 225px;
+  width: 100%;
+  background: #fcfcfc;
+  box-shadow: 7px 8px 11px 4px rgba(186, 183, 183, 0.2);
+  margin-bottom: 50px;
+}
 .heading {
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
   font-size: 35px;
-  margin-left: 150px;
 }
-.headingAndBtn {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
+
 .createBtn {
   width: 160px;
   height: 50px;
@@ -32,39 +42,21 @@
   cursor: pointer;
 }
 
-.dashboardControls {
-  height: 150px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #fcfcfc;
-  box-shadow: 7px 8px 11px 4px rgba(186, 183, 183, 0.2);
-  margin-bottom: 50px;
-}
-
 .leftSideDashboardControls {
-  height: 100%;
-  width: 50%;
+  height: 40%;
   display: flex;
-  justify-content: space-evenly;
-  align-items: flex-start;
   flex-direction: column;
+  align-items: space-between;
 }
 
-.rightSideDashboardControls {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 40%;
-}
+/* .rightSideDashboardControls {
+} */
 
 .statusLinks {
-  width: 275px;
   display: flex;
-  justify-content: space-between;
-  margin-left: 150px;
+  width: 100%;
+  margin-top: 20px;
+  justify-content: space-evenly;
   font-family: "Lato";
   font-style: normal;
   font-weight: 700;
@@ -90,41 +82,17 @@ form {
   display: flex;
   flex-direction: column;
 }
-
-@media (max-width: 390px) {
-  .heading {
-    margin-left: 0;
+@media (min-width: 768px) {
+  .dashboardControls {
+    flex-direction: row;
+    height: 160px;
+  }
+  .leftSideDashboardControls {
+    align-items: flex-start;
   }
   .statusLinks {
-    margin-left: 0;
-  }
-
-  .dashboardControls {
-    width: 100%;
-    height: 170px;
     display: flex;
-    flex-direction: column-reverse;
     justify-content: space-between;
-    align-items: center;
-  }
-
-  .leftSideDashboardControls {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: center;
-    width: 100%;
-  }
-
-  .rightSideDashboardControls {
-    display: flex;
-    margin: 0;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
-    width: 100%;
-  }
-  .createBtn {
-    margin: 0;
+    width: 120px;
   }
 }
