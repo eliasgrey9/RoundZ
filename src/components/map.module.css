@@ -44,4 +44,20 @@ svg {
   font-weight: 400;
   font-size: 18px;
   justify-content: space-evenly;
+  color: black;
+}
+.showHideBtns {
+  width: 160px;
+  height: 50px;
+  background: #00a99f;
+  border-radius: 40px;
+  border: none;
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  color: #f6f6f6;
 }

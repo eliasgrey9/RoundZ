@@ -3,6 +3,7 @@ import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import "@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css";
 import style from "./map.module.css";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 const Map = () => {
   const mapContainerRef = useRef(null);
@@ -11,20 +12,16 @@ const Map = () => {
     "mapbox://styles/eliasgrey9/clfpyxcqi000u01pdpa2lri29"
   );
   const [mapCenter, setMapCenter] = useState([-79.4512, 43.6568]);
+  console.log("mapCenter", mapCenter);
   const [mapZoom, setMapZoom] = useState(13);
 
   const [roadThickness, setRoadThickness] = useState(1);
   const [showRoad, setShowRoad] = useState(true);
 
-  const setRoadThicknessToSM = () => {
-    setRoadThickness(1);
-  };
-  const setRoadThicknessToMD = () => {
-    setRoadThickness(3);
-  };
-  const setRoadThicknessToLG = () => {
-    setRoadThickness(5);
-  };
+  const [labelFontSize, setLabelFontSize] = useState(12);
+  const [showLabels, setShowLabels] = useState(true);
+
+  const timers = useRef({ moveend: null, zoom: null });
 
   useEffect(() => {
     mapboxgl.accessToken =
@@ -35,7 +32,6 @@ const Map = () => {
       style: mapStyle,
       center: mapCenter,
       zoom: mapZoom,
-      labels: false,
     });
 
     map.on("load", () => {
@@ -52,46 +48,78 @@ const Map = () => {
         layout: {
           "line-join": "round",
           "line-cap": "round",
+          visibility: showRoad ? "visible" : "none",
         },
         paint: {
           "line-color": "#000",
           "line-width": roadThickness,
         },
-        // Set the layer to be visible by default
-        // You can remove this line if you want the layer to be hidden by default
+      });
+
+      map.addLayer({
+        id: "road-names",
+        type: "symbol",
+        source: {
+          type: "vector",
+          url: "mapbox://mapbox.mapbox-streets-v8",
+        },
+        "source-layer": "road",
         layout: {
-          visibility: showRoad ? "visible" : "none",
+          "text-field": "{name}",
+          "text-font": ["Open Sans Regular"],
+          "text-size": labelFontSize,
+          visibility: showLabels ? "visible" : "none",
+        },
+        paint: {
+          "text-color": "#000",
+          "text-halo-color": "#fff",
+          "text-halo-width": 1,
         },
       });
-    });
 
-    map.on("moveend", () => {
-      // Get the new center coordinates
-      const newCenter = map.getCenter().toArray();
-      // Update the state with the new center coordinates
-      setMapCenter(newCenter);
-    });
-    map.on("zoom", () => {
-      const newZoom = map.getZoom();
-      // Update the state with the new zoom level
-      setMapZoom(newZoom);
-    });
+      map.addControl(
+        new MapboxGeocoder({
+          accessToken: mapboxgl.accessToken,
+          mapboxgl: mapboxgl,
+        })
+      );
 
-    map.addControl(
-      new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl,
-      })
-    );
+      map.on("moveend", async () => {
+        clearTimeout(timers.current.moveend);
+        timers.current.moveend = setTimeout(() => {
+          // Get the new center coordinates
+          const newCenter = map.getCenter().toArray();
+          // Update the state with the new center coordinates
+          setMapCenter(newCenter);
+        }, 250);
+      });
 
-    // Store the map instance in a ref
-    mapRef.current = map;
+      map.on("zoom", async () => {
+        clearTimeout(timers.current.zoom);
+        timers.current.zoom = setTimeout(() => {
+          const newZoom = map.getZoom();
+          // Update the state with the new zoom level
+          setMapZoom(newZoom);
+        }, 250);
+      });
+
+      // Store the map instance in a ref
+      mapRef.current = map;
+    });
 
     // Return a cleanup function that removes the map instance
     return () => {
       map.remove();
     };
-  }, [mapStyle, roadThickness]);
+  }, [
+    mapStyle,
+    roadThickness,
+    mapCenter,
+    mapZoom,
+    showRoad,
+    showLabels,
+    labelFontSize,
+  ]);
 
   const exportImage = () => {
     const map = mapRef.current;
@@ -107,90 +135,43 @@ const Map = () => {
     });
     map.triggerRepaint();
   };
+
+  const mapView = () => {
+    setMapStyle("mapbox://styles/eliasgrey9/clfpyxcqi000u01pdpa2lri29");
+    setShowLabels(false);
+    setShowRoad(false);
+  };
+
   return (
     <div className={style.body}>
       <div className={style.mapContainer} ref={mapContainerRef}></div>
       <div className={style.mapViewAndExportBtn}>
         <button
           onClick={() => {
-            setMapStyle("mapbox://styles/eliasgrey9/clfq239t8002701qv2eh39fuw");
+            setMapStyle("mapbox://styles/eliasgrey9/clfr4qbjg002o01nsprw4ip9o");
           }}
         >
           Layer View
         </button>
-        <button
-          onClick={() => {
-            setMapStyle("mapbox://styles/eliasgrey9/clfpyxcqi000u01pdpa2lri29");
-          }}
-        >
-          Map View
-        </button>
+        <button onClick={mapView}>Map View</button>
         <button onClick={exportImage}>Export</button>
       </div>
-
-      <div>
-        <button onClick={setRoadThicknessToSM}>Thin Road</button>
-        <button onClick={setRoadThicknessToMD}>Medium Road</button>
-        <button onClick={setRoadThicknessToLG}>Thick Road</button>
+      <div className={style.roadThicknessControls}>
+        <div>Road thickness</div>
+        <button onClick={() => setRoadThickness((prev) => prev + 1)}>+</button>
+        <button onClick={() => setRoadThickness((prev) => prev - 1)}>-</button>
+        <button onClick={() => setShowRoad((prev) => !prev)}>
+          {showRoad ? <div>Hide</div> : <div>Show</div>}
+        </button>
       </div>
-      {/* <div className={style.styleBtns}>
-        <button
-          onClick={() => {
-            setMapStyle("mapbox://styles/eliasgrey9/clfq239t8002701qv2eh39fuw");
-          }}
-        >
-          Thin Roads
+      <div className={style.LabelsControls}>
+        <div>Road Labels</div>
+        <button onClick={() => setLabelFontSize((prev) => prev + 1)}>+</button>
+        <button onClick={() => setLabelFontSize((prev) => prev - 1)}>-</button>
+        <button onClick={() => setShowLabels((prev) => !prev)}>
+          {showLabels ? <div>Hide</div> : <div>Show</div>}
         </button>
-        <button
-          onClick={() => {
-            setMapStyle("mapbox://styles/eliasgrey9/clfq3nadt001h01mckiac2fl2");
-          }}
-        >
-          Thin Roads + labels
-        </button>
-        <button
-          onClick={() => {
-            setMapStyle("mapbox://styles/eliasgrey9/clfq71uq0000201qvt2openbs");
-          }}
-        >
-          Medium Roads
-        </button>
-        <button
-          onClick={() => {
-            setMapStyle("mapbox://styles/eliasgrey9/clfq72rvp000301pgtw3iwn8a");
-          }}
-        >
-          Medium Roads + labels
-        </button>
-        <button
-          onClick={() => {
-            setMapStyle("mapbox://styles/eliasgrey9/clfq0768x000l01o7qehupkac");
-          }}
-        >
-          Thick Roads
-        </button>
-        <button
-          onClick={() => {
-            setMapStyle("mapbox://styles/eliasgrey9/clfq3ktl3002901qv7fxkt5zu");
-          }}
-        >
-          Thick Roads + labels
-        </button>
-        <button
-          onClick={() => {
-            setMapStyle("mapbox://styles/eliasgrey9/clfq4rtyh009v01nzrg6n70sq");
-          }}
-        >
-          Labels Only
-        </button>
-        <button
-          onClick={() => {
-            setMapStyle("mapbox://styles/eliasgrey9/clfq4l248000w01pjoan6mqaj");
-          }}
-        >
-          Monochrome
-        </button>
-      </div> */}
+      </div>
     </div>
   );
 };
