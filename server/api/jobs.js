@@ -12,6 +12,7 @@ router.post("/create", async function (req, res) {
           title: payload.title,
           status: payload.status,
           invitations: payload.invitations,
+          userId:payload.userId
         },
         { transaction: t }
       );

@@ -14,4 +14,5 @@ module.exports = db.define("position", {
     type: Sequelize.INTEGER,
     defaultValue: 0,
   },
+  
 });

@@ -3,7 +3,7 @@ import axios from "axios";
 import style from "./activePositions.module.css";
 import { Link } from "react-router-dom";
 
-const ActivePositions = () => {
+const ActivePositions = ({userId}) => {
   const [dataFromApi, setDataFromApi] = useState([]);
 
   useEffect(() => {

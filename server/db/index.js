@@ -15,6 +15,10 @@ Position.hasMany(Answer);
 Candidate.hasMany(Answer);
 Candidate.belongsTo(Position);
 Position.hasMany(Candidate);
+Position.belongsTo(User)
+User.hasMany(Position)
+
+
 // Candidate.hasMany(Position);
 
 module.exports = {

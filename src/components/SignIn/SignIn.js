@@ -23,8 +23,14 @@ const SignIn = () => {
         }
       );
 
+      
 
-      console.log('SIGNIN RESPONSE', response.data.userId);
+      if (response) {
+        // Change the URL to http://localhost:3000/dashboard/:userId
+        window.location.href = `http://localhost:3000/dashboard/${response.data.userId}`;
+      }     
+
+
     } catch (error) {
       console.error(error);
     }

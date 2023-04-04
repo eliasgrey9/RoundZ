@@ -7,6 +7,8 @@ import AddInterviewQuestionsForm from "./AddInterviewQuestionsForm/AddInterviewQ
 import CreateJobForm from "./CreateJobForm/CreateJobForm";
 import SaveAndPublishForm from "./SaveAndPublishForm/SaveAndPublishForm";
 import { useNavigate } from "react-router-dom";
+import { useParams } from 'react-router-dom';
+
 
 const CreateJobPosition = () => {
   const navigate = useNavigate();
@@ -18,6 +20,8 @@ const CreateJobPosition = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [liquidHeading, setLiquidHeading] = useState("");
+  const { userId } = useParams();
+
 
   const SAVE_AND_PUBLISH = "SAVE_AND_PUBLISH";
   const ADD_QUESTION_FORM = "ADD_QUESTION_FORM";
@@ -81,10 +85,11 @@ const CreateJobPosition = () => {
 
   const submitForm = (e) => {
     e.preventDefault();
-    navigate("/dashboard");
+    navigate(`/dashboard/${userId}`);
     if (questionArray.length > 0 && !(title === "")) {
-      const result = { questions: [...questionArray], title, status: true };
-      //API REQUEST///
+      const result = { questions: [...questionArray], title, status: true, userId:userId };
+
+
       const requestOptions = {
         method: "POST",
         headers: { "Content-Type": "application/json" },
