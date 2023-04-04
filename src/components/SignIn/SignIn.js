@@ -16,19 +16,17 @@ const SignIn = () => {
       const response = await axios.post(
         'http://localhost:8080/api/users/signIn',
         signInUser,
-        {
-          headers: {
-            Authorization: {"Bearer":"token"}
-          }
-        }
+      
       );
 
       
-
       if (response) {
+        // Store the authentication token in localStorage
+        localStorage.setItem('authToken', response.data.token);
+      
         // Change the URL to http://localhost:3000/dashboard/:userId
         window.location.href = `http://localhost:3000/dashboard/${response.data.userId}`;
-      }     
+      }  
 
 
     } catch (error) {

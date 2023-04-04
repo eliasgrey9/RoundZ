@@ -8,9 +8,9 @@ const ActivePositions = ({userId}) => {
 
   useEffect(() => {
     const renderActiveJobs = async () => {
-      const response = await axios.get(
-        "http://localhost:8080/api/jobs/findAllActiveJobs"
-      );
+      const token = localStorage.getItem('authToken'); 
+      const options = { headers: { Authorization: `Bearer ${token}` } };
+      const response = await axios.get(`http://localhost:8080/api/users/findAllActiveJobsByUser/${userId}`, options);
       setDataFromApi(response.data);
     };
     renderActiveJobs();

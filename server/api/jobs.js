@@ -83,6 +83,8 @@ router.get("/findAllActiveJobs", async (req, res, next) => {
   }
 });
 
+
+
 router.get("/findAllClosedJobs", async (req, res, next) => {
   try {
     const result = await Position.findAll({
