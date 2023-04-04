@@ -10,31 +10,8 @@ module.exports = db.define("user", {
     type: Sequelize.STRING,
   },
 
-  firstName: {
+  fullName: {
     type: Sequelize.STRING,
   },
-
-  lastName: {
-    type: Sequelize.STRING,
-  },
-
-  userImg: {
-    type: Sequelize.STRING,
-  },
-
-  userBio: {
-    type: Sequelize.STRING,
-  },
-
-  linkedIn: {
-    type: Sequelize.STRING,
-  },
-
-  companyName: {
-    type: Sequelize.STRING,
-  },
-
-  companyWebsite: {
-    type: Sequelize.STRING,
-  },
+  
 });

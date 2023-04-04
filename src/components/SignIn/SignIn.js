@@ -1,15 +1,36 @@
 import React, { useState } from "react";
 import style from "./signIn.module.css";
 import { Link } from "react-router-dom";
+import axios from 'axios'
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log("Email: ", email, "Password: ", password);
+    const signInUser = { email: email, password: password };
+  
+    try {
+      const response = await axios.post(
+        'http://localhost:8080/api/users/signIn',
+        signInUser,
+        {
+          headers: {
+            Authorization: {"Bearer":"token"}
+          }
+        }
+      );
+
+
+      console.log('SIGNIN RESPONSE', response.data.userId);
+    } catch (error) {
+      console.error(error);
+    }
   };
+  
+
 
   return (
     <div className={style.body}>

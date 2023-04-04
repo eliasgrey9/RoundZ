@@ -1,16 +1,30 @@
 import React, { useState } from "react";
 import style from "./signUp.module.css";
 import { Link } from "react-router-dom";
+import axios from 'axios'
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
   const [fullName, setFullName] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Email", email, "Name", fullName, "Password", password);
+  const handleSubmit = async (event) => {
+    event.preventDefault();  
+    const createUser = { fullName: fullName, email: email, password: password };
+  
+    try {
+      const response = await axios.post(
+        'http://localhost:8080/api/users/signUp',
+        createUser
+      );
+      console.log('SIGNUP RESPONSE', response);
+    } catch (error) {
+      console.error(error);
+    }
   };
+  
+
+ 
 
   return (
     <div className={style.body}>

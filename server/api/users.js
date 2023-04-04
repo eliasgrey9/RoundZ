@@ -16,47 +16,60 @@ const authenticated = (req, res, next) => {
   }
 };
 
-//***LOGIN***/
-router.post("/login", async (req, res) => {
-  console.log("login req.body", req.body);
-  const user = await User.findOne({ where: { email: req.body.email } });
+const onlyOwner = (req, res, next) => {
+  try {
+    const token = req.headers.authorization.split(" ")[1];
+    const decodedToken = jwt.verify(token, JWT_SECRET);
 
-  if (!user) {
-    res.status(401).send("Invalid email or password.");
-  } else {
-    const authenticated = await bcrypt.compare(
-      req.body.password,
-      user.password
-    );
-
-    if (authenticated) {
-      const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
-
-      res.json({ token });
+    if (decodedToken.id === parseInt(req.params.id)) {
+      next();
     } else {
-      res.status(401).send("Invalid email or password.");
+      res.status(401).json("nope");
     }
+  } catch {
+    res.status(401).json("Unauthorized");
   }
-});
-//***END OF LOGIN***/
+};
+
+// SIGN IN
+router.post("/signIn", async (req, res) => {
+  console.log("signIn req.body", req.body);
+  const user = await User.findOne({ where: { email: req.body.email } });
+  
+  if (!user) {
+  res.status(401).send("Invalid email or password.");
+  } else {
+  const authenticated = await bcrypt.compare(
+  req.body.password,
+  user.password
+  );if (authenticated) {
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
+  
+    res.json({ token:token, userId:user.id });
+  } else {
+    res.status(401).send("Invalid email or password.");
+  }
+}
+});  
+    
 
 //***SIGN UP***/
-router.post("/signup", async (req, res) => {
+router.post("/signUp", async (req, res) => {
   // validate email and password before checking if user exists and moving on
   // check if email already exists
-  // you'll probably want to query the database right here
-  console.log("signup req.body", req.body);
+  console.log("signUp req.body", req.body);
   const user = await User.findOne({ where: { email: req.body.email } });
 
   if (user) {
     // if user exists, return error
-    res.status(400).send("Invalid email or password.");
+    res.status(400).send("User already exists!.");
   } else {
     // hash password
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
     // create user object
     const user = {
+      fullName:req.body.fullName,
       email: req.body.email,
       password: hashedPassword,
     };
@@ -81,25 +94,11 @@ router.get("/route-that-is-public", (req, res) => {
   res.send("We don't care if you are authenticated!");
 });
 
-// router.get("/user/:id", [authenticated, onlyOwner], (req, res) => {
-//   res.send("You are authenticated and you own this user!");
-// });
+router.get("/user/:id", [authenticated, onlyOwner], (req, res) => {
+  res.send("You are authenticated and you own this user!");
+});
 
 module.exports = router;
 
-// WILL NEED TO UPDATE THIS SO A SPECIFIC USER ONLY HAS ADMIN ACCESS TO THEIR OWN ITEMS AND MODEL PROPERTIES.
-//UPDATING WILL BEGIN AFTER USER/LOGIN IS SUCCESSFUL WITH DASHBOARD TO VIEW IN HOUSE ITEMS AND USER INFORMATION.
-// const onlyOwner = (req, res, next) => {
-//     try {
-//       const token = req.headers.authorization.split(" ")[1];
-//       const decodedToken = jwt.verify(token, JWT_SECRET);
 
-//       if (decodedToken.id === parseInt(req.params.id)) {
-//         next();
-//       } else {
-//         res.status(401).json("nope");
-//       }
-//     } catch {
-//       res.status(401).json("Unauthorized");
-//     }
-//   };
+

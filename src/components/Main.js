@@ -9,13 +9,11 @@ import CreateJobPosition from "./Dashboard/CreateJobPosition/CreateJobPosition";
 import ShareInterview from "./Dashboard/ShareInterview/ShareInterview";
 import Candidates from "./Dashboard/Candidates/Candidates";
 import ReviewAnswer from "./Dashboard/Candidates/ReviewAnswer";
-import Map from "./Map";
 
 function Main() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/testing" element={<Map />}></Route>
 
         <Route path="/" element={<Homepage />}></Route>
         <Route path="/signUp" element={<SignUp />}></Route>
