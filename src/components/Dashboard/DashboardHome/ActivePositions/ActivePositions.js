@@ -3,7 +3,7 @@ import axios from "axios";
 import style from "./activePositions.module.css";
 import { Link } from "react-router-dom";
 
-const ActivePositions = ({userId}) => {
+const ActivePositions = ({userId, setStatus}) => {
   const [dataFromApi, setDataFromApi] = useState([]);
 
   useEffect(() => {
@@ -14,7 +14,7 @@ const ActivePositions = ({userId}) => {
       setDataFromApi(response.data);
     };
     renderActiveJobs();
-  }, []);
+  }, [setStatus]);
 
   const changeStatusToClosed = (id) => {
     axios.put(`http://localhost:8080/api/jobs/changeJobStatusToClosed/${id}`);
@@ -45,7 +45,7 @@ const ActivePositions = ({userId}) => {
               >
                 Close
               </div>
-              <Link to={`/dashboard/shareInterview/${data.id}`}>
+              <Link to={`/dashboard/shareInterview/${data.id}/${userId}`}>
                 <button className={style.shareBtn}>Share</button>
               </Link>
             </div>

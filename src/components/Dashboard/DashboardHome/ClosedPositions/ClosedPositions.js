@@ -3,7 +3,7 @@ import axios from "axios";
 import style from "./closedPositions.module.css";
 import { BsTrash3 } from "react-icons/bs";
 
-const ClosedPositions = () => {
+const ClosedPositions = ({userId, setStatus}) => {
   const [dataFromApi, setDataFromApi] = useState([]);
 
   const deletePosition = async (id) => {
@@ -15,13 +15,15 @@ const ClosedPositions = () => {
 
   useEffect(() => {
     const renderClosedJobs = async () => {
-      const response = await axios.get(
-        "http://localhost:8080/api/jobs/findAllClosedJobs"
-      );
+      const token = localStorage.getItem('authToken'); 
+      const options = { headers: { Authorization: `Bearer ${token}` } };
+      const response = await axios.get(`http://localhost:8080/api/users/findAllClosedJobsByUser/${userId}`, options);
       setDataFromApi(response.data);
     };
     renderClosedJobs();
-  }, []);
+  }, [setStatus]);
+
+
 
   const changeStatusToOpen = (id) => {
     axios.put(`http://localhost:8080/api/jobs/changeJobStatusToOpen/${id}`);

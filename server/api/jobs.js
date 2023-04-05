@@ -70,33 +70,6 @@ router.delete("/delete/:id", async (req, res, next) => {
   }
 });
 
-router.get("/findAllActiveJobs", async (req, res, next) => {
-  try {
-    const result = await Position.findAll({
-      where: { status: true },
-      include: Question,
-    });
-    res.send(result);
-  } catch (error) {
-    console.log("get REQ ERROR", error);
-    next(error);
-  }
-});
-
-
-
-router.get("/findAllClosedJobs", async (req, res, next) => {
-  try {
-    const result = await Position.findAll({
-      where: { status: false },
-      include: Question,
-    });
-    res.send(result);
-  } catch (error) {
-    console.log("get REQ ERROR", error);
-    next(error);
-  }
-});
 
 router.put("/changeJobStatusToClosed/:id", async (req, res, next) => {
   const position = await Position.findByPk(req.params.id);

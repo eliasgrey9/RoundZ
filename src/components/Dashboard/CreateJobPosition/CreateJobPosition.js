@@ -114,7 +114,7 @@ const CreateJobPosition = () => {
     <div className={style.body}>
       <Navbar />
         <div className={style.buttonAndHeading}>
-          <Link to={"/dashboard"}>
+          <Link to={`/dashboard/${userId}`}>
             <button className={style.backToDashboardBtn}>
               <MdArrowBackIosNew />
               Dashboard

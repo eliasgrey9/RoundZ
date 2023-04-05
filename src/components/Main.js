@@ -24,7 +24,7 @@ function Main() {
           element={<CreateJobPosition />}
         ></Route>
         <Route
-          path="/dashboard/shareInterview/:id"
+          path="/dashboard/shareInterview/:positionId/:userId"
           element={<ShareInterview />}
         ></Route>
 

@@ -87,6 +87,34 @@ router.post("/signUp", async (req, res) => {
 });
 //***END OF SIGN UP***//
 
+//***ROUTES FOR USERS */
+router.get("/findAllActiveJobsByUser/:id", [authenticated, onlyOwner], async (req, res, next) => {
+  try {
+    const result = await Position.findAll({
+      where: { status: true, userId:req.params.id },
+      include: Question,
+    });
+    res.send(result);
+  } catch (error) {
+    console.log("get REQ ERROR", error);
+    next(error);
+  }
+});
+
+router.get("/findAllClosedJobsByUser/:id", [authenticated, onlyOwner], async (req, res, next) => {
+  try {
+    const result = await Position.findAll({
+      where: { status: false, userId:req.params.id },
+      include: Question,
+    });
+    res.send(result);
+  } catch (error) {
+    console.log("get REQ ERROR", error);
+    next(error);
+  }
+});
+
+
 //EXAMPLES!!!///
 router.get("/route-that-requires-auth", authenticated, (req, res) => {
   res.send("You are authenticated!");
@@ -100,18 +128,7 @@ router.get("/user/:id", [authenticated, onlyOwner], (req, res) => {
   res.send("You are authenticated and you own this user!");
 });
 
-router.get("/findAllActiveJobsByUser/:id", [authenticated, onlyOwner], async (req, res, next) => {
-  try {
-    const result = await Position.findAll({
-      where: { status: true, userId:req.params.id },
-      include: Question,
-    });
-    res.send(result);
-  } catch (error) {
-    console.log("get REQ ERROR", error);
-    next(error);
-  }
-});
+
 
 module.exports = router;
 

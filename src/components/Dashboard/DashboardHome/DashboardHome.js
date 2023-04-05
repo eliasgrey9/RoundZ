@@ -12,7 +12,6 @@ const DashboardHome = () => {
 
     const { userId } = useParams();
   
-    console.log("userID",userId)
 
 
   return (
@@ -49,7 +48,7 @@ const DashboardHome = () => {
           </Link>
         </div>
       </div>
-      {status ? <ActivePositions userId={userId} /> : <ClosedPositions />}
+      {status ? <ActivePositions setStatus={setStatus} userId={userId} /> : <ClosedPositions setStatus={setStatus} userId={userId} />}
     </div>
   );
 };

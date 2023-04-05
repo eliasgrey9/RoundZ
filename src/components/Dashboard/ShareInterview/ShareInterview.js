@@ -19,8 +19,7 @@ const ShareInterview = () => {
   const [dataFromApi, setDataFromApi] = useState({});
   const [bulkEmailArray, setBulkEmailArray] = useState([]);
   const myForm = useRef();
-  const params = useParams();
-
+  const params= useParams();
   //String Generator for dynamic link creation
   const characters =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -37,7 +36,7 @@ const ShareInterview = () => {
   //Updates invitation numbers by getting the recent amount and passing it to the parent function updateInvitations
   const updateInivitationsOnClientSide = async () => {
     const response = await axios.get(
-      `http://localhost:8080/api/jobs/getPositionInvitations/${params.id}`
+      `http://localhost:8080/api/jobs/getPositionInvitations/${params.positionId.id}`
     );
 
     updateInvitations(response.data);
@@ -59,7 +58,7 @@ const ShareInterview = () => {
       }
       newRandomStr.toLowerCase();
 
-      const dynamicLink = `http://localhost:3000/interview?inviteId=${newRandomStr}&positionId=${params.id}`;
+      const dynamicLink = `http://localhost:3000/interview?inviteId=${newRandomStr}&positionId=${params.positionId}`;
       const currentEmail = e.email;
       const currentName = e.name;
 
@@ -74,7 +73,7 @@ const ShareInterview = () => {
         .then(function (response) {
           if (response) {
             axios.post(
-              `http://localhost:8080/api/jobs/addCandidateToPosition/${params.id}`,
+              `http://localhost:8080/api/jobs/addCandidateToPosition/${params.positionId}`,
               {
                 name: currentName,
                 email: currentEmail,
@@ -120,12 +119,12 @@ const ShareInterview = () => {
   useEffect(() => {
     const renderSinglePosition = async () => {
       const response = await axios.get(
-        `http://localhost:8080/api/jobs/singlePosition/${params.id}`
+        `http://localhost:8080/api/jobs/singlePosition/${params.positionId}`
       );
       setDataFromApi(response.data);
     };
     renderSinglePosition();
-  }, [params.id]);
+  }, [params.positionId]);
 
   const updateEmailArray = (e) => {
     e.preventDefault();
@@ -143,7 +142,7 @@ const ShareInterview = () => {
       <div className={style.body}>
         <Navbar />
         <div className={style.buttonAndHeading}>
-          <Link to={"/dashboard"}>
+          <Link to={`/dashboard/${params.userId}`}>
             <button className={style.backToDashboardBtn}>
               <MdArrowBackIosNew />
               Dashboard
