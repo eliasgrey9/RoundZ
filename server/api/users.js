@@ -56,35 +56,35 @@ router.post("/signIn", async (req, res) => {
     
 
 //***SIGN UP***/
-router.post("/signUp", async (req, res) => {
-  // validate email and password before checking if user exists and moving on
-  // check if email already exists
-  console.log("signUp req.body", req.body);
-  const user = await User.findOne({ where: { email: req.body.email } });
 
-  if (user) {
-    // if user exists, return error
-    res.status(400).send("User already exists!.");
-  } else {
-    // hash password
+router.post("/signUp", async (req, res) => {
+  try {
+    const user = await User.findOne({ where: { email: req.body.email } });
+
+    if (user) {
+      return res.status(400).send("User already exists!");
+    }
+
     const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
-    // create user object
-    const user = {
+    const newUser = {
       email: req.body.email,
-      fullName:req.body.fullName,
+      fullName: req.body.fullName,
       password: hashedPassword,
     };
 
-    // store user in database
-    await User.create(user);
+    const createdUser = await User.create(newUser);
 
-    // create token
-    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
+    const userId = createdUser.id;
+    const token = jwt.sign({ id: userId }, process.env.JWT_SECRET);
 
-    res.json({ token });
+    res.json({ token, userId });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("Something went wrong");
   }
 });
+
 //***END OF SIGN UP***//
 
 //***ROUTES FOR USERS */
