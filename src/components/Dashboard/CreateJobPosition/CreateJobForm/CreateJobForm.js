@@ -23,7 +23,9 @@ const CreateJobForm = ({
 
         <div className={style.inputLabel}>Job Title</div>
         <input
-          maxlength="28"
+        type="text" pattern="[a-zA-Z0-9]+" 
+        title="Job title can only contain letters and numbers."
+          maxLength="28"
           className={style.titleInput}
           value={title}
           onChange={updateTitle}

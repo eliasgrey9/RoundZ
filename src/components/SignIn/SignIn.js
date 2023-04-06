@@ -7,7 +7,6 @@ const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const signInUser = { email: email, password: password };

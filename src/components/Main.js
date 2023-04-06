@@ -29,7 +29,7 @@ function Main() {
         ></Route>
 
         <Route
-          path="/dashboard/position/:title/:id"
+          path="/dashboard/position/:title/:id/:userId"
           element={<Candidates />}
         ></Route>
 

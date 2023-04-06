@@ -12,10 +12,11 @@ const AllCandidates = ({
   deletePosition,
   params,
 }) => {
+
   return (
     <div>
       <div className={style.buttonAndHeading}>
-        <Link to={"/dashboard"}>
+        <Link to={`/dashboard/${params.userId}`}>
           <button className={style.backToDashboardBtn}>
             <MdArrowBackIosNew />
             Dashboard
@@ -83,13 +84,13 @@ const AllCandidates = ({
           </div>
         ))}
         <div className={style.closeAndDeleteBtns}>
-          <Link to={"/dashboard"}>
+          <Link to={`/dashboard/${params.userId}`}>
             <button onClick={changeStatusToClosed} className={style.closeBtn}>
               Close Position
             </button>
           </Link>
 
-          <Link to={"/dashboard"}>
+          <Link to={`/dashboard/${params.userId}`}>
             <button onClick={deletePosition} className={style.deleteBtn}>
               Delete Position
             </button>

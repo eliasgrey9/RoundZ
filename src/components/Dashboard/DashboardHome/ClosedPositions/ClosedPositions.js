@@ -44,9 +44,8 @@ const ClosedPositions = ({userId, setStatus}) => {
               <BsTrash3
                 className={style.trashCan}
                 onClick={() => deletePosition(data.id)}
-                Delete
-                Position
-              />
+
+              />    
               <button
                 className={style.reActivateBtn}
                 onClick={() => changeStatusToOpen(data.id)}

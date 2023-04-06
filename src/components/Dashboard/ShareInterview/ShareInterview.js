@@ -36,7 +36,7 @@ const ShareInterview = () => {
   //Updates invitation numbers by getting the recent amount and passing it to the parent function updateInvitations
   const updateInivitationsOnClientSide = async () => {
     const response = await axios.get(
-      `http://localhost:8080/api/jobs/getPositionInvitations/${params.positionId.id}`
+      `http://localhost:8080/api/jobs/getPositionInvitations/${params.positionId}`
     );
 
     updateInvitations(response.data);

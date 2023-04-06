@@ -16,7 +16,7 @@ const DashboardHome = () => {
 
   return (
     <div className={style.body}>
-      <Navbar />
+      <Navbar userId={userId} />
       <div className={style.dashboardControls}>
         <div className={style.leftSideDashboardControls}>
           <div className={style.heading}>My Dashboard</div>

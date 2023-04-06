@@ -8,6 +8,7 @@ import CreateJobForm from "./CreateJobForm/CreateJobForm";
 import SaveAndPublishForm from "./SaveAndPublishForm/SaveAndPublishForm";
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
 
 
 const CreateJobPosition = () => {
@@ -77,7 +78,7 @@ const CreateJobPosition = () => {
   const updateQuestionArray = (e) => {
     e.preventDefault();
     if (currentQuestionInputValue.length) {
-      questionArray.push({ question: currentQuestionInputValue });
+      questionArray.push({ question: currentQuestionInputValue, uuid: uuidv4() });
       setCurrentQuestionInputValue("");
       displayQuestions.push(currentQuestionInputValue);
     }
@@ -112,7 +113,7 @@ const CreateJobPosition = () => {
 
   return (
     <div className={style.body}>
-      <Navbar />
+      <Navbar userId={userId} />
         <div className={style.buttonAndHeading}>
           <Link to={`/dashboard/${userId}`}>
             <button className={style.backToDashboardBtn}>

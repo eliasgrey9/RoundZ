@@ -28,7 +28,7 @@ const ActivePositions = ({userId, setStatus}) => {
           <div className={style.positionCard} key={data.id}>
             <div className={style.leftSideOfCard}>
               <div className={style.cardTitle}>{data.title}</div>
-              <Link to={`/dashboard/position/${data.title}/${data.id}`}>
+              <Link to={`/dashboard/position/${data.title}/${data.id}/${userId}`}>
                 <div className={style.viewInterviewDetails}>
                   View Interview Details
                 </div>

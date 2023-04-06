@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import style from "./hamburgerMenu.module.css";
 
-const HamburgerMenu = () => {
+const HamburgerMenu = ({userId}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleMenuClick = () => {
@@ -18,9 +18,10 @@ const HamburgerMenu = () => {
       <div
         className={`${style.hamburgerMenuLinks} ${isOpen ? style.open : ""}`}
       >
-        <a className={style.a} href="/dashboard">
+        <a className={style.a} href={`/dashboard/${userId}`}>
           Dashboard
         </a>
+
         <a className={style.a} href="/help">
           Help
         </a>
