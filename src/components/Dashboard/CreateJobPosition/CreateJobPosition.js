@@ -9,7 +9,7 @@ import SaveAndPublishForm from "./SaveAndPublishForm/SaveAndPublishForm";
 import { useNavigate } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
-
+import axios from 'axios'
 
 const CreateJobPosition = () => {
   const navigate = useNavigate();
@@ -84,9 +84,12 @@ const CreateJobPosition = () => {
     }
   };
 
-  const submitForm = (e) => {
+
+
+  const submitForm = async (e) => {
     e.preventDefault();
-    navigate(`/dashboard/${userId}`);
+
+    
     if (questionArray.length > 0 && !(title === "")) {
       const result = { questions: [...questionArray], title, status: true, userId:userId };
 
@@ -103,7 +106,8 @@ const CreateJobPosition = () => {
         .then(() => setTitle(""))
         .then(() => setDescription(""))
         .then(() => setQuestionArray([]))
-        .then(() => setDisplayQuestions([]));
+        .then(() => setDisplayQuestions([]))
+        .then(()=> navigate(`/dashboard/${userId}`));
       ///END API REQUEST
     } else {
       <div>Form not submitted</div>;

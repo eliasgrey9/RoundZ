@@ -17,7 +17,7 @@ const InterviewPage = () => {
   const [allowNextQuestion, setAllowNextQuestion] = useState(false);
   const [fileName, setFileName] = useState("");
   const [questionId, setQuestionId] = useState(0);
-  const [candidateId, setCandiateId] = useState(0);
+  const [candidateId, setCandidateId] = useState(0);
 
   useEffect(() => {
     const renderPositionData = async () => {
@@ -31,7 +31,7 @@ const InterviewPage = () => {
       const response = await axios.get(
         `http://localhost:8080/api/jobs/getCandidateId/${inviteId}`
       );
-      setCandiateId(response.data[0].id);
+      setCandidateId(response.data[0].id);
     };
 
     getCandidateId();

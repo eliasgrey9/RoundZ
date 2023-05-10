@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "./signIn.module.css";
 import { Link } from "react-router-dom";
 import axios from 'axios'
+import logo from '../../assets/logo.svg'
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
@@ -37,7 +38,7 @@ const SignIn = () => {
 
   return (
     <div className={style.body}>
-      <div className={style.logo}>RoundZ</div>
+      <div className={style.logo}><img src={logo}></img></div>
 
       <form className={style.form} onSubmit={handleSubmit}>
         <div className={style.inputAndLabel}>

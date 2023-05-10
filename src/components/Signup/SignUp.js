@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import style from "./signUp.module.css";
 import { Link } from "react-router-dom";
 import axios from 'axios'
-import logo from '../../assets/logo.png'
+import logo from '../../assets/logo.svg'
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -64,15 +64,16 @@ const SignUp = () => {
 
 <div className={style.inputAndLabel}>
         <label className={style.label}>
-          Choose a password with at least 8 characters
+          Password
         </label>
         <input
           className={style.input}
           type="password"
-          placeholder="Password"
+          placeholder="Minimum 8 characters long"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-        ></input></div>
+        ></input>
+        </div>
 </div>
 
         <input
@@ -81,7 +82,7 @@ const SignUp = () => {
           value="Continue"
         ></input>
         <div className={style.alreadyHaveAnAccount}>
-          Already have an account?
+          <div>Already have an account?</div>
           <div>
             <Link className={style.signIn} to={"/signIn"}>
               Sign In
