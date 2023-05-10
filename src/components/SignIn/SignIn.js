@@ -37,9 +37,10 @@ const SignIn = () => {
 
   return (
     <div className={style.body}>
-      <div className={style.logo}>Roundz</div>
+      <div className={style.logo}>RoundZ</div>
 
       <form className={style.form} onSubmit={handleSubmit}>
+        <div className={style.inputAndLabel}>
         <label className={style.label}>Email</label>
         <input
           className={style.input}
@@ -48,7 +49,10 @@ const SignIn = () => {
           value={email}
           onChange={(event) => setEmail(event.target.value)}
         ></input>
+</div>
 
+        <div className={style.textInputFields}>
+        <div className={style.inputAndLabel}>
         <label className={style.label}>Password</label>
         <input
           className={style.input}
@@ -57,6 +61,10 @@ const SignIn = () => {
           value={password}
           onChange={(event) => setPassword(event.target.value)}
         ></input>
+        </div>
+
+        </div>
+
         <input
           className={style.submitBtn}
           type="submit"
@@ -66,7 +74,7 @@ const SignIn = () => {
         <div className={style.needAnAccount}>
           Need an account?
           <div>
-            <Link className={style.logIn} to={"/signUp"}>
+            <Link className={style.signUp} to={"/signUp"}>
               Sign Up
             </Link>
           </div>

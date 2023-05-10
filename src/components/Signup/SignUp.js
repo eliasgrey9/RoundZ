@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import style from "./signUp.module.css";
 import { Link } from "react-router-dom";
 import axios from 'axios'
+import logo from '../../assets/logo.png'
 
 const SignUp = () => {
   const [email, setEmail] = useState("");
@@ -36,10 +37,12 @@ const SignUp = () => {
 
   return (
     <div className={style.body}>
-      <div className={style.logo}>Roundz</div>
+      <div className={style.logo}><img src={logo}></img></div>
       <div className={style.subHeading}>Sign up with RoundZ for free</div>
 
       <form className={style.form} onSubmit={handleSubmit}>
+        <div className={style.textInputFields}>
+        <div className={style.inputAndLabel}>
         <label className={style.label}>Email</label>
         <input
           className={style.input}
@@ -47,7 +50,9 @@ const SignUp = () => {
           placeholder="Enter your email"
           value={email}
           onChange={(event) => setEmail(event.target.value)}
-        ></input>
+        ></input></div>
+
+<div className={style.inputAndLabel}>
         <label className={style.label}>Enter your full name</label>
         <input
           className={style.input}
@@ -55,7 +60,9 @@ const SignUp = () => {
           placeholder="Jane Smith"
           value={fullName}
           onChange={(event) => setFullName(event.target.value)}
-        ></input>
+        ></input></div>
+
+<div className={style.inputAndLabel}>
         <label className={style.label}>
           Choose a password with at least 8 characters
         </label>
@@ -65,16 +72,18 @@ const SignUp = () => {
           placeholder="Password"
           value={password}
           onChange={(event) => setPassword(event.target.value)}
-        ></input>
+        ></input></div>
+</div>
+
         <input
           className={style.submitBtn}
           type="submit"
-          value="Sign Up"
+          value="Continue"
         ></input>
         <div className={style.alreadyHaveAnAccount}>
           Already have an account?
           <div>
-            <Link className={style.logIn} to={"/signIn"}>
+            <Link className={style.signIn} to={"/signIn"}>
               Sign In
             </Link>
           </div>

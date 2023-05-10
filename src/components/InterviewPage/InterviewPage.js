@@ -69,7 +69,7 @@ const InterviewPage = () => {
   }
 
   return (
-    <div>
+<div>
       <Navbar />
       <div className={style.questionSection}>
         {questions.length ? (
