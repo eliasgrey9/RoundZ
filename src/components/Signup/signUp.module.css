@@ -142,25 +142,37 @@ color: #FFFFFF;
 @media (max-width: 1024px) {
 
   .form{
-    width:75%;
-    height: 600px;
+    width:80%;
+    height: 950px;
   }
-  .inputAndLabel{
-    margin-top: 20px;
-  }
-  .alreadyHaveAnAccount{
- flex-direction: column;
-  }
-  .signIn{
-    margin: 0;
-  }
-  .logo{
-    margin: 50px 0 25px 0;
+.logo{
+  font-size: 60px;
+}
+.subHeading{
+  font-size: 18px;
+}
+.alreadyHaveAnAccount{
+  width: 80%;
+  font-size: 18px;
+}
 
-  }
 
 }
 
+@media(max-width:540px){
+
+  .form{
+    width:90%;
+    height: 600px;
+  }
+}
+@media(max-width:414px){
+
+  .form{
+    width:90%;
+    height: 700px;
+  }
+}
 
 @media(max-width:375px){
   .form{

@@ -140,16 +140,21 @@
 
 }
 
+@media(max-width:540px){
+
+  .form{
+    width:90%;
+    height: 450px;
+  }
+}
+
 
 @media(max-width:375px){
 
   .form{
-    width:90%;
     height: 500px;
   }
-.logo{
-  font-size: 50px;
-}
+
 .textInputFields{
   height: 20%;
 }
