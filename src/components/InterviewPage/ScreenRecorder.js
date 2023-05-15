@@ -3,8 +3,6 @@ import { ReactMediaRecorder } from "react-media-recorder";
 import UploadMediaHandler from "./UploadMediaHandler";
 import { useLocation } from "react-router-dom";
 import style from "./interviewPage.module.css";
-import { BsFillCameraReelsFill } from "react-icons/bs";
-import { FaStop } from "react-icons/fa";
 
 window.Buffer = window.Buffer || require("buffer").Buffer;
 
@@ -23,9 +21,7 @@ const VideoPreview = ({ stream }) => {
 };
 
 const ScreenRecorder = ({
-  nextQuestionBtn,
   submitAnswerBtn,
-  allowNextQuestion,
   fileName,
   questionId,
   positionId = { positionId },
@@ -36,6 +32,8 @@ const ScreenRecorder = ({
   const [isUploaded, setIsUploaded] = useState(false);
   const [file, setFile] = useState();
   const [currentFileName, setCurrentFileName] = useState();
+  const [recordBtnState, setRecordBtnState] = useState('Record');
+  const [showStopBtn, setShowStopBtn] = useState(true)
 
   useEffect(() => {
     setCurrentFileName(fileName);
@@ -47,12 +45,26 @@ const ScreenRecorder = ({
 
     const myfile = new File([myBlobData], "webm");
     setFile(myfile);
+    setRecordBtnState('Retake')
+    setShowStopBtn(false)
+
   };
+
+  const showStopBtnOnStart = () =>  {
+setShowStopBtn(true)
+  }
+
+  const submittingAnAnswer = () => {
+    submitAnswerBtn()
+    setRecordBtnState('Record')
+
+  }
 
   return (
     <>
       <ReactMediaRecorder
         onStop={handleUpload}
+        onStart={showStopBtnOnStart}
         video
         render={({
           previewStream,
@@ -66,29 +78,20 @@ const ScreenRecorder = ({
             <div className={style.controls}>
               <div className={style.stopAndRecordBtns}>
                 <button className={style.recordBtn} onClick={startRecording}>
-                  <BsFillCameraReelsFill />
+                  {recordBtnState}
                 </button>
-                <button className={style.stopBtn} onClick={stopRecording}>
-                  <FaStop />
-                </button>
-              </div>
-              <div className={style.nextSubmitBtn}>
-                {allowNextQuestion ? (
-                  <button
-                    className={style.nextSubmitBtn}
-                    onClick={nextQuestionBtn}
-                  >
-                    Next Question
-                  </button>
-                ) : (
-                  <button
-                    className={style.nextSubmitBtn}
-                    onClick={submitAnswerBtn}
+
+                {showStopBtn ?  <button className={style.stopBtn} onClick={stopRecording}>
+                Stop recording
+                </button>: <button
+                    className={style.submitBtn}
+                    onClick={submittingAnAnswer}
                   >
                     Submit Answer
-                  </button>
-                )}
+                  </button>}
+
               </div>
+
             </div>
 
             <div>

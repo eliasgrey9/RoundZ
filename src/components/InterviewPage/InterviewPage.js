@@ -14,7 +14,6 @@ const InterviewPage = () => {
   const positionId = queryParams.get("positionId");
   const [positionData, setPositionData] = useState({});
   const [questions, setQuestions] = useState([{ placeholder: "placeholder" }]);
-  const [allowNextQuestion, setAllowNextQuestion] = useState(false);
   const [fileName, setFileName] = useState("");
   const [questionId, setQuestionId] = useState(0);
   const [candidateId, setCandidateId] = useState(0);
@@ -49,14 +48,14 @@ const InterviewPage = () => {
     }
   }, [questions]);
 
-  const nextQuestionBtn = () => {
-    setQuestions(questions.slice(1));
-    setAllowNextQuestion(false);
-  };
+    
+
 
   const submitAnswerBtn = () => {
-    setAllowNextQuestion(true);
+    setQuestions(questions.slice(1));
   };
+
+
   const updateCandidateInterviewStatus = async () => {
     const response = await axios.get(
       `http://localhost:8080/api/jobs/updateCandidateInterviewStatus/${candidateId}`
@@ -85,8 +84,6 @@ const InterviewPage = () => {
         <div className={style.recorderContainer}>
           <ScreenRecorder
             className={style.recorder}
-            allowNextQuestion={allowNextQuestion}
-            nextQuestionBtn={nextQuestionBtn}
             submitAnswerBtn={submitAnswerBtn}
             fileName={fileName}
             inviteId={inviteId}
@@ -108,3 +105,5 @@ const InterviewPage = () => {
 };
 
 export default InterviewPage;
+
+

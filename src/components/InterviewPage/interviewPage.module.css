@@ -5,26 +5,29 @@
   height: 150px;
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
-  background: #fcfcfc;
-  box-shadow: 7px 8px 11px 4px rgba(186, 183, 183, 0.2);
-  margin-bottom: 50px;
+  justify-content: center;
+
+
 }
 .questionHeading {
+  margin-top: 20px;
   font-style: normal;
   font-weight: 700;
-  font-size: 36px;
-  line-height: 43px;
+  font-size: 26px;
   display: flex;
+  justify-content: center;
   align-items: center;
-  text-align: center;
   color: #010c15;
+  width: 1040px;
+  height: 120px;
+  background: #F2F4F5;
+  border-radius: 3px;
 }
 .recorderContainer {
   display: flex;
   flex-direction: column;
   height: 1000px;
+  margin-top: 30px;
 }
 
 .screenAndControls {
@@ -33,16 +36,35 @@
   align-items: center;
 }
 
-.recordBtn,
-.stopBtn {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+.recordBtn{
+  width: 208px;
+  height: 70px;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  color: #F6F6F6;
+  background: #00A99F;
+  border-radius: 3px;
   border: none;
-  font-size: 24px;
+}
+.stopBtn {
+  width: 208px;
+  height: 70px;
+  border: 1px solid #00A99F;
+  border-radius: 3px;
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: white;
+  color: #00A99F;
 }
 .recordBtn:hover,
 .stopBtn:hover {
@@ -51,7 +73,7 @@
 
 .stopAndRecordBtns {
   display: flex;
-  width: 150px;
+  width: 435px;
   justify-content: space-evenly;
 }
 
@@ -63,19 +85,22 @@
   width: 400px;
   height: 200px;
 }
-.nextSubmitBtn {
-  width: 200px;
-  height: 50px;
-  background: #00a99f;
-  border-radius: 30px;
-  border: none;
-  font-family: "Lato";
+.submitBtn {
+  width: 208px;
+  height: 70px;
+  border: 1px solid #00A99F;
+  border-radius: 3px;
+  font-family: 'Lato';
   font-style: normal;
   font-weight: 700;
-  font-size: 22px;
-  color: #ffffff;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: #00A99F;
 }
-.nextSubmitBtn {
+.submitBtn:hover {
   cursor: pointer;
 }
 
